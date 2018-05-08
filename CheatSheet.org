@@ -1,10 +1,10 @@
 #+INCLUDE: CheatSheetSetup.org
 
-* COMMENT titlepage                                                  :ignore:
-
-#+TITLE: Cheat Sheet Template
-#+DATE: << Spring 2018 >>
-#+SUBTITLE: Hello old friend
+* title                                                              :ignore:
+#+TITLE: Reference Sheet for ``What I'm Currently Learning''
+# SUBTITLE: Cheat Sheet Template
+# DATE: << Spring 2018 >>
+# When we don't provide a date, one is provided for us.
 #+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
 #+EMAIL: alhassy@gmail.com
 #+DESCRIPTION: This document is written by Musa Al-hassy for his learning in the spring of 2018.
@@ -334,6 +334,7 @@ Here is a tiny tweak for org-mode. If you add the following option to your emacs
 (setq org-highlight-latex-and-related '(latex))
 
 Then inline latex like $y=mx+c$ will appear in a different colour in an org-mode file to help it stand out.
+( See below! )
 
 eval: (setq NAME (buffer-name))
 compile-command: (progn (org-latex-export-to-pdf) (eshell-command (concat "evince " NAME ".pdf &")))

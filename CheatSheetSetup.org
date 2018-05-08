@@ -1,8 +1,13 @@
-#+TITLE: Cheat Sheet Setup
-#+DATE: << Spring 2018 >>
-#+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
-#+EMAIL: alhassy@gmail.com
-#+DESCRIPTION: This setup file is to accompany the CheatSheet.org for making pretty reference sheets.
+# TITLE: Cheat Sheet Setup
+# DATE: << Spring 2018 >>
+# AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
+# EMAIL: alhassy@gmail.com
+# DESCRIPTION: This setup file is to accompany the CheatSheet.org for making pretty reference sheets.
+
+#
+# The above are comments, otherwise they would contribute to the main CheatSheet.org file.
+#
+
 #+OPTIONS: toc:nil
 
 * Title header                                                       :ignore:
@@ -14,91 +19,18 @@
 # The \maketitle command, in article, clears the values of \title, \author, \date, etc; so we make it do nothing.
 #+LATEX_HEADER: \def\maketitle#1{}
 
-#+NAME: make header for sheets
+#+LaTeX: \fontsize{9}{10}\selectfont
+
+# Actually render the title headers
 #+BEGIN_EXPORT latex
-\newcommand{\makeHeader}[4]{  % 1, 2: items on top-right header; 3: main header title; 4: date
-
-\parbox[t]{20em}{\bf
-    \strut\hfill
-    McMaster University
-    \hfill\strut \\
-    Department of Computing and Software
-    \\ \strut\hfill
-    \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
-    \hfill\strut
-    }
-    %
-    \hfill
-    %
-    \parbox[t]{11em}{\bf
-    \strut%
-    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
-   {\strut\kern-0.9em {\small \hspace{-3em} #1 }}
-   \hfill\strut
-    % \\ 
-    \strut\hfill
-    #2 \kern3.5em
-} %\parbox
-
-  \kern2em
-  \centerline{\large\bf #3}
-  \centerline{#4}
-  % \thispagestyle{empty}
-}
-
-% 1: sheet number; 2: sheet title; 3: date
-\newcommand{\declareSheet}[3]{ \makeHeader{``What I'm Currently Learning''}{Sheet #1}{#2}{#3} }
-
-\iffalse construction site
-
-\parbox[t]{20em}{\bf
-    \strut\hfill
-    % McMaster University
-    % \hfill\strut \\
-    % Department of Computing and Software
-    % \\ \strut\hfill
-    % \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
-     \theauthor \thedate \thetitle \thesubtitle
-    \hfill\strut
-} %\parbox
-%
-\hfill
-%
-\parbox[t]{11em}{\bf
-    \strut%
-    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
-   {\strut\kern-0.9em {\small \hspace{-3em} 1 }}
-   \hfill\strut
-    % \\ 
-    \strut\hfill
-    2 \kern3.5em
-} %\parbox
-
-  \kern2em
-  \centerline{\large\bf 3}
-  \centerline{4}
-  % \thispagestyle{empty}
-
-
-{\large 
-HELLO
-
-\makeatletter
-The title is \@title with
-It was written by \@author\space on \@date
-\makeatother
-
-then \thetitle
-
-}
-
-\fi
-
+\theauthor \hfill \thedate
+\hline
+{\center \large\bf \thetitle \\ }
 #+END_EXPORT
 
-#+LaTeX: \fontsize{9}{10}\selectfont
-# LaTeX: \makeHeader{\hspace{6ex}\today}{}{Theorem List for ``What I'm Currently Learning''}{}
-#+LaTeX: \makeHeader{\hspace{6ex}\today}{}{Reference Sheet for ``What I'm Currently Learning''}{}
+#
+# This works since the Org settings, `#+` lines are parsed before the TeX ones.
+#
 
 * Other \usepackages{}                                               :ignore:
 
@@ -230,6 +162,7 @@ then \thetitle
 \def\invisible#1{ {\color{white}{#1}}  }
 
 \def\forcenewline{ {\color{white} .} \newline }
+\def\forcenewpage{ {\color{white} .} \newpage }
 #+END_EXPORT
 
 
