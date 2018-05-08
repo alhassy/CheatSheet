@@ -1,0 +1,537 @@
+#+LATEX_HEADER: \usepackage{titling}
+
+# The \maketitle command, in article, clears the values of \title, \author, \date, etc; so we make it do nothing.
+#+LATEX_HEADER: \def\maketitle#1{}
+
+#+LATEX_HEADER: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage{color}
+#+LATEX_HEADER: \definecolor{darkgreen}{rgb}{0.0, 0.3, 0.1}
+#+LATEX_HEADER: \definecolor{darkblue}{rgb}{0.0, 0.1, 0.3}
+#+LATEX_HEADER: \hypersetup{colorlinks,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkgreen}
+
+# Text after an enumeration should not be indented, otherwise it looks like it ought to belong
+# to the previous enumerated item.
+#+LATEX_HEADER: \setlength{\parindent}{0pt}  
+
+#+OPTIONS: toc:nil
+
+* COMMENT titlepage                                                  :ignore:
+
+#+TITLE: Cheat Sheet Template
+#+DATE: << Spring 2018 >>
+#+SUBTITLE: Hello old friend
+#+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
+#+EMAIL: alhassy@gmail.com
+#+DESCRIPTION: This document is written by Musa Al-hassy for his learning in the spring of 2018.
+#+STARTUP: hideblocks
+#+STARTUP: overview
+#+TODO: { TEMPLATE(t) BEGIN-IGNORE(b) END-IGNORE(e) } | DONE(d)
+
+
+* LaTeX setup                                                        :ignore:
+
+
+#+LATEX_HEADER: \usepackage[hmargin=10mm,vmargin=10mm]{geometry}
+#+LATEX_HEADER: \usepackage{eufrak} % for mathfrak fonts
+#+LATEX_HEADER: \usepackage{multicol}
+
+#+NAME: symbols for itemisation environment
+#+BEGIN_EXPORT latex
+\def\labelitemi{$\diamond$}
+\def\labelitemii{$\circ$}
+\def\labelitemiii{$\star$}
+
+% Level 0                 Level 0
+% + Level 1               ⋄ Level 1 
+%   - Level 2       --->      ∘ Level 2 
+%     * Level 3                   ⋆ Level 3
+% 
+#+END_EXPORT
+
+#+NAME: paralell enviro
+#+BEGIN_EXPORT latex 
+\renewenvironment{parallel}[1][2] % one argument, whose default value is literal `2`.
+ {
+  \setlength{\columnseprule}{2pt}
+  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
+  \begin{multicols}{#1}  % default is `2`
+ }
+ { 
+  \end{multicols}
+  \end{minipage}
+ }
+
+% Common case is to have three columns, want to avoid invoking the attribute via org, so making this.
+\newenvironment{parallel3}
+ {
+  \setlength{\columnseprule}{2pt}
+  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
+  \begin{multicols}{3}
+ }
+ { 
+  \end{multicols}
+  \end{minipage}
+ }
+
+
+% paralellNB, this is paralell enviro but with `N`o  `B`ar in-between the columns.
+
+\newenvironment{parallelNB}[1][2] % one argument, whose default value is literal `2`.
+ {
+  \setlength{\columnseprule}{0pt}
+  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
+  \begin{multicols}{#1}  % default is `2`
+ }
+ { 
+  \end{multicols}
+  \end{minipage}
+ }
+
+\newenvironment{parallel3NB}
+ {
+  \setlength{\columnseprule}{0pt}
+  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
+  \begin{multicols}{3}
+ }
+ { 
+  \end{multicols}
+  \end{minipage}
+ }
+#+END_EXPORT
+
+#+NAME: make header for sheets
+#+BEGIN_EXPORT latex
+\newcommand{\makeHeader}[4]{  % 1, 2: items on top-right header; 3: main header title; 4: date
+
+\parbox[t]{20em}{\bf
+    \strut\hfill
+    McMaster University
+    \hfill\strut \\
+    Department of Computing and Software
+    \\ \strut\hfill
+    \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
+    \hfill\strut
+    }
+    %
+    \hfill
+    %
+    \parbox[t]{11em}{\bf
+    \strut%
+    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
+   {\strut\kern-0.9em {\small \hspace{-3em} #1 }}
+   \hfill\strut
+    % \\ 
+    \strut\hfill
+    #2 \kern3.5em
+} %\parbox
+
+  \kern2em
+  \centerline{\large\bf #3}
+  \centerline{#4}
+  % \thispagestyle{empty}
+}
+
+% 1: sheet number; 2: sheet title; 3: date
+\newcommand{\declareSheet}[3]{ \makeHeader{``What I'm Currently Learning''}{Sheet #1}{#2}{#3} }
+
+\iffalse construction site
+
+\parbox[t]{20em}{\bf
+    \strut\hfill
+    % McMaster University
+    % \hfill\strut \\
+    % Department of Computing and Software
+    % \\ \strut\hfill
+    % \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
+     \theauthor \thedate \thetitle \thesubtitle
+    \hfill\strut
+} %\parbox
+%
+\hfill
+%
+\parbox[t]{11em}{\bf
+    \strut%
+    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
+   {\strut\kern-0.9em {\small \hspace{-3em} 1 }}
+   \hfill\strut
+    % \\ 
+    \strut\hfill
+    2 \kern3.5em
+} %\parbox
+
+  \kern2em
+  \centerline{\large\bf 3}
+  \centerline{4}
+  % \thispagestyle{empty}
+
+
+{\large 
+HELLO
+
+\makeatletter
+The title is \@title with
+It was written by \@author\space on \@date
+\makeatother
+
+then \thetitle
+
+}
+
+\fi
+
+#+END_EXPORT
+
+# Having small-font code blocks.
+#+LATEX_HEADER: \RequirePackage{fancyvrb}
+#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+
+#+LATEX_HEADER: \usepackage[dvipsnames]{xcolor} % named colours
+#+LaTeX: \definecolor{grey}{rgb}{0.5,0.5,0.5}
+
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LaTeX: \setitemize{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+#+LaTeX: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
+#
+# https://stackoverflow.com/questions/4968557/latex-very-compact-itemize/4974583#4974583
+
+#+LaTeX: \fontsize{9}{10}\selectfont
+# LaTeX: \makeHeader{\hspace{6ex}\today}{}{Theorem List for ``What I'm Currently Learning''}{}
+#+LaTeX: \makeHeader{\hspace{6ex}\today}{}{Reference Sheet for ``What I'm Currently Learning''}{}
+
+#+NAME: redefining subsection for purposes of theorem list headings
+#+BEGIN_EXPORT latex
+%
+% Note the * makes the numbering dissapear; 
+% See §7.2 of the manual: http://mirror.its.dal.ca/ctan/macros/latex/base/classes.pdf
+% 
+\makeatletter
+\renewcommand\section[1]{
+  \@startsection {section}{1}{0ex}%
+                 {-3.5ex \@plus -1ex \@minus -.2ex}%
+                 {-1em}%
+		 { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{1ex}\newline }}
+		 
+\makeatother
+
+% The black-colour is to ensure no accidental spill-over when using other colour; e.g. \invisibleHI
+#+END_EXPORT
+
+#+NAME: globally set itemsep length
+#+BEGIN_EXPORT latex
+\def\notOccurs#1#2{ $\lnot \occurs{#1}{#2}$}
+#+END_EXPORT
+
+#+LaTeX: \def\invisible#1{ {\color{white}{#1}}  }
+#+LaTeX: \def\invisibleHI{ \invisible{Hi} }
+# Sometimes I need to have text to anchor certain items down.
+# E.g. usage to move a table upwards after a subsection heading: \invisible{hi}\vspace{-1em}
+
+* Hello, World!
+
++ Pretty PDF :: Enter ~M-x compile~ to produce a nice looking PDF of your reference sheet.
+  - I've bound this command to ~C-c C-m~ in my Emacs setup ;-)
+
++ Section Headers :: A usual Org header, say ~* my section~, results in the boxed headers
+     used in this cheat sheet.
+
++ Parallel Environments :: The sequence ~<p TAB~ produces a `parallel' environment for
+     producing text side-by-side. The column break is automatic, but as 
+     this is sugar for a ~minipage~ containing a ~multicolum~ we can force a column
+     separation with ~\columnbreak~: This command, in Org, necessities newlines between
+     the items being separated.
+
+\vspace{1em}
+To learn more, manipulating this source is the way to go!
+
+\newpage.
+
+\vspace{15em} 
+
+\centerline{The next page contains sample output from a logic-based class.}
+\newpage
+
+
+* Latex setup to make example sections work :ignore:
+
+
+
+#+NAME: \def's
+#+BEGIN_EXPORT latex
+
+% from Wolfram Kahl's CalcStyleV9
+\def\withrule{\vrule height1.57ex depth0.43ex width0.12em}
+\def\with{\kern0.7em \withrule \kern0.7em }
+
+\def\even{ \mathsf{even} \, }
+\def\eq{ \;=\; }
+\def\lorS{ \quad\lor\quad }
+\def\lors{ \;\lor\; }
+\def\landS{ \quad\land\quad }
+\def\lands{ \;\land\;}
+
+\def\equivS{ \quad\equiv\quad }
+\def\equivs{ \;\equiv\;}
+
+\def\eqS{ \quad=\quad }
+\def\eqs{ \;=\;}
+
+\def\subseteqs{ \;\subseteq\; }
+\def\subseteqS{ \quad\subseteq\quad }
+
+\def\impliesS{ \quad\Rightarrow\quad }
+\def\impliess{ \;\Rightarrow\;}
+\def\implies{ \Rightarrow }
+
+\def\spot{ \;\bullet\; }
+
+\def\meet{ \;\sqcap\; }
+\def\join{ \;\sqcup\; }
+\def\sqleq{ \sqsubseteq }
+\def\sqleqs{ \;\sqsubseteq\; }
+
+\def\Id{\mathsf{Id}}
+\def\true{\mathsf{true}}
+\def\false{\mathsf{false}}
+\def\fst{\mathsf{fst}}
+\def\snd{\mathsf{snd}}
+
+\def\IF #1 : #2 : #3 \FI{ \mathsf{if}\; { #1 } \;\mathsf{then}\; { #2 } \;\mathsf{else}\; { #3 } \;\mathsf{fi} }
+
+\def\RR{\mathbb{R}}
+\def\NN{\mathbb{N}}
+\def\ZZ{\mathbb{Z}}
+\def\22{\mathbf{2}}
+\def\11{\mathbf{1}}
+#+END_EXPORT
+
+
+* Propositional Calculus
+
++ Metatheorem :: Any two theorems are equivalent; ` $\true$ ' is a theorem.
+
+[[https://ac.els-cdn.com/S0020019000002052/1-s2.0-S0020019000002052-main.pdf?_tid=35e86bb2-edb0-11e7-b1fe-00000aab0f26&acdnat=1514672861_56b3d86466d284cbc76cc2641c47af86][_Equivales_]] is an equivalence relation that is associative --- $((p \equiv q) \equiv r)\equivs(p \equiv (q \equiv r))$ ---
+and has identity $\true$.
+
+\underline{Discrepancy} ` $\not\equiv$ ' is symmetric, associative, has identity ` $\false$ ',
+mutually associates with equivales --- $((p \not\equiv q) \equiv r) \equivs (p \not\equiv (q \equiv r))$ ---
+and mutually interchanges with it as well
+--- $p \not\equiv q \equiv r \equivs    p \equiv q \not\equiv r$ ---.
+
+*** implication :ignore:
+
+\vspace{1ex}
+
+\underline{Implication} has the alternative definition $p \implies q \;\equiv\; \lnot p \lor q$,
+has $\true$ as left identity and $\false$ as right zero,
+distributes over $\equiv$ in the second argument, and is self-distributive;
+and has the properties
+
+# 
+#+begin_parallelNB
++ Shunting ::  \invisible{hi}\vspace{-0.5em}
+  |$ p \land q \implies r \equivS  p \implies (q \implies r)$|
+
++ Contrapositive ::  \invisible{hi}\vspace{-0.5em}
+  | $ p \implies q \quad\equiv\quad \lnot q \implies \lnot p$ |
+
+\columnbreak
+
++ Modus Ponens :: \invisible{hi}\vspace{-2em}		  
+  | $p \land (p \implies q)$ | \equiv   | $p \land q$ |
+  | $p \land (q \implies p)$ | \equiv   | $p$         |
+  | $p \land (p \implies q)$ | \implies | $q$         |
+
+#+end_parallelNB
+
+Moreover it has the useful property ``(3.62)'': 
+ $p \implies (q \equiv r) \equivS p \land q    \equivs    p \land r$.
+
+*** conjunction and disjunction                                      :ignore:
+\vspace{1ex}
+\underline{Conjunction and disjunction} distribute over one another,
+$\lor$ distributes over $\equiv$,
+$\land$ distributes over $\equiv-\equiv$
+in that $p \land (q \equiv r \equiv s) \equivS p \land q \equivs p \land r  \equivs p \land s$,
+and they satisfy,
+
+| *Excluded Middle* | *Contradiction*                 | *Absorption*                                | *De Morgan*                                      |
+| $p \lor \lnot p$  | $p \land \lnot p \equiv~\false$ | $p \land (\lnot p \lor q) \equiv p \land q$ | $\lnot (p \land q) \equiv \lnot p \lor  \lnot q$ |
+|                   |                                 | $p \lor (\lnot p \land q) \equiv p \lor  q$ | $\lnot (p \lor q)  \equiv \lnot p \land \lnot q$ |
+
+
+**** COMMENT alternate table 
+#+begin_parallel3NB
+
++ Excluded Middle ::  $p \lor \lnot p$
+
++ Contradiction ::
+  #+LaTeX: {hi. \vspace{-2em} $\invisible{Hi! Hello!}~p \land \lnot p \equiv~\false$}
+  
+  # + \scriptsize Contradiction :: \scriptsize $p \land \lnot p \equiv~\false$
+  
+\columnbreak
+  
++ Absorption :: 
+    | $p \land (\lnot p \lor q)$ | \equiv | $p \land q$ |
+    | $p \lor (\lnot p \land q)$ | \equiv | $p \lor  q$ |
+
+\columnbreak
+
++ De Morgan ::
+   | $\lnot (p \land q)$ | \equiv | $\lnot p \lor  \lnot q$ |
+   | $\lnot (p \lor q)$  | \equiv | $\lnot p \land \lnot q$ |
+
+#+end_parallel3NB
+
+
+* [[https://frama-c.com/][Loops implement finite quantifications]]
+
+#+LATEX_HEADER: \DeclareUnicodeCharacter{119931}{\ensuremath{\mathbf{T}}} % math bold caps 𝑻
+
+A finite quantification can be defined axiomatically
+by the empty-range rule and split-off term rules.
+Together these form a recursive definition which can be phrased as a loop.
+#
+#+begin_parallel c
+
+#+NAME: ?
+#+BEGIN_SRC c :tangle sheet_code.c
+// For -⊕- : 𝑻 → 𝑻 → 𝑻,
+// fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x]) 
+/*@ axiomatic Fold { 
+  @   
+  @ logic 𝑻
+  @   fold{L}(𝑻 *A, integer a, integer b)
+  @   reads a,b,A, A[..] ;
+  @
+  @ axiom foldEmptyRange{L} :
+  @   \forall 𝑻 *A, integer a, b; a >= b
+  @   ==>  fold(A,a,b) == identity(⊕);
+  @
+  @ axiom foldSplitOffTerm{L} :
+  @   \forall 𝑻 *A, integer a, b; a <= b
+  @   ==>     fold(A, a, b+1) 
+  @        == fold(A, a, b  ) ⊕ A[b];
+  @ }
+  @*/
+#+END_SRC
+
+\columnbreak
+
+#+NAME: ?
+#+BEGIN_SRC c :tangle sheet_code.c
+/*@ requires \valid(A+(0..N-1));
+  @ assigns \nothing;
+  @ ensures \result == fold(A,0,N);
+  @*/
+𝑻 fold(int N, 𝑻* A) {
+
+    𝑻 total = identity(⊕);
+    
+    /*@ loop invariant 0 <= n <= N;
+      @ loop invariant total == fold(A,0,n);
+      @ loop assigns n, total;
+      @ loop variant N-n;
+    */
+    for(int n = 0; n != N; n++)
+        total = total ⊕ A[n];
+    return total;
+}
+#+END_SRC
+#+end_parallel
+
+This pseudo-code is reified by giving concrete values
+for ~(𝑻, ⊕, identity)~ such as ~(int, +, 0)~ or ~(bool, ||, false)~.
+Any [[https://en.wikipedia.org/wiki/Monoid][monoid]] will do.
+
+
+\newpage
+
+* Lattices
+# Environments
+# Our common environments will be the following distributive lattices
+The distributive lattice interface /(L, ⊑, ⊓, ⊔, ⊥, ⊤)/ has the following implementations:
+
++ Booleans: $(𝔹, \implies, \land, \lor, \false, \true)$ 
+  #+LaTeX: {\hfill\color{red}---Our ambient logic!}
+  # Assume this sheet instantiated to this structure.
+
++ Extended Number Line:  $(\RR, \leq, \min, \max, -\infty, +\infty)$ 
+
++ Naturals under division: $(\NN, \, |, \gcd, \mathsf{lcm}, 1, 0)$
+
+  # \item Sets : $(\power \ X, \subseteq, \cap, \cup, \emptyset, X)$
++ Substructures of a given /datatype/ with the substructure ordering.
+   \newline E.g., sets, lists, and graphs with subset, subsequence, and subgraph ordering.
+   # %, respectively.
+   # Subllists/subtrees/subgraphs/$\cdots$ of a given one with subsequence/subtree/subgraph ordering.
+
+# \item Programs ordered by refinement with join being demonic choice % $\framebox(3,10){}$
+#   having bottom element be the \verb+ABORT+ program.
+
+An /order/ is a relation /-⊑- : L → L → 𝔹/  satisfying the following three properties:
+| *Reflexivity* | *Transitivity*              | *Antisymmetry*            |
+| /a ⊑ a/     | /a ⊑ b ∧ b ⊑ c ⇒ a ⊑ c/ | /a ⊑ b ∧ b ⊑ a ⇒ a = b/ |
+
+An order is /bounded/ if there are elements /⊤, ⊥ : L/ being the lower and upper bounds of all other elements:
+| *Top Element*    | *Bottom Element* |
+| $a \sqleqs \top$ | $\bot \sqleqs a$ |
+
+A /lattice/ is a pair of operations /-⊓-, -⊔- : L → L → L/ specified by the properties:
+| *⊔-Characterisation*          | @@latex: $\qquad$@@ | *⊓-Characterisation*                        |
+| @@latex: $a ⊑ c ∧ b ⊑ c \equivS a ⊔ b ⊑ c$ @@ | | @@latex: $c ⊑ a ∧ c ⊑ b \equivS c ⊑ a ⊓ b$ @@ |
+# \hfill{\color{grey}(8.6)}}
+
+Let $\square$ be one of $\meet$ or $\join$, then:
+| *Symmetry of □* | *Associativity of □* | *Idempotency of □* |
+| $a □ b \eqs b □ a$ | $(a □ b) □ c \eqs a □ (b □ c)$ | $a □ a \eqs a$     |
+
+
+| *Zero of □*    | *Identity of □* | *Absorption*      | *Self-Distributivity of □* |
+|  $a ⊔ ⊤ = ⊤$    | $a ⊔ ⊥ = a$    |  $a ⊓ (a ⊔ b) = a$ | $a □ (b □ c) \eqS (a □ b) □ (a □ c)$ |
+|  $a ⊓ ⊥ = ⊥$  | $a ⊓ ⊤ = a$      | $a ⊔ (a ⊓ b) = a$ | |
+
+
+| *Weakening / Strengthening* | *Induced Defs. of Inclusion* | *Golden Rule*                                    |
+| $a \;⊑\; a ⊔ b$             | $a ⊑ b \equivS a ⊔ b \eqs b$ | $a ⊓ b \;=\; a \hspace{1.52em}\equivs b = a ⊔ b$ |
+| $a ⊓ b \;⊑\; a$             | $a ⊑ b \equivS a ⊓ b \eqs a$ | $a ⊓ b \;=\; a ⊔ b \equivs a = b$                |
+| $a ⊓ b \;⊑\; a ⊔ b$         |                              | $a ⊔ b \;⊑\; a ⊓ b \equivs a = b$                |
+| $a ⊔ (b ⊓ c) \;⊑\; a ⊔ b$ | *Monotonicity of □*         |                                                  |
+| $a ⊓ b \;⊑\; a ⊓ (b ⊔ c)$ | $a ⊑ b \lands c ⊑ d \impliess a □ c \;⊑\; b □ d$ |                             |
+
+# \hfill{\color{grey}(7.9)
+
+#+BEGIN_EXPORT latex
+{\small \textbf{Duality Principle:} \\
+If a statement $S$ is a theorem, then so is
+$S[(\sqleq, \meet, \join, \top, \bot) := (⊒, \join, \meet, \bot, \top)]$}.
+#+END_EXPORT
+
+
+
+* COMMENT footer
+
+Here is a tiny tweak for org-mode. If you add the following option to your emacs config file
+
+(setq org-highlight-latex-and-related '(latex))
+
+Then inline latex like $y=mx+c$ will appear in a different colour in an org-mode file to help it stand out.
+
+eval: (setq NAME (buffer-name))
+compile-command: (progn (org-latex-export-to-pdf) (eshell-command (concat "evince " NAME ".pdf &")))
+
+# Local Variables:
+# eval: (setq NAME (file-name-sans-extension buffer-file-name))
+# eval: (setq org-highlight-latex-and-related '(latex))
+# eval: (visual-line-mode t)
+# eval: (require 'ox-extra)
+# eval: (ox-extras-activate '(ignore-headlines))
+# eval: (make-variable-buffer-local 'org-structure-template-alist)
+# eval: (setq PARALLEL (concat "# \n#+begin_parallel latex \n?\n#+end_parallel"))
+# eval: (add-to-list 'org-structure-template-alist `("p" ,PARALLEL))
+# eval: (setq TEMPLATE (concat "#+NAME: ?\n#+BEGIN_SRC c :tangle sheet_code.c\n?\n#+END_SRC"))
+# eval: (add-to-list 'org-structure-template-alist `("s" ,TEMPLATE))
+# compile-command: (progn (org-latex-export-to-pdf) (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &")))
+# org-latex-inputenc-alist: (("utf8" . "utf8x"))
+# eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
+# End:
