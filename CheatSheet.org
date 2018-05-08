@@ -1,19 +1,4 @@
-#+LATEX_HEADER: \usepackage{titling}
-
-# The \maketitle command, in article, clears the values of \title, \author, \date, etc; so we make it do nothing.
-#+LATEX_HEADER: \def\maketitle#1{}
-
-#+LATEX_HEADER: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
-#+LATEX_HEADER: \usepackage{color}
-#+LATEX_HEADER: \definecolor{darkgreen}{rgb}{0.0, 0.3, 0.1}
-#+LATEX_HEADER: \definecolor{darkblue}{rgb}{0.0, 0.1, 0.3}
-#+LATEX_HEADER: \hypersetup{colorlinks,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkgreen}
-
-# Text after an enumeration should not be indented, otherwise it looks like it ought to belong
-# to the previous enumerated item.
-#+LATEX_HEADER: \setlength{\parindent}{0pt}  
-
-#+OPTIONS: toc:nil
+#+INCLUDE: CheatSheetSetup.org
 
 * COMMENT titlepage                                                  :ignore:
 
@@ -27,204 +12,6 @@
 #+STARTUP: overview
 #+TODO: { TEMPLATE(t) BEGIN-IGNORE(b) END-IGNORE(e) } | DONE(d)
 
-
-* LaTeX setup                                                        :ignore:
-
-
-#+LATEX_HEADER: \usepackage[hmargin=10mm,vmargin=10mm]{geometry}
-#+LATEX_HEADER: \usepackage{eufrak} % for mathfrak fonts
-#+LATEX_HEADER: \usepackage{multicol}
-
-#+NAME: symbols for itemisation environment
-#+BEGIN_EXPORT latex
-\def\labelitemi{$\diamond$}
-\def\labelitemii{$\circ$}
-\def\labelitemiii{$\star$}
-
-% Level 0                 Level 0
-% + Level 1               ⋄ Level 1 
-%   - Level 2       --->      ∘ Level 2 
-%     * Level 3                   ⋆ Level 3
-% 
-#+END_EXPORT
-
-#+NAME: paralell enviro
-#+BEGIN_EXPORT latex 
-\renewenvironment{parallel}[1][2] % one argument, whose default value is literal `2`.
- {
-  \setlength{\columnseprule}{2pt}
-  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
-  \begin{multicols}{#1}  % default is `2`
- }
- { 
-  \end{multicols}
-  \end{minipage}
- }
-
-% Common case is to have three columns, want to avoid invoking the attribute via org, so making this.
-\newenvironment{parallel3}
- {
-  \setlength{\columnseprule}{2pt}
-  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
-  \begin{multicols}{3}
- }
- { 
-  \end{multicols}
-  \end{minipage}
- }
-
-
-% paralellNB, this is paralell enviro but with `N`o  `B`ar in-between the columns.
-
-\newenvironment{parallelNB}[1][2] % one argument, whose default value is literal `2`.
- {
-  \setlength{\columnseprule}{0pt}
-  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
-  \begin{multicols}{#1}  % default is `2`
- }
- { 
-  \end{multicols}
-  \end{minipage}
- }
-
-\newenvironment{parallel3NB}
- {
-  \setlength{\columnseprule}{0pt}
-  \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
-  \begin{multicols}{3}
- }
- { 
-  \end{multicols}
-  \end{minipage}
- }
-#+END_EXPORT
-
-#+NAME: make header for sheets
-#+BEGIN_EXPORT latex
-\newcommand{\makeHeader}[4]{  % 1, 2: items on top-right header; 3: main header title; 4: date
-
-\parbox[t]{20em}{\bf
-    \strut\hfill
-    McMaster University
-    \hfill\strut \\
-    Department of Computing and Software
-    \\ \strut\hfill
-    \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
-    \hfill\strut
-    }
-    %
-    \hfill
-    %
-    \parbox[t]{11em}{\bf
-    \strut%
-    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
-   {\strut\kern-0.9em {\small \hspace{-3em} #1 }}
-   \hfill\strut
-    % \\ 
-    \strut\hfill
-    #2 \kern3.5em
-} %\parbox
-
-  \kern2em
-  \centerline{\large\bf #3}
-  \centerline{#4}
-  % \thispagestyle{empty}
-}
-
-% 1: sheet number; 2: sheet title; 3: date
-\newcommand{\declareSheet}[3]{ \makeHeader{``What I'm Currently Learning''}{Sheet #1}{#2}{#3} }
-
-\iffalse construction site
-
-\parbox[t]{20em}{\bf
-    \strut\hfill
-    % McMaster University
-    % \hfill\strut \\
-    % Department of Computing and Software
-    % \\ \strut\hfill
-    % \href{http://www.cas.mcmaster.ca/~alhassm/}{Musa Al-hassy}
-     \theauthor \thedate \thetitle \thesubtitle
-    \hfill\strut
-} %\parbox
-%
-\hfill
-%
-\parbox[t]{11em}{\bf
-    \strut%
-    \hspace{-1.4em}\textsc{CompSci 3EA3} \\
-   {\strut\kern-0.9em {\small \hspace{-3em} 1 }}
-   \hfill\strut
-    % \\ 
-    \strut\hfill
-    2 \kern3.5em
-} %\parbox
-
-  \kern2em
-  \centerline{\large\bf 3}
-  \centerline{4}
-  % \thispagestyle{empty}
-
-
-{\large 
-HELLO
-
-\makeatletter
-The title is \@title with
-It was written by \@author\space on \@date
-\makeatother
-
-then \thetitle
-
-}
-
-\fi
-
-#+END_EXPORT
-
-# Having small-font code blocks.
-#+LATEX_HEADER: \RequirePackage{fancyvrb}
-#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
-
-#+LATEX_HEADER: \usepackage[dvipsnames]{xcolor} % named colours
-#+LaTeX: \definecolor{grey}{rgb}{0.5,0.5,0.5}
-
-#+LATEX_HEADER: \usepackage{enumitem}
-#+LaTeX: \setitemize{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
-#+LaTeX: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
-#
-# https://stackoverflow.com/questions/4968557/latex-very-compact-itemize/4974583#4974583
-
-#+LaTeX: \fontsize{9}{10}\selectfont
-# LaTeX: \makeHeader{\hspace{6ex}\today}{}{Theorem List for ``What I'm Currently Learning''}{}
-#+LaTeX: \makeHeader{\hspace{6ex}\today}{}{Reference Sheet for ``What I'm Currently Learning''}{}
-
-#+NAME: redefining subsection for purposes of theorem list headings
-#+BEGIN_EXPORT latex
-%
-% Note the * makes the numbering dissapear; 
-% See §7.2 of the manual: http://mirror.its.dal.ca/ctan/macros/latex/base/classes.pdf
-% 
-\makeatletter
-\renewcommand\section[1]{
-  \@startsection {section}{1}{0ex}%
-                 {-3.5ex \@plus -1ex \@minus -.2ex}%
-                 {-1em}%
-		 { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{1ex}\newline }}
-		 
-\makeatother
-
-% The black-colour is to ensure no accidental spill-over when using other colour; e.g. \invisibleHI
-#+END_EXPORT
-
-#+NAME: globally set itemsep length
-#+BEGIN_EXPORT latex
-\def\notOccurs#1#2{ $\lnot \occurs{#1}{#2}$}
-#+END_EXPORT
-
-#+LaTeX: \def\invisible#1{ {\color{white}{#1}}  }
-#+LaTeX: \def\invisibleHI{ \invisible{Hi} }
-# Sometimes I need to have text to anchor certain items down.
-# E.g. usage to move a table upwards after a subsection heading: \invisible{hi}\vspace{-1em}
 
 * Hello, World!
 
@@ -243,19 +30,50 @@ then \thetitle
 \vspace{1em}
 To learn more, manipulating this source is the way to go!
 
-\newpage.
+\newpage
+
+* Org-mode Basics
+
+Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
+  - For more see [[https://orgmode.org/orgguide.pdf][The Compact Org-mode Guide]].
+
+\vspace{1em}
+
++ Reloading :: To reload a file with updated org settings, press
+ ~C-c C-c~ on a settings line --i.e., one beginning with a ~#+~, to reset the 
+  temporary file cache.
+
++ Inclusion :: During export, you can include the content of another file. 
+  - Syntax: ~#+INCLUDE: "⟨fileName⟩" [⟨markup⟩ [⟨language⟩]]~
+    * ~markup ::= src | example~
+    * ~language ::= C | haskell | emacs-lisp | ⋯~ 
+    * If the markup is not given, the text will be assumed to be in 
+      Org mode format and will be processed normally; c.f., [[https://orgmode.org/manual/In_002dbuffer-settings.html][Setup files]].
+  
+  - To visit the file, ~C-c '~ while the cursor is on the line with the file name.
+
+* Grep
+
++ Find all files containing specific text :: \forcenewline
+  `r'ecursively look for the `w'hole given pattern: \\
+  ~grep -rw '/path/to/somewhere/' -e 'pattern'~
+
+  # - Example: Look for a word starting at the root, ~grep -rw '/' -e 'lattice'~
+
++ Better :: ~ack 'text-to-find-here' locationToBeginLooking~
+  - [[https://beyondgrep.com/][ack]] is like grep, but for source code.
+  - It looks prettier and more informative. 	    
+
+
+* space, newpage :ignore:
 
 \vspace{15em} 
 
 \centerline{The next page contains sample output from a logic-based class.}
 \newpage
 
-
 * Latex setup to make example sections work :ignore:
 
-
-
-#+NAME: \def's
 #+BEGIN_EXPORT latex
 
 % from Wolfram Kahl's CalcStyleV9
@@ -302,8 +120,9 @@ To learn more, manipulating this source is the way to go!
 \def\ZZ{\mathbb{Z}}
 \def\22{\mathbf{2}}
 \def\11{\mathbf{1}}
-#+END_EXPORT
 
+\def\notOccurs#1#2{ $\lnot \occurs{#1}{#2}$}
+#+END_EXPORT
 
 * Propositional Calculus
 
@@ -382,7 +201,6 @@ and they satisfy,
    | $\lnot (p \lor q)$  | \equiv | $\lnot p \land \lnot q$ |
 
 #+end_parallel3NB
-
 
 * [[https://frama-c.com/][Loops implement finite quantifications]]
 
