@@ -1,17 +1,22 @@
 # Title, author, etc are #+INCLUDE'd from CheatSheet.org.
+#+OPTIONS: toc:nil
 
+# ‼ CHANGE ME, repo name ‼
 #+HTML: <h1> CheatSheet </h1>
 
+# ‼ CHANGE ME, brief description ‼
 Pretty cheat sheets, or ``reference cards'', obtainable from Org files.
 
+# ‼ CHANGE ME, the link ‼
 *The listing sheet, as PDF, can be found [[https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf][here]]*, while below is a quick-n-dirty html rendition.
 
-# <iframe src="https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.org" style="width:100%" height="100" />
-#+HTML: <object width="600" height="400" data="CheatSheet.pdf"></object>
+# ‼ Maybe uncomment this ‼
+# This reference sheet is built around the system https://github.com/alhassy/CheatSheet
 
+#+HTML: <object width="600" height="400" data="CheatSheet.pdf"></object>
+#+HTML: <hr> <hr> <hr>
 #+TOC: headlines 2
-#+INCLUDE: CheatSheet.org :lines "1-33"
-#+INCLUDE: CheatSheet.org :lines "148-287"
+#+INCLUDE: CheatSheet.org
 
 * COMMENT footer
 Preview webpage: (org-html-export-to-html)

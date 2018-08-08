@@ -1,281 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<!-- 2018-08-07 Tue 18:12 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Reference Sheet for ``What I'm Currently Learning''</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="[[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]Musa Al-hassy" />
-<meta name="description" content="This document is written by Musa Al-hassy for his learning in the spring of 2018."
- />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body>
-<div id="content">
-<h1 class="title">Reference Sheet for ``What I'm Currently Learning''</h1>
 <h1> CheatSheet </h1>
 
-<p>
-Pretty cheat sheets, or ``reference cards'', obtainable from Org files.
-</p>
+Pretty cheat sheets, or \`\`reference cards'', obtainable from Org files.
 
-<p>
-<b>The listing sheet, as PDF, can be found <a href="https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf">here</a></b>, while below is a quick-n-dirty html rendition.
-</p>
+**The listing sheet, as PDF, can be found [here](https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf)**, while below is a quick-n-dirty html rendition.
 
 <object width="600" height="400" data="CheatSheet.pdf"></object>
 
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org55a7269">1. Hello, World!</a></li>
-<li><a href="#orga2642e2">2. Propositional Calculus</a></li>
-<li><a href="#orgbc33e49">3. Loops implement finite quantifications</a></li>
-</ul>
-</div>
-</div>
+<hr> <hr> <hr>
+
+
+# Table of Contents
+
+1.  [Hello, World!](#orgfabe035)
+2.  [CheatSheet Examples](#org5d4b491)
+3.  [Org-mode Basics](#org0c84928)
+4.  [Emacs](#org4ec4cd3)
+5.  [Git](#orgad02220)
+6.  [Grep](#org55fd941)
+7.  [Linux](#org21a52b4)
+8.  [CheatSheet Helper Elisp](#org239e945)
+9.  [(EXAMPLE USAGE OF `<p`) Loops implement finite quantifications](#orge48919d)
 
 
 
@@ -287,272 +31,230 @@ Pretty cheat sheets, or ``reference cards'', obtainable from Org files.
 
 
 
+<a id="orgfabe035"></a>
 
+# Hello, World!
 
-<div id="outline-container-org55a7269" class="outline-2">
-<h2 id="org55a7269"><span class="section-number-2">1</span> Hello, World!</h2>
-<div class="outline-text-2" id="text-1">
-<dl class="org-dl">
-<dt>Pretty PDF</dt><dd>Enter <code>M-x compile</code> to produce a nice looking PDF of your reference sheet.
-<ul class="org-ul">
-<li>I've bound this command to <code>C-c C-m</code> in my Emacs setup ;-)</li>
-</ul></dd>
+-   **Pretty PDF:** Enter `M-x compile` to produce a nice looking PDF of your reference sheet.
+    -   I've bound this command to `C-c C-m` in my Emacs setup ;-)
 
-<dt>Section Headers</dt><dd>A usual Org header, say <code>* my section</code>, results in the boxed headers
-used in this cheat sheet.</dd>
+-   **Section Headers:** A usual Org header, say `* my section`, results in the boxed headers
+    used in this cheat sheet.
 
-<dt>Parallel Environments</dt><dd>The sequence <code>&lt;p TAB</code> produces a `parallel' environment for
-producing text side-by-side. The column break is automatic, but as 
-this is sugar for a <code>minipage</code> containing a <code>multicolum</code> we can force a column
-separation with <code>\columnbreak</code>: This command, in Org, necessities newlines between
-the items being separated.</dd>
-</dl>
+-   **Parallel Environments:** The sequence `<p TAB` produces a \`parallel' environment for
+    producing text side-by-side. The column break is automatic, but as 
+    this is sugar for a `minipage` containing a `multicolum` we can force a column
+    separation with `\columnbreak`: This command, in Org, necessities newlines between
+    the items being separated.
 
-<p>
 \vspace{1em}
 To learn more, manipulating this source is the way to go!
-</p>
-</div>
-</div>
-<div id="outline-container-orga2642e2" class="outline-2">
-<h2 id="orga2642e2"><span class="section-number-2">2</span> Propositional Calculus</h2>
-<div class="outline-text-2" id="text-2">
-<dl class="org-dl">
-<dt>Metatheorem</dt><dd>Any two theorems are equivalent; ` \(\true\) ' is a theorem.</dd>
-</dl>
-
-<p>
-<a href="https://ac.els-cdn.com/S0020019000002052/1-s2.0-S0020019000002052-main.pdf?_tid=35e86bb2-edb0-11e7-b1fe-00000aab0f26&amp;acdnat=1514672861_56b3d86466d284cbc76cc2641c47af86"><span class="underline">Equivales</span></a> is an equivalence relation that is associative &#x2014; \(((p \equiv q) \equiv r)\equivs(p \equiv (q \equiv r))\) &#x2014;
-and has identity \(\true\).
-</p>
-
-<p>
-\underline{Discrepancy} ` \(\not\equiv\) ' is symmetric, associative, has identity ` \(\false\) ',
-mutually associates with equivales &#x2014; \(((p \not\equiv q) \equiv r) \equivs (p \not\equiv (q \equiv r))\) &#x2014;
-and mutually interchanges with it as well
-&#x2014; \(p \not\equiv q \equiv r \equivs    p \equiv q \not\equiv r\) &#x2014;.
-</p>
-</div>
-
-<div class="outline-text-2" id="text-2">
-<p>
-\vspace{1ex}
-</p>
-
-<p>
-\underline{Implication} has the alternative definition \(p \implies q \;\equiv\; \lnot p \lor q\),
-has \(\true\) as left identity and \(\false\) as right zero,
-distributes over \(\equiv\) in the second argument, and is self-distributive;
-and has the properties
-</p>
-
-<div class="parallelNB">
-<dl class="org-dl">
-<dt>Shunting</dt><dd><p>
-\invisible{hi}\vspace{-0.5em}
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">$ p &and; q \implies r \equivS  p \implies (q \implies r)$</td>
-</tr>
-</tbody>
-</table></dd>
+<a id="org5d4b491"></a>
 
-<dt>Contrapositive</dt><dd><p>
-\invisible{hi}\vspace{-0.5em}
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+# CheatSheet Examples
 
+Reference sheets created from this project include,
+\vspace{1em}
 
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">$ p \implies q \quad&equiv;\quad \lnot q \implies \lnot p$</td>
-</tr>
-</tbody>
-</table></dd>
-</dl>
+-   **[LatticesCheatSheet](https://github.com/alhassy/LatticesCheatSheet):** Reference sheet for definitions and results in Lattice Theory.
 
-<p>
-\columnbreak
-</p>
+-   **[CoqCheatSheet](https://github.com/alhassy/CoqCheatSheet):** Reference sheet for the Coq language.
 
-<dl class="org-dl">
-<dt>Modus Ponens</dt><dd><p>
-\invisible{hi}\vspace{-2em}    
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+\vspace{1em}
+The steps to utilising this git project for your own cheat sheet may be:
+
+1.  Go to the repo you want to make a cheat sheet.
+2.  Add this project as a submodule then copy its core to where you're working:
+    
+        git submodule add https://github.com/alhassy/CheatSheet.git
+        ; cp CheatSheet/CheatSheet.org . 
+        ; cp CheatSheet/README.org .
+3.  Open `CheatSheet.org` and locate `#+INCLUDE: CheatSheetSetup.org`
+    then rewrite `CheatSheetSetup.org ↦ CheatSheet/CheatSheetSetup.org`.
+4.  Within the `README.org`, if you're using it, alter the regions marked
+    `!!CHANGE ME!!`.
+
+I don't think this is difficult to automate, so I will likely get
+to doing it.
+
+\newpage
 
 
-<colgroup>
-<col  class="org-left" />
+<a id="org0c84928"></a>
 
-<col  class="org-left" />
+# Org-mode Basics
 
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">\(p \land (p \implies q)\)</td>
-<td class="org-left">&equiv;</td>
-<td class="org-left">\(p \land q\)</td>
-</tr>
+Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginners.html) for a refresher!
 
-<tr>
-<td class="org-left">\(p \land (q \implies p)\)</td>
-<td class="org-left">&equiv;</td>
-<td class="org-left">\(p\)</td>
-</tr>
+-   For more see [The Compact Org-mode Guide](https://orgmode.org/orgguide.pdf).
 
-<tr>
-<td class="org-left">\(p \land (p \implies q)\)</td>
-<td class="org-left">\implies</td>
-<td class="org-left">\(q\)</td>
-</tr>
-</tbody>
-</table></dd>
-</dl>
+\vspace{1em}
 
-</div>
+-   **Reloading:** To reload a file with updated org settings, press
+    `C-c C-c` on a settings line &#x2013;i.e., one beginning with a `#+`, to reset the 
+     temporary file cache.
 
-<p>
-Moreover it has the useful property ``(3.62)'': 
- \(p \implies (q \equiv r) \equivS p \land q    \equivs    p \land r\).
-</p>
-</div>
-
-<div class="outline-text-2" id="text-2">
-<p>
-\vspace{1ex}
-\underline{Conjunction and disjunction} distribute over one another,
-\(\lor\) distributes over \(\equiv\),
-\(\land\) distributes over \(\equiv-\equiv\)
-in that \(p \land (q \equiv r \equiv s) \equivS p \land q \equivs p \land r  \equivs p \land s\),
-and they satisfy,
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+-   **Inclusion:** During export, you can include the content of another file. 
+    -   Syntax: `#+INCLUDE: "⟨fileName⟩" [⟨markup⟩ [⟨language⟩]]`
+        -   `markup ::= src | example`
+        -   `language ::= C | haskell | emacs-lisp | ⋯`
+        -   If the markup is not given, the text will be assumed to be in 
+            Org mode format and will be processed normally; c.f., [Setup files](https://orgmode.org/manual/In_002dbuffer-settings.html).
+    
+    -   To visit the file, `C-c '` while the cursor is on the line with the file name.
+    
+    -   Include only portions of a file by appending with `:lines "x-y"` where `x` is the first
+        line and `y` is the second-to-last line. Also `"-y"` for upto but not including line `y`,
+        and `"x-"` for taking line `x` until the end of the file.
 
 
-<colgroup>
-<col  class="org-left" />
+<a id="org4ec4cd3"></a>
 
-<col  class="org-left" />
+# Emacs
 
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left"><b>Excluded Middle</b></td>
-<td class="org-left"><b>Contradiction</b></td>
-<td class="org-left"><b>Absorption</b></td>
-<td class="org-left"><b>De Morgan</b></td>
-</tr>
-
-<tr>
-<td class="org-left">\(p \lor \lnot p\)</td>
-<td class="org-left">\(p \land \lnot p \equiv~\false\)</td>
-<td class="org-left">\(p \land (\lnot p \lor q) \equiv p \land q\)</td>
-<td class="org-left">\(\lnot (p \land q) \equiv \lnot p \lor  \lnot q\)</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">\(p \lor (\lnot p \land q) \equiv p \lor  q\)</td>
-<td class="org-left">\(\lnot (p \lor q)  \equiv \lnot p \land \lnot q\)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+-   **C-x r k   :** M-x kill-rectangle
+-   **C-l C-l   :** move buffer top to be current cursor location.
+-   **Delete a region of text, e.g., white space:** `C-SPC` at the beginning of the first line
+    then `C-x r k` (rectangular kill) at the end of the last line of the (indentation) region you want to remove.
 
 
-<div id="outline-container-orgbc33e49" class="outline-2">
-<h2 id="orgbc33e49"><span class="section-number-2">3</span> <a href="https://frama-c.com/">Loops implement finite quantifications</a></h2>
-<div class="outline-text-2" id="text-3">
-<p>
+<a id="orgad02220"></a>
+
+# Git
+
+-   **Revert a file to a particular commit:** `git checkout 0cdf -- myfiles`
+    -   Where `0cdf` is your commit identifier, which is usually much longer.
+
+-   **`git whatchanged`:** Like `git log` but informs exactly which files were altered.
+
+
+<a id="org55fd941"></a>
+
+# Grep
+
+-   **Find all files containing specific text:** \forcenewline
+    \`r'ecursively look for the \`w'hole given pattern:   
+    `grep -rw '/path/to/somewhere/' -e 'pattern'`
+
+-   **Better:** `ack 'text-to-find-here' locationToBeginLooking`
+    -   [ack](https://beyondgrep.com/) is like grep, but for source code.
+    -   It looks prettier and more informative.
+
+
+<a id="org21a52b4"></a>
+
+# Linux
+
+-   The way to \`\`double-click'' on a file from the command line is `xdg-open`.
+
+\newpage
+
+
+<a id="org239e945"></a>
+
+# CheatSheet Helper Elisp
+
+The following utilities are loaded when this file is opened.
+After the first time the file `CheetSheet.el` is created and this section
+may be deleted. When you delete this section, ensure the `load` in the footer
+below loads `CheatSheet/CheatSheet.el`.
+
+1.  Make some changes, look at them with `f7`.
+2.  Commit each change with `f8`.
+3.  Push your changes with `f9`.
+
+\hrule
+
+    (defun my-org-latex-export-to-pdf ()
+      "Produce a PDF from the CheatSheet then show it via the evince PDF viewer."
+    
+      (interactive)
+      (org-latex-export-to-pdf) 
+      (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &"))
+    )
+    
+    ;; Preview and commit
+    
+    (local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
+    
+    (local-set-key (kbd "<f8>") '(lambda () (interactive) 
+      (shell-command (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
+       (read-string "Commit Message for CheatSheet: ")))
+    ))
+    
+    ;; Stuff that should be loaded whenever CheatSheet.org is opened.
+    
+    (visual-line-mode t)
+    
+    (require 'ox-extra)
+    (ox-extras-activate '(ignore-headlines))
+    
+    ;; for the <X-TAB short-cuts
+    (make-variable-buffer-local 'org-structure-template-alist)
+    
+    (setq PARALLEL (concat "# \n#+begin_parallel latex \n?\n#+end_parallel"))
+    (add-to-list 'org-structure-template-alist `("p" ,PARALLEL))
+
+\newpage
+
+
+<a id="orge48919d"></a>
+
+# (EXAMPLE USAGE OF `<p`) [Loops implement finite quantifications](https://frama-c.com/)
+
 A finite quantification can be defined axiomatically
 by the empty-range rule and split-off term rules.
 Together these form a recursive definition which can be phrased as a loop.
-</p>
 
 <div class="parallel">
-<p>
 
-</p>
 
-<div class="org-src-container">
-<pre class="src src-c" id="org040790f"><span style="color: #b22222;">// </span><span style="color: #b22222;">For -&#8853;- : &#119931; &#8594; &#119931; &#8594; &#119931;,</span>
-<span style="color: #b22222;">// </span><span style="color: #b22222;">fold(A,a,b) &#8776; (&#8853; x : a..b-1 &#8226; A[x]) </span>
-<span style="color: #b22222;">/*</span><span style="color: #b22222;">@ axiomatic Fold { </span>
-<span style="color: #b22222;">  @   </span>
-<span style="color: #b22222;">  @ logic &#119931;</span>
-<span style="color: #b22222;">  @   fold{L}(&#119931; *A, integer a, integer b)</span>
-<span style="color: #b22222;">  @   reads a,b,A, A[..] ;</span>
-<span style="color: #b22222;">  @</span>
-<span style="color: #b22222;">  @ axiom foldEmptyRange{L} :</span>
-<span style="color: #b22222;">  @   \forall &#119931; *A, integer a, b; a &gt;= b</span>
-<span style="color: #b22222;">  @   ==&gt;  fold(A,a,b) == identity(&#8853;);</span>
-<span style="color: #b22222;">  @</span>
-<span style="color: #b22222;">  @ axiom foldSplitOffTerm{L} :</span>
-<span style="color: #b22222;">  @   \forall &#119931; *A, integer a, b; a &lt;= b</span>
-<span style="color: #b22222;">  @   ==&gt;     fold(A, a, b+1) </span>
-<span style="color: #b22222;">  @        == fold(A, a, b  ) &#8853; A[b];</span>
-<span style="color: #b22222;">  @ }</span>
-<span style="color: #b22222;">  @</span><span style="color: #b22222;">*/</span>
-</pre>
-</div>
+    // For -⊕- : 𝑻 → 𝑻 → 𝑻,
+    // fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x]) 
+    /*@ axiomatic Fold { 
+      @   
+      @ logic 𝑻
+      @   fold{L}(𝑻 *A, integer a, integer b)
+      @   reads a,b,A, A[..] ;
+      @
+      @ axiom foldEmptyRange{L} :
+      @   \forall 𝑻 *A, integer a, b; a >= b
+      @   ==>  fold(A,a,b) == identity(⊕);
+      @
+      @ axiom foldSplitOffTerm{L} :
+      @   \forall 𝑻 *A, integer a, b; a <= b
+      @   ==>     fold(A, a, b+1) 
+      @        == fold(A, a, b  ) ⊕ A[b];
+      @ }
+      @*/
 
-<p>
 \columnbreak
-</p>
 
-<div class="org-src-container">
-<pre class="src src-c" id="org1d69006"><span style="color: #b22222;">/*</span><span style="color: #b22222;">@ requires \valid(A+(0..N-1));</span>
-<span style="color: #b22222;">  @ assigns \nothing;</span>
-<span style="color: #b22222;">  @ ensures \result == fold(A,0,N);</span>
-<span style="color: #b22222;">  @</span><span style="color: #b22222;">*/</span>
-<span style="color: #228b22;">&#119931;</span> <span style="color: #0000ff;">fold</span><span style="color: #707183;">(</span><span style="color: #228b22;">int</span> <span style="color: #a0522d;">N</span>, <span style="color: #228b22;">&#119931;</span>* <span style="color: #a0522d;">A</span><span style="color: #707183;">)</span> <span style="color: #707183;">{</span>
-
-    <span style="color: #228b22;">&#119931;</span> <span style="color: #a0522d;">total</span> = identity<span style="color: #7388d6;">(</span>&#8853;<span style="color: #7388d6;">)</span>;
+    /*@ requires \valid(A+(0..N-1));
+      @ assigns \nothing;
+      @ ensures \result == fold(A,0,N);
+      @*/
+    𝑻 fold(int N, 𝑻* A) {
     
-    <span style="color: #b22222;">/*</span><span style="color: #b22222;">@ loop invariant 0 &lt;= n &lt;= N;</span>
-<span style="color: #b22222;">      @ loop invariant total == fold(A,0,n);</span>
-<span style="color: #b22222;">      @ loop assigns n, total;</span>
-<span style="color: #b22222;">      @ loop variant N-n;</span>
-<span style="color: #b22222;">    </span><span style="color: #b22222;">*/</span>
-    <span style="color: #a020f0;">for</span><span style="color: #7388d6;">(</span><span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span> = 0; n != N; n++<span style="color: #7388d6;">)</span>
-        total = total &#8853; A<span style="color: #7388d6;">[</span>n<span style="color: #7388d6;">]</span>;
-    <span style="color: #a020f0;">return</span> total;
-<span style="color: #707183;">}</span>
-</pre>
-</div>
+        𝑻 total = identity(⊕);
+        
+        /*@ loop invariant 0 <= n <= N;
+          @ loop invariant total == fold(A,0,n);
+          @ loop assigns n, total;
+          @ loop variant N-n;
+        */
+        for(int n = 0; n != N; n++)
+            total = total ⊕ A[n];
+        return total;
+    }
 
 </div>
 
-<p>
 This pseudo-code is reified by giving concrete values
-for <code>(𝑻, ⊕, identity)</code> such as <code>(int, +, 0)</code> or <code>(bool, ||, false)</code>.
-Any <a href="https://en.wikipedia.org/wiki/Monoid">monoid</a> will do.
-</p>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: <a href="http://www.cas.mcmaster.ca/~alhassm/">Musa Al-hassy</a></p>
-<p class="date">Created: 2018-08-07 Tue 18:12</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
-</body>
-</html>
+for `(𝑻, ⊕, identity)` such as `(int, +, 0)` or `(bool, ||, false)`.
+Any [monoid](https://en.wikipedia.org/wiki/Monoid) will do.
+
+\newpage
+
