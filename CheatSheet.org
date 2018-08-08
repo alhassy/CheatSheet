@@ -1,6 +1,3 @@
-#+INCLUDE: CheatSheetSetup.org
-
-* title                                                              :ignore:
 #+TITLE: Reference Sheet for ``What I'm Currently Learning''
 # SUBTITLE: Cheat Sheet Template
 # DATE: << Spring 2018 >>
@@ -10,8 +7,9 @@
 #+DESCRIPTION: This document is written by Musa Al-hassy for his learning in the spring of 2018.
 #+STARTUP: hideblocks
 #+STARTUP: overview
-#+TODO: { TEMPLATE(t) BEGIN-IGNORE(b) END-IGNORE(e) } | DONE(d)
-
+#+TODO: BEGIN-IGNORE(b) END-IGNORE(e) } | DONE(d)
+#+INCLUDE: CheatSheetSetup.org
+# ‼‼ CHANGE ME, the include; see submodules section below ‼‼
 
 * Hello, World!
 
@@ -29,9 +27,41 @@
 
 \vspace{1em}
 To learn more, manipulating this source is the way to go!
+# \newpage
 
-\newpage
+* CheatSheet Examples
 
+Reference sheets created from this project include,
+\vspace{1em}
+
++ [[https://github.com/alhassy/LatticesCheatSheet][LatticesCheatSheet]] :: 
+  Reference sheet for definitions and results in Lattice Theory.
+
++ [[https://github.com/alhassy/CoqCheatSheet][CoqCheatSheet]] :: 
+  Reference sheet for the Coq language.
+
+
+\vspace{1em}
+The steps to utilising this git project for your own cheat sheet may be:
+0. Go to the repo you want to make a cheat sheet.
+1. Add this project as a submodule then copy its core to where you're working:
+   #+BEGIN_EXAMPLE shell
+   git submodule add https://github.com/alhassy/CheatSheet.git
+   ; cp CheatSheet/CheatSheet.org . 
+   ; cp CheatSheet/README.org .   
+   #+END_EXAMPLE
+2. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
+   then rewrite ~CheatSheetSetup.org ↦ CheatSheet/CheatSheetSetup.org~.
+3. Within the ~README.org~, if you're using it, alter the regions marked
+   ~!!CHANGE ME!!~.
+
+# git submodule add https://github.com/alhassy/CheatSheet.git ; cp CheatSheet/CheatSheet.org . ; cp CheatSheet/README.org .
+
+I don't think this is difficult to automate, so I will likely get
+to doing it.
+
+* newpage :ignore:
+  \newpage
 * Org-mode Basics
 
 Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
@@ -52,6 +82,28 @@ Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for b
   
   - To visit the file, ~C-c '~ while the cursor is on the line with the file name.
 
+  - Include only portions of a file by appending with ~:lines "x-y"~ where ~x~ is the first
+    line and ~y~ is the second-to-last line. Also ~"-y"~ for upto but not including line ~y~,
+    and ~"x-"~ for taking line ~x~ until the end of the file.
+     # - Include portions of a file: https://orgmode.org/manual/Include-files.html
+
+* Emacs
+
+# + C-u 20 RET :: repeat action RET 20 times, thereby inserting lots of new lines :-)
++ C-x r k    :: M-x kill-rectangle
++ C-l C-l    :: move buffer top to be current cursor location.
++ Delete a region of text, e.g., white space :: 
+  ~C-SPC~ at the beginning of the first line
+  then ~C-x r k~ (rectangular kill) at the end of the last line of the (indentation) region you want to remove.
+
+* Git
+
++ Revert a file to a particular commit ::
+  ~git checkout 0cdf -- myfiles~
+     - Where ~0cdf~ is your commit identifier, which is usually much longer.
+
++ ~git whatchanged~ :: Like ~git log~ but informs exactly which files were altered.
+
 * Grep
 
 + Find all files containing specific text :: \forcenewline
@@ -64,145 +116,66 @@ Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for b
   - [[https://beyondgrep.com/][ack]] is like grep, but for source code.
   - It looks prettier and more informative. 	    
 
+* Linux
 
-* space, newpage :ignore:
++ The way to ``double-click'' on a file from the command line is =xdg-open=.
 
-\vspace{15em} 
+* newpage :ignore:
+  \newpage
+* CheatSheet Helper Elisp
 
-\centerline{The next page contains sample output from a logic-based class.}
-\newpage
+The following utilities are loaded when this file is opened.
+After the first time the file ~CheetSheet.el~ is created and this section
+may be deleted. When you delete this section, ensure the ~load~ in the footer
+below loads ~CheatSheet/CheatSheet.el~.
 
-* Latex setup to make example sections work :ignore:
+0. Make some changes, look at them with ~f7~.
+1. Commit each change with ~f8~.
+2. Push your changes with ~f9~.
 
-#+BEGIN_EXPORT latex
+\hrule
 
-% from Wolfram Kahl's CalcStyleV9
-\def\withrule{\vrule height1.57ex depth0.43ex width0.12em}
-\def\with{\kern0.7em \withrule \kern0.7em }
+#+BEGIN_SRC emacs-lisp :tangle CheatSheet.el
+(defun my-org-latex-export-to-pdf ()
+  "Produce a PDF from the CheatSheet then show it via the evince PDF viewer."
 
-\def\even{ \mathsf{even} \, }
-\def\eq{ \;=\; }
-\def\lorS{ \quad\lor\quad }
-\def\lors{ \;\lor\; }
-\def\landS{ \quad\land\quad }
-\def\lands{ \;\land\;}
+  (interactive)
+  (org-latex-export-to-pdf) 
+  (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &"))
+)
 
-\def\equivS{ \quad\equiv\quad }
-\def\equivs{ \;\equiv\;}
+;; Preview, commit, then publish
 
-\def\eqS{ \quad=\quad }
-\def\eqs{ \;=\;}
+(local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
 
-\def\subseteqs{ \;\subseteq\; }
-\def\subseteqS{ \quad\subseteq\quad }
+(local-set-key (kbd "<f8>") '(lambda () (interactive) 
+  (shell-command (concat "git add CheatSheet.org CheatSheet.pdf \\-m \"CheatSheet: \""
+   (read-string "Commit Message for CheatSheet: ")))
+))
 
-\def\impliesS{ \quad\Rightarrow\quad }
-\def\impliess{ \;\Rightarrow\;}
-\def\implies{ \Rightarrow }
+(local-set-key (kbd "<f9>") '(lambda () (interactive) 
+  (shell-command "git push")))
 
-\def\spot{ \;\bullet\; }
+;; Stuff that should be loaded whenever CheatSheet.org is opened.
 
-\def\meet{ \;\sqcap\; }
-\def\join{ \;\sqcup\; }
-\def\sqleq{ \sqsubseteq }
-\def\sqleqs{ \;\sqsubseteq\; }
+(visual-line-mode t)
 
-\def\Id{\mathsf{Id}}
-\def\true{\mathsf{true}}
-\def\false{\mathsf{false}}
-\def\fst{\mathsf{fst}}
-\def\snd{\mathsf{snd}}
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
 
-\def\IF #1 : #2 : #3 \FI{ \mathsf{if}\; { #1 } \;\mathsf{then}\; { #2 } \;\mathsf{else}\; { #3 } \;\mathsf{fi} }
+;; for the <X-TAB short-cuts
+(make-variable-buffer-local 'org-structure-template-alist)
 
-\def\RR{\mathbb{R}}
-\def\NN{\mathbb{N}}
-\def\ZZ{\mathbb{Z}}
-\def\22{\mathbf{2}}
-\def\11{\mathbf{1}}
+(setq PARALLEL (concat "# \n#+begin_parallel latex \n?\n#+end_parallel"))
+(add-to-list 'org-structure-template-alist `("p" ,PARALLEL))
+#+END_SRC
 
-\def\notOccurs#1#2{ $\lnot \occurs{#1}{#2}$}
-#+END_EXPORT
+# (setq TEMPLATE (concat "#+NAME: ?\n#+BEGIN_SRC c :tangle sheet_code.c\n?\n#+END_SRC"))
+# (add-to-list 'org-structure-template-alist `("s" ,TEMPLATE))
 
-* Propositional Calculus
-
-+ Metatheorem :: Any two theorems are equivalent; ` $\true$ ' is a theorem.
-
-[[https://ac.els-cdn.com/S0020019000002052/1-s2.0-S0020019000002052-main.pdf?_tid=35e86bb2-edb0-11e7-b1fe-00000aab0f26&acdnat=1514672861_56b3d86466d284cbc76cc2641c47af86][_Equivales_]] is an equivalence relation that is associative --- $((p \equiv q) \equiv r)\equivs(p \equiv (q \equiv r))$ ---
-and has identity $\true$.
-
-\underline{Discrepancy} ` $\not\equiv$ ' is symmetric, associative, has identity ` $\false$ ',
-mutually associates with equivales --- $((p \not\equiv q) \equiv r) \equivs (p \not\equiv (q \equiv r))$ ---
-and mutually interchanges with it as well
---- $p \not\equiv q \equiv r \equivs    p \equiv q \not\equiv r$ ---.
-
-*** implication :ignore:
-
-\vspace{1ex}
-
-\underline{Implication} has the alternative definition $p \implies q \;\equiv\; \lnot p \lor q$,
-has $\true$ as left identity and $\false$ as right zero,
-distributes over $\equiv$ in the second argument, and is self-distributive;
-and has the properties
-
-# 
-#+begin_parallelNB
-+ Shunting ::  \invisible{hi}\vspace{-0.5em}
-  |$ p \land q \implies r \equivS  p \implies (q \implies r)$|
-
-+ Contrapositive ::  \invisible{hi}\vspace{-0.5em}
-  | $ p \implies q \quad\equiv\quad \lnot q \implies \lnot p$ |
-
-\columnbreak
-
-+ Modus Ponens :: \invisible{hi}\vspace{-2em}		  
-  | $p \land (p \implies q)$ | \equiv   | $p \land q$ |
-  | $p \land (q \implies p)$ | \equiv   | $p$         |
-  | $p \land (p \implies q)$ | \implies | $q$         |
-
-#+end_parallelNB
-
-Moreover it has the useful property ``(3.62)'': 
- $p \implies (q \equiv r) \equivS p \land q    \equivs    p \land r$.
-
-*** conjunction and disjunction                                      :ignore:
-\vspace{1ex}
-\underline{Conjunction and disjunction} distribute over one another,
-$\lor$ distributes over $\equiv$,
-$\land$ distributes over $\equiv-\equiv$
-in that $p \land (q \equiv r \equiv s) \equivS p \land q \equivs p \land r  \equivs p \land s$,
-and they satisfy,
-
-| *Excluded Middle* | *Contradiction*                 | *Absorption*                                | *De Morgan*                                      |
-| $p \lor \lnot p$  | $p \land \lnot p \equiv~\false$ | $p \land (\lnot p \lor q) \equiv p \land q$ | $\lnot (p \land q) \equiv \lnot p \lor  \lnot q$ |
-|                   |                                 | $p \lor (\lnot p \land q) \equiv p \lor  q$ | $\lnot (p \lor q)  \equiv \lnot p \land \lnot q$ |
-
-
-**** COMMENT alternate table 
-#+begin_parallel3NB
-
-+ Excluded Middle ::  $p \lor \lnot p$
-
-+ Contradiction ::
-  #+LaTeX: {hi. \vspace{-2em} $\invisible{Hi! Hello!}~p \land \lnot p \equiv~\false$}
-  
-  # + \scriptsize Contradiction :: \scriptsize $p \land \lnot p \equiv~\false$
-  
-\columnbreak
-  
-+ Absorption :: 
-    | $p \land (\lnot p \lor q)$ | \equiv | $p \land q$ |
-    | $p \lor (\lnot p \land q)$ | \equiv | $p \lor  q$ |
-
-\columnbreak
-
-+ De Morgan ::
-   | $\lnot (p \land q)$ | \equiv | $\lnot p \lor  \lnot q$ |
-   | $\lnot (p \lor q)$  | \equiv | $\lnot p \land \lnot q$ |
-
-#+end_parallel3NB
-
-* [[https://frama-c.com/][Loops implement finite quantifications]]
+* newpage :ignore:
+  \newpage
+* (EXAMPLE USAGE OF ~<p~) [[https://frama-c.com/][Loops implement finite quantifications]]
 
 #+LATEX_HEADER: \DeclareUnicodeCharacter{119931}{\ensuremath{\mathbf{T}}} % math bold caps 𝑻
 
@@ -213,7 +186,7 @@ Together these form a recursive definition which can be phrased as a loop.
 #+begin_parallel c
 
 #+NAME: ?
-#+BEGIN_SRC c :tangle sheet_code.c
+#+BEGIN_SRC c
 // For -⊕- : 𝑻 → 𝑻 → 𝑻,
 // fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x]) 
 /*@ axiomatic Fold { 
@@ -237,7 +210,7 @@ Together these form a recursive definition which can be phrased as a loop.
 \columnbreak
 
 #+NAME: ?
-#+BEGIN_SRC c :tangle sheet_code.c
+#+BEGIN_SRC c
 /*@ requires \valid(A+(0..N-1));
   @ assigns \nothing;
   @ ensures \result == fold(A,0,N);
@@ -265,92 +238,12 @@ Any [[https://en.wikipedia.org/wiki/Monoid][monoid]] will do.
 
 \newpage
 
-* Lattices
-# Environments
-# Our common environments will be the following distributive lattices
-The distributive lattice interface /(L, ⊑, ⊓, ⊔, ⊥, ⊤)/ has the following implementations:
-
-+ Booleans: $(𝔹, \implies, \land, \lor, \false, \true)$ 
-  #+LaTeX: {\hfill\color{red}---Our ambient logic!}
-  # Assume this sheet instantiated to this structure.
-
-+ Extended Number Line:  $(\RR, \leq, \min, \max, -\infty, +\infty)$ 
-
-+ Naturals under division: $(\NN, \, |, \gcd, \mathsf{lcm}, 1, 0)$
-
-  # \item Sets : $(\power \ X, \subseteq, \cap, \cup, \emptyset, X)$
-+ Substructures of a given /datatype/ with the substructure ordering.
-   \newline E.g., sets, lists, and graphs with subset, subsequence, and subgraph ordering.
-   # %, respectively.
-   # Subllists/subtrees/subgraphs/$\cdots$ of a given one with subsequence/subtree/subgraph ordering.
-
-# \item Programs ordered by refinement with join being demonic choice % $\framebox(3,10){}$
-#   having bottom element be the \verb+ABORT+ program.
-
-An /order/ is a relation /-⊑- : L → L → 𝔹/  satisfying the following three properties:
-| *Reflexivity* | *Transitivity*              | *Antisymmetry*            |
-| /a ⊑ a/     | /a ⊑ b ∧ b ⊑ c ⇒ a ⊑ c/ | /a ⊑ b ∧ b ⊑ a ⇒ a = b/ |
-
-An order is /bounded/ if there are elements /⊤, ⊥ : L/ being the lower and upper bounds of all other elements:
-| *Top Element*    | *Bottom Element* |
-| $a \sqleqs \top$ | $\bot \sqleqs a$ |
-
-A /lattice/ is a pair of operations /-⊓-, -⊔- : L → L → L/ specified by the properties:
-| *⊔-Characterisation*          | @@latex: $\qquad$@@ | *⊓-Characterisation*                        |
-| @@latex: $a ⊑ c ∧ b ⊑ c \equivS a ⊔ b ⊑ c$ @@ | | @@latex: $c ⊑ a ∧ c ⊑ b \equivS c ⊑ a ⊓ b$ @@ |
-# \hfill{\color{grey}(8.6)}}
-
-Let $\square$ be one of $\meet$ or $\join$, then:
-| *Symmetry of □* | *Associativity of □* | *Idempotency of □* |
-| $a □ b \eqs b □ a$ | $(a □ b) □ c \eqs a □ (b □ c)$ | $a □ a \eqs a$     |
-
-
-| *Zero of □*    | *Identity of □* | *Absorption*      | *Self-Distributivity of □* |
-|  $a ⊔ ⊤ = ⊤$    | $a ⊔ ⊥ = a$    |  $a ⊓ (a ⊔ b) = a$ | $a □ (b □ c) \eqS (a □ b) □ (a □ c)$ |
-|  $a ⊓ ⊥ = ⊥$  | $a ⊓ ⊤ = a$      | $a ⊔ (a ⊓ b) = a$ | |
-
-
-| *Weakening / Strengthening* | *Induced Defs. of Inclusion* | *Golden Rule*                                    |
-| $a \;⊑\; a ⊔ b$             | $a ⊑ b \equivS a ⊔ b \eqs b$ | $a ⊓ b \;=\; a \hspace{1.52em}\equivs b = a ⊔ b$ |
-| $a ⊓ b \;⊑\; a$             | $a ⊑ b \equivS a ⊓ b \eqs a$ | $a ⊓ b \;=\; a ⊔ b \equivs a = b$                |
-| $a ⊓ b \;⊑\; a ⊔ b$         |                              | $a ⊔ b \;⊑\; a ⊓ b \equivs a = b$                |
-| $a ⊔ (b ⊓ c) \;⊑\; a ⊔ b$ | *Monotonicity of □*         |                                                  |
-| $a ⊓ b \;⊑\; a ⊓ (b ⊔ c)$ | $a ⊑ b \lands c ⊑ d \impliess a □ c \;⊑\; b □ d$ |                             |
-
-# \hfill{\color{grey}(7.9)
-
-#+BEGIN_EXPORT latex
-{\small \textbf{Duality Principle:} \\
-If a statement $S$ is a theorem, then so is
-$S[(\sqleq, \meet, \join, \top, \bot) := (⊒, \join, \meet, \bot, \top)]$}.
-#+END_EXPORT
-
-
-
 * COMMENT footer
 
-Here is a tiny tweak for org-mode. If you add the following option to your emacs config file
-
-(setq org-highlight-latex-and-related '(latex))
-
-Then inline latex like $y=mx+c$ will appear in a different colour in an org-mode file to help it stand out.
-( See below! )
-
-eval: (setq NAME (buffer-name))
-compile-command: (progn (org-latex-export-to-pdf) (eshell-command (concat "evince " NAME ".pdf &")))
+(find-file "CheatSheet.el")
 
 # Local Variables:
-# eval: (setq NAME (file-name-sans-extension buffer-file-name))
-# eval: (setq org-highlight-latex-and-related '(latex))
-# eval: (visual-line-mode t)
-# eval: (require 'ox-extra)
-# eval: (ox-extras-activate '(ignore-headlines))
-# eval: (make-variable-buffer-local 'org-structure-template-alist)
-# eval: (setq PARALLEL (concat "# \n#+begin_parallel latex \n?\n#+end_parallel"))
-# eval: (add-to-list 'org-structure-template-alist `("p" ,PARALLEL))
-# eval: (setq TEMPLATE (concat "#+NAME: ?\n#+BEGIN_SRC c :tangle sheet_code.c\n?\n#+END_SRC"))
-# eval: (add-to-list 'org-structure-template-alist `("s" ,TEMPLATE))
-# compile-command: (progn (org-latex-export-to-pdf) (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &")))
-# org-latex-inputenc-alist: (("utf8" . "utf8x"))
-# eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
+# eval: (org-babel-tangle)
+# eval: (load-file "CheatSheet.el")
+# compile-command: (my-org-latex-export-to-pdf)
 # End:
