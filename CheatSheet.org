@@ -144,17 +144,14 @@ below loads ~CheatSheet/CheatSheet.el~.
   (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &"))
 )
 
-;; Preview, commit, then publish
+;; Preview and commit
 
 (local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
 
 (local-set-key (kbd "<f8>") '(lambda () (interactive) 
-  (shell-command (concat "git add CheatSheet.org CheatSheet.pdf \\-m \"CheatSheet: \""
+  (shell-command (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
    (read-string "Commit Message for CheatSheet: ")))
 ))
-
-(local-set-key (kbd "<f9>") '(lambda () (interactive) 
-  (shell-command "git push")))
 
 ;; Stuff that should be loaded whenever CheatSheet.org is opened.
 
