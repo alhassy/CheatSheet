@@ -1,0 +1,245 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{MyUnicodeSymbols}[2019/01/30 Unicode Symbol Translations]
+
+\RequirePackage[utf8]{inputenc}
+ \RequirePackage{newunicodechar}
+ \RequirePackage{bbold}   % \mathbb{n} to make double stroke digit
+ \RequirePackage{pifont}
+ \RequirePackage{stmaryrd}
+
+% arbitrary lattice
+ \newunicodechar{⊑}{\ensuremath{\sqsubseteq}}
+ \newunicodechar{⊒}{\ensuremath{\sqsupseteq}}
+
+% numeric
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{∣}{\ensuremath{\mid}}  % divisibily ordering
+
+% sets
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+
+% logical
+ \newunicodechar{⊢}{\ensuremath{\vdash}}
+ \DeclareUnicodeCharacter{8872}{\ensuremath{\vDash}} % semantic consequence ⊨
+ \newunicodechar{⊣}{\ensuremath{\dashv}}
+
+% arbitrary lattice
+ \newunicodechar{⊔}{\ensuremath{\sqcup}}
+ \newunicodechar{⊓}{\ensuremath{\sqcap}}
+
+% numeric 
+ \newunicodechar{↑}{\ensuremath{\uparrow}}
+ \newunicodechar{↓}{\ensuremath{\downarrow}}
+
+% boolean
+ \newunicodechar{∨}{\ensuremath{\lor}}
+ \newunicodechar{∧}{\ensuremath{\land}}
+ \newunicodechar{⋁}{\ensuremath{\bigvee}}
+ \newunicodechar{⋀}{\ensuremath{\bigwedge}}
+ \newunicodechar{∃}{\ensuremath{\exists}}
+ \newunicodechar{∀}{\ensuremath{\forall}}
+
+% sets
+ \newunicodechar{∩}{\ensuremath{\cap}}
+ \newunicodechar{∪}{\ensuremath{\cup}}
+
+% arbitrary lattice
+\newunicodechar{⊥}{\ensuremath{\bot}}
+\newunicodechar{⊤}{\ensuremath{\top}}
+
+% numeric
+\newunicodechar{∞}{\ensuremath{\infty}}
+
+% sets
+\newunicodechar{ø}{\ensuremath{\emptyset}}
+\newunicodechar{∅}{\ensuremath{\emptyset}}
+
+% arbitrary lattice
+ \newunicodechar{→}{\ensuremath{\to}}
+ \newunicodechar{←}{\ensuremath{\leftarrow}}
+ \newunicodechar{⟶}{\ensuremath{\longrightarrow}} % pseudo-complement
+ \newunicodechar{̣}{\ensuremath{\hspace{-1em}.}\;\;\,} %% to be used in compound symbol: →̣
+                                                       %% to form a natural transformation
+
+% boolean
+ \newunicodechar{⇒}{\ensuremath{\;\Rightarrow\;}}
+ \newunicodechar{⇐}{\ensuremath{\;\Leftarrow\;}}
+ \newunicodechar{¬}{\ensuremath{\lnot}}
+
+% sets
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{⇔}{\ensuremath{\iff}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≅}{\ensuremath{\cong}}
+\newunicodechar{≔}{\ensuremath{:\!=}}
+% \DeclareUnicodeCharacter{8788}{\ensuremath{\mathrel{{:}{=}}}} % ≔
+
+ \newunicodechar{⌊}{\ensuremath{\lfloor}}
+ \newunicodechar{⌋}{\ensuremath{\rfloor}}
+
+ \newunicodechar{⌈}{\ensuremath{\lceil}}
+ \newunicodechar{⌉}{\ensuremath{\rceil}}
+
+ \newunicodechar{⦇}{\ensuremath{(\!|}}
+ \newunicodechar{⦈}{\ensuremath{|\!)}}
+ %
+ % \DeclareUnicodeCharacter{10631}{\ensuremath{(\hspace{-0.4ex}|}} % ⦇
+ % \DeclareUnicodeCharacter{10632}{\ensuremath{|\hspace{-0.4ex})}} % ⦈
+
+ \newunicodechar{⟅}{\ensuremath{\Lbag}}
+ \newunicodechar{⟆}{\ensuremath{\Rbag}}
+
+ \DeclareUnicodeCharacter{10627}{\ensuremath{\{\!∣}} % ⦃
+ \DeclareUnicodeCharacter{10628}{\ensuremath{∣\!\}}} % ⦄
+
+ \newunicodechar{λ}{\ensuremath{\lambda}}
+ \newunicodechar{γ}{\ensuremath{\gamma}}
+ \newunicodechar{δ}{\ensuremath{\delta}}
+ \newunicodechar{σ}{\ensuremath{\sigma}}
+ \newunicodechar{η}{\ensuremath{\eta}}
+ \newunicodechar{ε}{\ensuremath{\epsilon}}
+ \newunicodechar{μ}{\ensuremath{\mu}}
+ \newunicodechar{Φ}{\ensuremath{\Phi}}  % capital case
+ \newunicodechar{φ}{\ensuremath{\phi}}  % lower   case
+ \newunicodechar{π}{\ensuremath{\pi}}
+
+ \newunicodechar{⊕}{\ensuremath{\oplus}}
+ \newunicodechar{⊗}{\ensuremath{\otimes}}
+ \newunicodechar{⊙}{\ensuremath{\odot}}
+ \newunicodechar{⨾}{\ensuremath{\mathop{\fatsemi}}}
+ \newunicodechar{◁}{\ensuremath{\lhd}}
+ \newunicodechar{∘}{\ensuremath{\circ}}
+ \newunicodechar{⟪}{\ensuremath{\llangle}}
+ \newunicodechar{⟫}{\ensuremath{\rrangle}}
+ \newunicodechar{⟨}{\ensuremath{\langle}}
+ \newunicodechar{⟩}{\ensuremath{\rangle}}
+
+\newunicodechar{╲}{\ensuremath{\backslash}}  % under
+\newunicodechar{╱}{\ensuremath{/}}  % over
+
+ \newunicodechar{∙}{\ensuremath{\circ}} % Looks like, but is not bullet!
+
+ \newunicodechar{⋆}{\ensuremath{\star}} 
+ \newunicodechar{×}{\ensuremath{\times}}
+ \newunicodechar{•}{\ensuremath{\bullet}}
+ \newunicodechar{▵}{\ensuremath{\triangle}}
+ \newunicodechar{▿}{\ensuremath{\triangledown}}
+
+ \DeclareUnicodeCharacter{9829}{\ensuremath{\heartsuit}} % ♥
+ \DeclareUnicodeCharacter{9785}{\ensuremath{\frownie{}}} % ☹
+ \DeclareUnicodeCharacter{9733}{ {\color{red}$\bigstar$} } % ★ should be printed red ;-)
+
+ \newunicodechar{𝒩}{\ensuremath{\mathcal{N}}}
+ \newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+ \newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+ \newunicodechar{𝔹}{\ensuremath{\mathbb{B}}}
+ \newunicodechar{𝟙}{\ensuremath{\mathbb{1}}}
+
+ \DeclareUnicodeCharacter{7525}{\ensuremath{_𝒱}} % subscript v
+ \DeclareUnicodeCharacter{8343}{\ensuremath{_\ell}} % subscript ℓ
+
+ \newunicodechar{ᵒ}{\ensuremath{^o}}
+ \newunicodechar{ᵖ}{\ensuremath{^p}}
+ \newunicodechar{₀}{\ensuremath{_0}}
+ \newunicodechar{₁}{\ensuremath{_1}}
+ \newunicodechar{₂}{\ensuremath{_2}}
+ \newunicodechar{₃}{\ensuremath{_3}}
+
+ \newunicodechar{ₐ}{\ensuremath{_a}}
+% I have no access to subscript b,c,d with my “current” agda input mode -- to fix!
+ \newunicodechar{ₑ}{\ensuremath{_e}}
+% I have no access to subscript f,g with my “current” agda input mode -- to fix!
+ \newunicodechar{ₕ}{\ensuremath{_h}}
+ \newunicodechar{ᵢ}{\ensuremath{_i}}
+ \newunicodechar{ⱼ}{\ensuremath{_j}}
+ \newunicodechar{ₖ}{\ensuremath{_k}}
+ \newunicodechar{ₗ}{\ensuremath{_l}}
+ \newunicodechar{ₘ}{\ensuremath{_m}}
+ \newunicodechar{ₙ}{\ensuremath{_n}}
+ \newunicodechar{ₒ}{\ensuremath{_o}}
+ \newunicodechar{ₚ}{\ensuremath{_p}}  
+% I have no access to subscript q with my “current” agda input mode -- to fix!
+ \newunicodechar{ᵣ}{\ensuremath{_r}}  
+ \newunicodechar{ₛ}{\ensuremath{_s}}
+ \newunicodechar{ₜ}{\ensuremath{_t}}
+ \newunicodechar{ᵤ}{\ensuremath{_u}}
+ \newunicodechar{ᵥ}{\ensuremath{_v}}
+% I have no access to subscript w with my “current” agda input mode -- to fix!
+ \newunicodechar{ₓ}{\ensuremath{_x}}
+% I have no access to subscript y with my “current” agda input mode -- to fix!
+% I have no access to subscript z with my “current” agda input mode -- to fix!
+
+ \newunicodechar{𝓁}{\ensuremath{\mathcal{l}}}
+ \newunicodechar{𝓇}{\ensuremath{\mathcal{r}}}
+ \newunicodechar{ℳ}{\ensuremath{\mathcal{M}}}
+ \newunicodechar{ℱ}{\ensuremath{\mathcal{F}}}
+ \newunicodechar{𝓊}{\ensuremath{u}}
+ \newunicodechar{𝓃}{\ensuremath{n}}
+ \newunicodechar{𝒸}{\ensuremath{c}}
+ \newunicodechar{𝒜}{\ensuremath{\mathcal{A}}}
+ \newunicodechar{ℬ}{\ensuremath{\mathcal{B}}}
+ \newunicodechar{𝒞}{\ensuremath{\mathcal{C}}}
+ \newunicodechar{𝒟}{\ensuremath{\mathcal{D}}}
+ \newunicodechar{ℰ}{\ensuremath{\mathcal{E}}}
+ \newunicodechar{ℯ}{\ensuremath{e}}
+ \newunicodechar{ℊ}{\ensuremath{g}}
+ \newunicodechar{𝓁}{\textit{l}}
+ \newunicodechar{ℒ}{\ensuremath{\mathcal{L}}}
+ \newunicodechar{ℛ}{\ensuremath{\mathcal{R}}}
+ \newunicodechar{𝒮}{\ensuremath{\mathcal{S}}}
+ \newunicodechar{𝒯}{\ensuremath{\mathcal{T}}}
+ \newunicodechar{𝓉}{\ensuremath{t}}
+ \newunicodechar{𝒬}{\ensuremath{\mathcal{Q}}}
+
+ \newunicodechar{𝒶}{\ensuremath{\mathit{a}}}
+ \newunicodechar{𝒷}{\ensuremath{\mathit{b}}}
+ \newunicodechar{𝒸}{\ensuremath{\mathit{c}}}
+ \newunicodechar{𝒹}{\ensuremath{\mathit{d}}}
+ \newunicodechar{ℯ}{\ensuremath{\mathit{e}}}
+ \newunicodechar{𝒻}{\ensuremath{\mathit{f}}}
+ \newunicodechar{ℊ}{\ensuremath{\mathit{g}}}
+ \newunicodechar{𝒽}{\ensuremath{\mathit{h}}}
+ \newunicodechar{𝒾}{\ensuremath{\mathit{i}}}
+ \newunicodechar{𝒿}{\ensuremath{\mathit{j}}}
+ \newunicodechar{𝓀}{\ensuremath{\mathit{k}}}
+ \newunicodechar{𝓁}{\ensuremath{\mathit{l}}}
+ \newunicodechar{𝓂}{\ensuremath{\mathit{m}}}
+ \newunicodechar{𝓃}{\ensuremath{\mathit{n}}}
+ \newunicodechar{ℴ}{\ensuremath{\mathit{o}}}
+ \newunicodechar{𝓅}{\ensuremath{\mathit{p}}}
+ \newunicodechar{𝓆}{\ensuremath{\mathit{q}}}
+ \newunicodechar{𝓇}{\ensuremath{\mathit{r}}}
+
+ \newunicodechar{𝑰}{\ensuremath{\mathbf{I}}}
+ \DeclareUnicodeCharacter{119924}{\ensuremath{\mathbf{M}}} % math bold caps 𝑴
+ \DeclareUnicodeCharacter{119931}{\ensuremath{\mathbf{T}}} % math bold caps 𝑻
+
+ \newunicodechar{─}{\text{\textemdash}}
+ \DeclareUnicodeCharacter{9472}{---} % \---
+
+ % \DeclareUnicodeCharacter{8759}{\ensuremath{::\!}} % ∷
+ \newunicodechar{∷}{\ensuremath{:\,:}}
+ \newunicodechar{⋯}{\ensuremath{\cdots}}
+ \newunicodechar{⋮}{\ensuremath{\vdots}}
+
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+
+% In LaTeX documents, the "¿" is written as ?` (question mark, backtick) or \textquestiondown, 
+% and "¡" as !` (exclamation point, backtick) or \textexclamdown. 
+ \newunicodechar{¡}{\text{!`}}
+ \newunicodechar{¿}{\text{?`}}
+ \DeclareUnicodeCharacter{8265}{ {\color{red}\large !? } } % ⁉
+
+ \DeclareUnicodeCharacter{8603}{\ensuremath{\nrightarrow}} % ↛, partial functions
+ % \DeclareUnicodeCharacter{10073}{\ensuremath{\with}} % ❙
+
+ \DeclareUnicodeCharacter{120015}{\ensuremath{\mathfrak{z}}} % fancy small z
+ 
+ \DeclareUnicodeCharacter{8239}{\ensuremath{\,}} % \, %% an invisible space
+
+ \newunicodechar{✗}{\ding{55}}
