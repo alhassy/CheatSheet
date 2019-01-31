@@ -228,6 +228,9 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
  \newunicodechar{ᵒ}{\ensuremath{^o}}
  \newunicodechar{ᵖ}{\ensuremath{^p}}
+
+ \newunicodechar{₊}{\ensuremath{_+}}
+
  \newunicodechar{₀}{\ensuremath{_0}}
  \newunicodechar{₁}{\ensuremath{_1}}
  \newunicodechar{₂}{\ensuremath{_2}}
