@@ -201,6 +201,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{⋆}{\ensuremath{\star}} 
  \newunicodechar{×}{\ensuremath{\times}}
  \newunicodechar{•}{\ensuremath{\bullet}}
+ \newunicodechar{∶}{\ensuremath{:}} % ghost colon, Agda input “\:”.
+
  \newunicodechar{▵}{\ensuremath{\triangle}}
  \newunicodechar{▿}{\ensuremath{\triangledown}}
 
