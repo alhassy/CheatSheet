@@ -313,23 +313,27 @@ C-c C-c: Evaluate src block.
     (insert 
     "#+EXPORT_FILE_NAME: README.md
      #+HTML: <h1> CheatSheet </h1>
-     #+OPTIONS: toc:nil
+     #+OPTIONS: toc:nil d:nil
      # Toc is displayed below at a strategic position.
 
      Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files.
 
-     ## This project is to contain a listing of common results in X Theory.
-     ##
-     ## *The repo contains other articles I've written on X Theory;*
-     ## *which may be read in a blog-format at:*
-     ## https://alhassy.github.io/blog/categories/#Xtheory
+     :Hide:
+     This project is to contain a listing of common results in X Theory.
      
+     *The repo contains other articles I've written on X Theory;*
+     *which may be read in a blog-format at:*
+     https://alhassy.github.io/blog/categories/#Xtheory
+     :End:
+
      *The listing sheet, as PDF, can be found
      [here]({{{URL}}}/blob/master/CheatSheet.pdf)*, 
      while below is an unruly html rendition.
-     
-     ## This reference sheet is built around the system
-     ## https://github.com/alhassy/CheatSheet.
+ 
+     :Hide:
+     This reference sheet is built around the system
+     https://github.com/alhassy/CheatSheet.
+     :End:
 
      #+TOC: headlines 2
      #+INCLUDE: CheatSheet.org     

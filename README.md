@@ -2,32 +2,23 @@
 
 Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files.
 
-\## This project is to contain a listing of common results in X Theory.
-\##
-\## **The repo contains other articles I've written on X Theory;**
-\## **which may be read in a blog-format at:**
-\## <https://alhassy.github.io/blog/categories/#Xtheory>
-
 **The listing sheet, as PDF, can be found
 [here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**, 
 while below is an unruly html rendition.
 
-\## This reference sheet is built around the system
-\## <https://github.com/alhassy/CheatSheet>.
-
 
 # Table of Contents
 
-1.  [Hello, World!](#org206bb5e)
-2.  [CheatSheet Examples](#org5307400)
-3.  [Basic Equational Support](#org2211c31)
-4.  [Org-mode Basics](#orgd0cadda)
-5.  [Emacs](#org374dbf5)
-6.  [Git](#orga22254d)
-7.  [Grep](#org4f65c58)
-8.  [Linux](#orge31b916)
-9.  [CheatSheet Helper Elisp](#orged645ee)
-10. [Example Use `<p`: Loops implement finite quantifications](#orgcbd40bd)
+1.  [Hello, World!](#orge375a79)
+2.  [CheatSheet Examples](#orga378825)
+3.  [Basic Equational Support](#org64b43c0)
+4.  [Org-mode Basics](#org39b3cc9)
+5.  [Emacs](#orge6c77f8)
+6.  [Git](#orgf3f1006)
+7.  [Grep](#org2f3be43)
+8.  [Linux](#org4dad9a0)
+9.  [CheatSheet Helper Elisp](#orgebe8922)
+10. [Example Use `<p`: Loops implement finite quantifications](#orge23849b)
 
 
 
@@ -41,7 +32,7 @@ while below is an unruly html rendition.
 
 
 
-<a id="org206bb5e"></a>
+<a id="orge375a79"></a>
 
 # Hello, World!
 
@@ -64,7 +55,7 @@ To learn more, manipulating this source is the way to go!
 Also, opening this file produces a `README.md` ;-)
 
 
-<a id="org5307400"></a>
+<a id="orga378825"></a>
 
 # CheatSheet Examples
 
@@ -95,7 +86,7 @@ I don't think this is difficult to automate, so I will likely get
 to doing it.
 
 
-<a id="org2211c31"></a>
+<a id="org64b43c0"></a>
 
 # Basic Equational Support
 
@@ -108,7 +99,7 @@ However, if `name` involves unicode symbols, then this may cause problems.
 \newpage
 
 
-<a id="orgd0cadda"></a>
+<a id="org39b3cc9"></a>
 
 # Org-mode Basics
 
@@ -136,7 +127,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
         and `"x-"` for taking line `x` until the end of the file.
 
 
-<a id="org374dbf5"></a>
+<a id="orge6c77f8"></a>
 
 # Emacs
 
@@ -146,7 +137,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
     then `C-x r k` (rectangular kill) at the end of the last line of the (indentation) region you want to remove.
 
 
-<a id="orga22254d"></a>
+<a id="orgf3f1006"></a>
 
 # Git
 
@@ -156,7 +147,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 -   **`git whatchanged`:** Like `git log` but informs exactly which files were altered.
 
 
-<a id="org4f65c58"></a>
+<a id="org2f3be43"></a>
 
 # Grep
 
@@ -169,7 +160,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
     -   It looks prettier and more informative.
 
 
-<a id="orge31b916"></a>
+<a id="org4dad9a0"></a>
 
 # Linux
 
@@ -178,7 +169,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 \newpage
 
 
-<a id="orged645ee"></a>
+<a id="orgebe8922"></a>
 
 # CheatSheet Helper Elisp
 
@@ -229,7 +220,7 @@ below loads `CheatSheet/CheatSheet.el`.
 \newpage
 
 
-<a id="orgcbd40bd"></a>
+<a id="orge23849b"></a>
 
 # Example Use `<p`: [Loops implement finite quantifications](https://frama-c.com/)
 
