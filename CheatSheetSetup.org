@@ -147,12 +147,39 @@
  }
 #+END_EXPORT
 
+* Basic Equational Support                                           :ignore:
+
+#+BEGIN_EXPORT latex 
+\def\providedS{ \qquad\Leftarrow\qquad }
+
+\def\impliesS{ \qquad\Rightarrow\qquad }
+
+\def\landS{ \qquad\land\qquad }
+\def\lands{ \quad\land\quad }
+
+\def\eqs{ \quad=\quad}
+
+\def\equivs{ \quad\equiv\quad}
+\def\equivS{ \qquad\equiv\qquad}
+
+\def\begineqns{ \begingroup\setlength{\abovedisplayskip}{-1pt}\setlength{\belowdisplayskip}{-1pt} }
+\def\endeqns{ \endgroup }
+
+\def\room{\vspace{0.5em}}
+
+% Usage: \eqn{name}{formula}
+\setlength{\abovedisplayskip}{5pt} \setlength{\belowdisplayskip}{2pt}
+\def\eqn#1#2{ \begin{flalign*} #2 && \tag*{\sc #1} \label{#1} \end{flalign*}  }
+
+% \setlength{\parskip}{1em}
+#+END_EXPORT
+
 * Having small-font code blocks                                      :ignore:
 
 #+LATEX_HEADER: \RequirePackage{fancyvrb}
 #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 
-* invisible \def's                                                   :ignore:
+* Invisible \def's                                                   :ignore:
 
 # Sometimes I need to have text to anchor certain items down.
 # E.g. usage to move a table upwards after a subsection heading: \invisible{hi}\vspace{-1em}
@@ -164,7 +191,6 @@
 \def\forcenewline{ {\color{white} .} \newline }
 \def\forcenewpage{ {\color{white} .} \newpage }
 #+END_EXPORT
-
 
 * COMMENT footer
 
