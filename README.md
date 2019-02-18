@@ -1,25 +1,33 @@
 <h1> CheatSheet </h1>
 
-Pretty cheat sheets, or \`\`reference cards'', obtainable from Org files.
+Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files.
 
-**The listing sheet, as PDF, can be found [here](https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf)**, while below is a quick-n-dirty html rendition.
+\## This project is to contain a listing of common results in X Theory.
+\##
+\## **The repo contains other articles I've written on X Theory;**
+\## **which may be read in a blog-format at:**
+\## <https://alhassy.github.io/blog/categories/#Xtheory>
 
-<object width="600" height="400" data="CheatSheet.pdf"></object>
+**The listing sheet, as PDF, can be found
+[here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**, 
+while below is an unruly html rendition.
 
-<hr> <hr> <hr>
+\## This reference sheet is built around the system
+\## <https://github.com/alhassy/CheatSheet>.
 
 
 # Table of Contents
 
-1.  [Hello, World!](#orgfabe035)
-2.  [CheatSheet Examples](#org5d4b491)
-3.  [Org-mode Basics](#org0c84928)
-4.  [Emacs](#org4ec4cd3)
-5.  [Git](#orgad02220)
-6.  [Grep](#org55fd941)
-7.  [Linux](#org21a52b4)
-8.  [CheatSheet Helper Elisp](#org239e945)
-9.  [(EXAMPLE USAGE OF `<p`) Loops implement finite quantifications](#orge48919d)
+1.  [Hello, World!](#org206bb5e)
+2.  [CheatSheet Examples](#org5307400)
+3.  [Basic Equational Support](#org2211c31)
+4.  [Org-mode Basics](#orgd0cadda)
+5.  [Emacs](#org374dbf5)
+6.  [Git](#orga22254d)
+7.  [Grep](#org4f65c58)
+8.  [Linux](#orge31b916)
+9.  [CheatSheet Helper Elisp](#orged645ee)
+10. [Example Use `<p`: Loops implement finite quantifications](#orgcbd40bd)
 
 
 
@@ -31,7 +39,9 @@ Pretty cheat sheets, or \`\`reference cards'', obtainable from Org files.
 
 
 
-<a id="orgfabe035"></a>
+
+
+<a id="org206bb5e"></a>
 
 # Hello, World!
 
@@ -50,13 +60,18 @@ Pretty cheat sheets, or \`\`reference cards'', obtainable from Org files.
 \vspace{1em}
 To learn more, manipulating this source is the way to go!
 
+\vspace{1em}
+Also, opening this file produces a `README.md` ;-)
 
-<a id="org5d4b491"></a>
+
+<a id="org5307400"></a>
 
 # CheatSheet Examples
 
 Reference sheets created from this project include,
 \vspace{1em}
+
+-   **[CatsCheatSheet](https://github.com/alhassy/CatsCheatSheet):** Listing of common theorems in elementary category theory.
 
 -   **[LatticesCheatSheet](https://github.com/alhassy/LatticesCheatSheet):** Reference sheet for definitions and results in Lattice Theory.
 
@@ -72,17 +87,28 @@ The steps to utilising this git project for your own cheat sheet may be:
         ; cp CheatSheet/CheatSheet.org . 
         ; cp CheatSheet/README.org .
 3.  Open `CheatSheet.org` and locate `#+INCLUDE: CheatSheetSetup.org`
-    then rewrite `CheatSheetSetup.org ↦ CheatSheet/CheatSheetSetup.org`.
+    then rewrite `CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org`.
 4.  Within the `README.org`, if you're using it, alter the regions marked
     `!!CHANGE ME!!`.
 
 I don't think this is difficult to automate, so I will likely get
 to doing it.
 
+
+<a id="org2211c31"></a>
+
+# Basic Equational Support
+
+Basic name-formula equational support. `\eqn{name}{formula}`
+yields a displayed equation with `formula` left aligned and `name` right aligned:
+\eqn{name}{formula}
+Moreover, we can refer to such a formula by invoking `\ref{name}` &#x2013;e.g., \ref{name}. 
+However, if `name` involves unicode symbols, then this may cause problems.
+
 \newpage
 
 
-<a id="org0c84928"></a>
+<a id="orgd0cadda"></a>
 
 # Org-mode Basics
 
@@ -110,7 +136,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
         and `"x-"` for taking line `x` until the end of the file.
 
 
-<a id="org4ec4cd3"></a>
+<a id="org374dbf5"></a>
 
 # Emacs
 
@@ -120,7 +146,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
     then `C-x r k` (rectangular kill) at the end of the last line of the (indentation) region you want to remove.
 
 
-<a id="orgad02220"></a>
+<a id="orga22254d"></a>
 
 # Git
 
@@ -130,7 +156,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 -   **`git whatchanged`:** Like `git log` but informs exactly which files were altered.
 
 
-<a id="org55fd941"></a>
+<a id="org4f65c58"></a>
 
 # Grep
 
@@ -143,7 +169,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
     -   It looks prettier and more informative.
 
 
-<a id="org21a52b4"></a>
+<a id="orge31b916"></a>
 
 # Linux
 
@@ -152,7 +178,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 \newpage
 
 
-<a id="org239e945"></a>
+<a id="orged645ee"></a>
 
 # CheatSheet Helper Elisp
 
@@ -172,7 +198,9 @@ below loads `CheatSheet/CheatSheet.el`.
     
       (interactive)
       (org-latex-export-to-pdf) 
-      (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &"))
+      (eshell-command 
+         (concat "evince " 
+                 (file-name-sans-extension buffer-file-name) ".pdf &"))
     )
     
     ;; Preview and commit
@@ -180,8 +208,9 @@ below loads `CheatSheet/CheatSheet.el`.
     (local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
     
     (local-set-key (kbd "<f8>") '(lambda () (interactive) 
-      (shell-command (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
-       (read-string "Commit Message for CheatSheet: ")))
+      (shell-command 
+         (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
+         (read-string "Commit Message for CheatSheet: ")))
     ))
     
     ;; Stuff that should be loaded whenever CheatSheet.org is opened.
@@ -200,9 +229,9 @@ below loads `CheatSheet/CheatSheet.el`.
 \newpage
 
 
-<a id="orge48919d"></a>
+<a id="orgcbd40bd"></a>
 
-# (EXAMPLE USAGE OF `<p`) [Loops implement finite quantifications](https://frama-c.com/)
+# Example Use `<p`: [Loops implement finite quantifications](https://frama-c.com/)
 
 A finite quantification can be defined axiomatically
 by the empty-range rule and split-off term rules.

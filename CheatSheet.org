@@ -1,15 +1,26 @@
+:ImportantShortcuts: 
+f7 preview changes
+f8 commit each change
+f9 push changes
+:End:
+* Header                                                      :do:not:ignore:
 #+TITLE: Reference Sheet for ``What I'm Currently Learning''
 # SUBTITLE: Cheat Sheet Template
-# DATE: << Spring 2018 >>
+# DATE: << Winter 2019 >>
 # When we don't provide a date, one is provided for us.
-#+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
+#+MACRO: URL https://github.com/alhassy/CheatSheet
+#+MACRO: ShowURL @@latex:{\tiny\hspace{6em}\url{ {{{URL}}} } }@@
+#+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]] {{{ShowURL}}}
 #+EMAIL: alhassy@gmail.com
-#+DESCRIPTION: This document is written by Musa Al-hassy for his learning in the spring of 2018.
+#+DESCRIPTION: This document is written by Musa Al-hassy for his learning in the Winter of 2019.
 #+STARTUP: hideblocks
 #+STARTUP: overview
 #+TODO: BEGIN-IGNORE(b) END-IGNORE(e) } | DONE(d)
+#+OPTIONS: d:nil
+
 #+INCLUDE: CheatSheetSetup.org
 # ‼‼ CHANGE ME, the include; see submodules section below ‼‼
+# ‼‼ Also change “URL” macro above to point to your repo.
 
 * Hello, World!
 
@@ -27,19 +38,23 @@
 
 \vspace{1em}
 To learn more, manipulating this source is the way to go!
-# \newpage
+
+\vspace{1em}
+Also, opening this file produces a ~README.md~ ;-)
 
 * CheatSheet Examples
 
 Reference sheets created from this project include,
 \vspace{1em}
 
++ [[https://github.com/alhassy/CatsCheatSheet][CatsCheatSheet]] :: 
+  Listing of common theorems in elementary category theory.
+
 + [[https://github.com/alhassy/LatticesCheatSheet][LatticesCheatSheet]] :: 
   Reference sheet for definitions and results in Lattice Theory.
 
 + [[https://github.com/alhassy/CoqCheatSheet][CoqCheatSheet]] :: 
   Reference sheet for the Coq language.
-
 
 \vspace{1em}
 The steps to utilising this git project for your own cheat sheet may be:
@@ -51,7 +66,7 @@ The steps to utilising this git project for your own cheat sheet may be:
    ; cp CheatSheet/README.org .   
    #+END_EXAMPLE
 2. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
-   then rewrite ~CheatSheetSetup.org ↦ CheatSheet/CheatSheetSetup.org~.
+   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
 3. Within the ~README.org~, if you're using it, alter the regions marked
    ~!!CHANGE ME!!~.
 
@@ -59,6 +74,46 @@ The steps to utilising this git project for your own cheat sheet may be:
 
 I don't think this is difficult to automate, so I will likely get
 to doing it.
+
+* Basic Equational Support
+
+
+Basic name-formula equational support. ~\eqn{name}{formula}~
+yields a displayed equation with ~formula~ left aligned and ~name~ right aligned:
+\eqn{name}{formula}
+Moreover, we can refer to such a formula by invoking ~\ref{name}~ --e.g., \ref{name}. 
+However, if ~name~ involves unicode symbols, then this may cause problems.
+
+:MultipleEquationsExample:
+
+preamble words here --below comes from CatsCheatSheet--
+
+#+BEGIN_EXPORT latex
+\begineqns
+
+\eqn{$\langle\rangle$-Type}{f : C → A \lands g : C → B \impliesS ⟨f, g⟩ : C → A × B}
+
+\eqn{$\langle\rangle$-Char}{ \fst ∘ x = f \lands \snd ∘ x = g \equivS x = ⟨f, g⟩ }
+
+\eqn{$\langle\rangle$-Cancellation; $\langle\rangle$-Self}{ \fst ∘ ⟨f, g⟩ = f \landS \snd ∘ ⟨f, g⟩ = g}
+
+\eqn{$\langle\rangle$-Id}{ ⟨\fst, \snd⟩ = \Id}
+
+\eqn{$\langle\rangle$-Unique}{ \fst ∘ x = \fst ∘ y  \lands \snd ∘ x = \snd ∘ y \impliesS x = y}
+
+\eqn{$\langle\rangle$-Fusion}{ ⟨f , g⟩ ∘ x = ⟨f ∘ x , g ∘ x⟩ }
+
+\eqn{$\langle\rangle$-Functor-Dist}{F \, ⟨f, g⟩_𝒞 = ⟨F \, f , F \, g⟩_𝒟 \qquad\text{ where } F : 𝒞 → 𝒟}
+
+\endeqns
+#+END_EXPORT
+
+\room
+\room
+
+postamble words here
+
+:End:
 
 * newpage :ignore:
   \newpage
@@ -141,7 +196,9 @@ below loads ~CheatSheet/CheatSheet.el~.
 
   (interactive)
   (org-latex-export-to-pdf) 
-  (eshell-command (concat "evince " (file-name-sans-extension buffer-file-name) ".pdf &"))
+  (eshell-command 
+     (concat "evince " 
+             (file-name-sans-extension buffer-file-name) ".pdf &"))
 )
 
 ;; Preview and commit
@@ -149,8 +206,9 @@ below loads ~CheatSheet/CheatSheet.el~.
 (local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
 
 (local-set-key (kbd "<f8>") '(lambda () (interactive) 
-  (shell-command (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
-   (read-string "Commit Message for CheatSheet: ")))
+  (shell-command 
+     (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
+     (read-string "Commit Message for CheatSheet: ")))
 ))
 
 ;; Stuff that should be loaded whenever CheatSheet.org is opened.
@@ -172,9 +230,20 @@ below loads ~CheatSheet/CheatSheet.el~.
 
 * newpage :ignore:
   \newpage
-* (EXAMPLE USAGE OF ~<p~) [[https://frama-c.com/][Loops implement finite quantifications]]
+* Example Use ~<p~: [[https://frama-c.com/][Loops implement finite quantifications]]
 
-#+LATEX_HEADER: \DeclareUnicodeCharacter{119931}{\ensuremath{\mathbf{T}}} % math bold caps 𝑻
+# Removing the red box that appears in “minted” when using unicode.
+# Src: https://tex.stackexchange.com/questions/343494/minted-red-box-around-greek-characters
+#
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \AtBeginEnvironment{minted}{\dontdofcolorbox}
+#+LATEX_HEADER: \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+#+LATEX_HEADER: \makeatother
+
+#+LATEX_HEADER: \usepackage{newunicodechar}
+#+LATEX_HEADER: \newunicodechar{𝑻}{\ensuremath{T}}
+#+LATEX_HEADER: \newunicodechar{⊕}{\ensuremath{\oplus}}
+#+LATEX_HEADER: \newunicodechar{≈}{\ensuremath{\approx}}
 
 A finite quantification can be defined axiomatically
 by the empty-range rule and split-off term rules.
@@ -182,7 +251,6 @@ Together these form a recursive definition which can be phrased as a loop.
 #
 #+begin_parallel c
 
-#+NAME: ?
 #+BEGIN_SRC c
 // For -⊕- : 𝑻 → 𝑻 → 𝑻,
 // fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x]) 
@@ -235,12 +303,48 @@ Any [[https://en.wikipedia.org/wiki/Monoid][monoid]] will do.
 
 \newpage
 
-* COMMENT footer
+* COMMENT Making README.md
 
-(find-file "CheatSheet.el")
+C-c C-c: Evaluate src block.
+
+#+NAME: make-readme
+#+BEGIN_SRC emacs-lisp :results none
+(with-temp-buffer
+    (insert 
+    "#+EXPORT_FILE_NAME: README.md
+     #+HTML: <h1> CheatSheet </h1>
+     #+OPTIONS: toc:nil
+     # Toc is displayed below at a strategic position.
+
+     Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files.
+
+     ## This project is to contain a listing of common results in X Theory.
+     ##
+     ## *The repo contains other articles I've written on X Theory;*
+     ## *which may be read in a blog-format at:*
+     ## https://alhassy.github.io/blog/categories/#Xtheory
+     
+     *The listing sheet, as PDF, can be found
+     [here]({{{URL}}}/blob/master/CheatSheet.pdf)*, 
+     while below is an unruly html rendition.
+     
+     ## This reference sheet is built around the system
+     ## https://github.com/alhassy/CheatSheet.
+
+     #+TOC: headlines 2
+     #+INCLUDE: CheatSheet.org     
+    ")
+    ;; (set-visited-file-name "ReadIt2.md")
+    (org-mode)
+    (org-md-export-to-markdown)
+)
+#+END_SRC
+
+* COMMENT footer
 
 # Local Variables:
 # eval: (org-babel-tangle)
+# eval: (progn (org-babel-goto-named-src-block "make-readme") (org-babel-execute-src-block) (outline-hide-sublevels 1))
 # eval: (load-file "CheatSheet.el")
 # compile-command: (my-org-latex-export-to-pdf)
 # End:
