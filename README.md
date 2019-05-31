@@ -1,24 +1,30 @@
-<h1> CheatSheet </h1>
+<h1> Easily Making CheatSheets with Org-mode </h1>
 
-Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files.
+Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. See section [4](#getting-started) below to get started making your own cheat sheets!
 
 **The listing sheet, as PDF, can be found
-[here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**, 
+ [here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**,
+ while below is an unruly html rendition.
+
+This reference sheet is built around the system
+<https://github.com/alhassy/CheatSheet>.
+
+**The listing sheet, as PDF, can be found
+[here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**,
 while below is an unruly html rendition.
 
 
 # Table of Contents
 
-1.  [Hello, World!](#orge375a79)
-2.  [CheatSheet Examples](#orga378825)
-3.  [Basic Equational Support](#org64b43c0)
-4.  [Org-mode Basics](#org39b3cc9)
-5.  [Emacs](#orge6c77f8)
-6.  [Git](#orgf3f1006)
-7.  [Grep](#org2f3be43)
-8.  [Linux](#org4dad9a0)
-9.  [CheatSheet Helper Elisp](#orgebe8922)
-10. [Example Use `<p`: Loops implement finite quantifications](#orge23849b)
+1.  [Hello, World!](#org810628d)
+2.  [CheatSheet Examples](#orgc296bbb)
+3.  [Why Learn & Relearn?](#org8dc463b)
+4.  [Getting Started](#getting-started)
+5.  [What if it's not good enough?](#org3b46ef7)
+6.  [Org-mode Basics](#orgc12889e)
+7.  [Basic Equational Support](#orga4d2ba6)
+8.  [What if I want 3 columns?](#orgeebf7c2)
+9.  [Parallel Environment](#org4277d51)
 
 
 
@@ -32,74 +38,136 @@ while below is an unruly html rendition.
 
 
 
-<a id="orge375a79"></a>
+<a id="org810628d"></a>
 
 # Hello, World!
 
 -   **Pretty PDF:** Enter `M-x compile` to produce a nice looking PDF of your reference sheet.
-    -   I've bound this command to `C-c C-m` in my Emacs setup ;-)
+    -   I've bound this command to `C-c C-m` in [my Emacs setup](https://github.com/alhassy/emacs.d) ;-)
+
+	My Emacs configuration also documents how I utilise ‘minted’
+	to obtain colourful source code blocks.
 
 -   **Section Headers:** A usual Org header, say `* my section`, results in the boxed headers
     used in this cheat sheet.
 
--   **Parallel Environments:** The sequence `<p TAB` produces a \`parallel' environment for
-    producing text side-by-side. The column break is automatic, but as 
+-   **Parallel Environments:** The LaTeX matter here supports an org-enviornment
+    named `parallel` for producing text side-by-side.
+
+    The column break is automatic, but as
     this is sugar for a `minipage` containing a `multicolum` we can force a column
     separation with `\columnbreak`: This command, in Org, necessities newlines between
     the items being separated.
 
-\vspace{1em}
 To learn more, manipulating this source is the way to go!
 
-\vspace{1em}
 Also, opening this file produces a `README.md` ;-)
+Which can then be regenerated on-demand with `f11`.
 
 
-<a id="orga378825"></a>
+<a id="orgc296bbb"></a>
 
 # CheatSheet Examples
 
 Reference sheets created from this project include,
-\vspace{1em}
+
+-   **[ElispCheatSheet](https://github.com/alhassy/ElispCheatSheet):** Quick reference to the core language of Emacs
+    &#x2014;Editor MACroS.
+
+-   **[Islam](https://github.com/alhassy/islam):** Important figures in the faith.
+
+-   **[PrologCheatSheet](https://github.com/alhassy/PrologCheatSheet):** Program where everything is a relation &#x2014;i.e., a database table.
 
 -   **[CatsCheatSheet](https://github.com/alhassy/CatsCheatSheet):** Listing of common theorems in elementary category theory.
 
 -   **[LatticesCheatSheet](https://github.com/alhassy/LatticesCheatSheet):** Reference sheet for definitions and results in Lattice Theory.
 
+-   **[OCamlCheatSheet](https://github.com/alhassy/OCamlCheatSheet):** Basics of OCaml, “the best imperative language”.
+
 -   **[CoqCheatSheet](https://github.com/alhassy/CoqCheatSheet):** Reference sheet for the Coq language.
 
-\vspace{1em}
-The steps to utilising this git project for your own cheat sheet may be:
+-   **[GojuRyuCheatSheet](https://github.com/alhassy/GojuRyuCheatSheet):** A quick cheat sheet for common terms in Goju Ryu Karate
+    &#x2014;the hard-soft style of karate.
 
-1.  Go to the repo you want to make a cheat sheet.
-2.  Add this project as a submodule then copy its core to where you're working:
-    
-        git submodule add https://github.com/alhassy/CheatSheet.git
-        ; cp CheatSheet/CheatSheet.org . 
-        ; cp CheatSheet/README.org .
-3.  Open `CheatSheet.org` and locate `#+INCLUDE: CheatSheetSetup.org`
-    then rewrite `CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org`.
-4.  Within the `README.org`, if you're using it, alter the regions marked
-    `!!CHANGE ME!!`.
-
-I don't think this is difficult to automate, so I will likely get
-to doing it.
+<div class="org-center">
+*If you use this org-setup to produce a neat cheat sheet, please let me know!*
+</div>
 
 
-<a id="org64b43c0"></a>
+<a id="org8dc463b"></a>
 
-# Basic Equational Support
+# Why Learn & Relearn?
 
-Basic name-formula equational support. `\eqn{name}{formula}`
-yields a displayed equation with `formula` left aligned and `name` right aligned:
-\eqn{name}{formula}
-Moreover, we can refer to such a formula by invoking `\ref{name}` &#x2013;e.g., \ref{name}. 
-However, if `name` involves unicode symbols, then this may cause problems.
+*The world of ideas is not revealed to us in one stroke;*
+*we must both permanently and unceasingly recreate it in*
+*our consciousness.* &#x2014;Rene Thom
 
 \newpage
 
 
-<a id="org39b3cc9"></a>
+<a id="getting-started"></a>
+
+# Getting Started
+
+The steps to utilising this git project for your own cheat sheet may be:
+
+1.  Go to the repo where you want to make a cheat sheet.
+
+2.  Add this project as a submodule then copy its core to where you're working:
+
+	git submodule add https://github.com/alhassy/CheatSheet.git
+	; cp CheatSheet/CheatSheet.org .
+	; cp CheatSheet/README.org .
+
+3.  Open `CheatSheet.org` and locate `#+INCLUDE: CheatSheetSetup.org`
+    then rewrite `CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org`.
+
+I don't think this is difficult to automate, so I will likely get
+to doing it. Indeed, just copy-paste the following into, say the
+`*scratch*` buffer then `C-x C-e` after the final closing parenthesis.
+
+    (let ((your-repo "~/example") ;; Alter this location!
+	  (enable-local-variables :all))
+	  ;; Look at my “local variables” below; ensure nothing malicious.
+	  ;; So no need to be queried about loading them.
+
+     ;; Obtain the submodule then make a /copy/ of this cheatsheet.
+     (eshell-command (concat
+       "  cd " your-repo
+       "; git submodule add https://github.com/alhassy/CheatSheet.git"
+       "; cp CheatSheet/CheatSheet.org ."
+      ))
+
+     ;; Make your cheat sheet refer to the submodule's setup file.
+     (find-file-other-window (concat your-repo "/CheatSheet.org"))
+     (beginning-of-buffer)
+     (re-search-forward "INCLUDE: CheatSheetSetup.org" nil t)
+     (replace-match "INCLUDE: CheatSheet/CheatSheetSetup.org")
+     (beginning-of-buffer)
+    )
+
+    ;; To remove a submodule:
+    ;; git submodule deinit ⟪path_to_submodule⟫ ; git rm ⟪path_to_submodule⟫
+
+For the `README.md` to be generated as desired, fill in the macros `URL` and `blurb`
+at the top of this org file to point to your repository and provide a description
+of what the cheatsheet serves to accomplish.
+
+
+<a id="org3b46ef7"></a>
+
+# What if it's not good enough?
+
+*“The person who thinks of doing something, is usually passed by the person doing it.”*
+
+*The more that you read, the more things you will know.*
+*The more that you learn, the more places you'll go.*
+&#x2014;Dr. Seuss
+
+\newpage
+
+
+<a id="orgc12889e"></a>
 
 # Org-mode Basics
 
@@ -107,145 +175,103 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 
 -   For more see [The Compact Org-mode Guide](https://orgmode.org/orgguide.pdf).
 
-\vspace{1em}
-
 -   **Reloading:** To reload a file with updated org settings, press
-    `C-c C-c` on a settings line &#x2013;i.e., one beginning with a `#+`, to reset the 
+    `C-c C-c` on a settings line &#x2013;i.e., one beginning with a `#+`, to reset the
      temporary file cache.
 
--   **Inclusion:** During export, you can include the content of another file. 
+-   **Inclusion:** During export, you can include the content of another file.
     -   Syntax: `#+INCLUDE: "⟨fileName⟩" [⟨markup⟩ [⟨language⟩]]`
-        -   `markup ::= src | example`
-        -   `language ::= C | haskell | emacs-lisp | ⋯`
-        -   If the markup is not given, the text will be assumed to be in 
-            Org mode format and will be processed normally; c.f., [Setup files](https://orgmode.org/manual/In_002dbuffer-settings.html).
-    
+	-   `markup ::= src | example`
+	-   `language ::= C | haskell | emacs-lisp | ⋯`
+	-   If the markup is not given, the text will be assumed to be in
+	    Org mode format and will be processed normally; c.f., [Setup files](https://orgmode.org/manual/In_002dbuffer-settings.html).
+
     -   To visit the file, `C-c '` while the cursor is on the line with the file name.
-    
+
     -   Include only portions of a file by appending with `:lines "x-y"` where `x` is the first
-        line and `y` is the second-to-last line. Also `"-y"` for upto but not including line `y`,
-        and `"x-"` for taking line `x` until the end of the file.
+	line and `y` is the second-to-last line. Also `"-y"` for upto but not including line `y`,
+	and `"x-"` for taking line `x` until the end of the file.
 
 
-<a id="orge6c77f8"></a>
+<a id="orga4d2ba6"></a>
 
-# Emacs
+# Basic Equational Support
 
--   **C-x r k   :** M-x kill-rectangle
--   **C-l C-l   :** move buffer top to be current cursor location.
--   **Delete a region of text, e.g., white space:** `C-SPC` at the beginning of the first line
-    then `C-x r k` (rectangular kill) at the end of the last line of the (indentation) region you want to remove.
+Basic name-formula equational support. `\eqn{name}{formula}`
+yields a displayed equation with `formula` left aligned and `name` right aligned:
 
+\eqn{name}{formula}
 
-<a id="orgf3f1006"></a>
+Moreover, we can refer to such a formula by invoking `\ref{name}` &#x2013;e.g., \ref{Functoriality} and \ref{name}.
+However, if `name` involves unicode symbols, then this may cause problems.
 
-# Git
-
--   **Revert a file to a particular commit:** `git checkout 0cdf -- myfiles`
-    -   Where `0cdf` is your commit identifier, which is usually much longer.
-
--   **`git whatchanged`:** Like `git log` but informs exactly which files were altered.
+See the [CatsCheatSheet](https://github.com/alhassy/CatsCheatSheet) for examples of this kind.
 
 
-<a id="org2f3be43"></a>
+<a id="orgeebf7c2"></a>
 
-# Grep
+# What if I want 3 columns?
 
--   **Find all files containing specific text:** \forcenewline
-    \`r'ecursively look for the \`w'hole given pattern:   
-    `grep -rw '/path/to/somewhere/' -e 'pattern'`
+At the top, say after the `#+INCLUDE: CheatSheet/CheatSheetSetup.org` line, add a new
+section:
 
--   **Better:** `ack 'text-to-find-here' locationToBeginLooking`
-    -   [ack](https://beyondgrep.com/) is like grep, but for source code.
-    -   It looks prettier and more informative.
+    * begin multicols  :ignore:
+    #+latex: \begin{multicols}{3}
 
+Then at the very bottom, add a section to close this multicol:
 
-<a id="org4dad9a0"></a>
+    * end multicols   :ignore:
+    #+latex: \end{multicols}
 
-# Linux
-
--   The way to \`\`double-click'' on a file from the command line is `xdg-open`.
+Having three narrow columns is useful for term-heavy or formula heavy sheets.
 
 \newpage
 
 
-<a id="orgebe8922"></a>
+<a id="org4277d51"></a>
 
-# CheatSheet Helper Elisp
+# Parallel Environment
 
-The following utilities are loaded when this file is opened.
-After the first time the file `CheetSheet.el` is created and this section
-may be deleted. When you delete this section, ensure the `load` in the footer
-below loads `CheatSheet/CheatSheet.el`.
+Cheat sheets should not waste space, so the setup provides
+a `parallel` LaTeX enviornment that takes an optional parameter
+indicating how many columns are desired &#x2014;two by default.
+Importantly, we use this environment as if it were any normal org-block:
 
-1.  Make some changes, look at them with `f7`.
-2.  Commit each change with `f8`.
-3.  Push your changes with `f9`.
+<div class="parallel">
+    ,#
+    #+begin_parallel org
+    ???content here???
+    #+end_parallel
 
-\hrule
+The initial new line is important, otherwise the parallel environment
+occurs in-line, which may not be the intended behaviour.
 
-    (defun my-org-latex-export-to-pdf ()
-      "Produce a PDF from the CheatSheet then show it via the evince PDF viewer."
-    
-      (interactive)
-      (org-latex-export-to-pdf) 
-      (eshell-command 
-         (concat "evince " 
-                 (file-name-sans-extension buffer-file-name) ".pdf &"))
-    )
-    
-    ;; Preview and commit
-    
-    (local-set-key (kbd "<f7>") 'my-org-latex-export-to-pdf)
-    
-    (local-set-key (kbd "<f8>") '(lambda () (interactive) 
-      (shell-command 
-         (format "git commit CheatSheet.org CheatSheet.pdf -m \"CheatSheet: %s\""
-         (read-string "Commit Message for CheatSheet: ")))
-    ))
-    
-    ;; Stuff that should be loaded whenever CheatSheet.org is opened.
-    
-    (visual-line-mode t)
-    
-    (require 'ox-extra)
-    (ox-extras-activate '(ignore-headlines))
-    
-    ;; for the <X-TAB short-cuts
-    (make-variable-buffer-local 'org-structure-template-alist)
-    
-    (setq PARALLEL (concat "# \n#+begin_parallel latex \n?\n#+end_parallel"))
-    (add-to-list 'org-structure-template-alist `("p" ,PARALLEL))
+</div>
 
-\newpage
-
-
-<a id="orge23849b"></a>
-
-# Example Use `<p`: [Loops implement finite quantifications](https://frama-c.com/)
+Below we demonstrate that [loops implement finite quantifications](https://frama-c.com/)
+by showing how the specification of a loop is implemented, unsurprisingly,
+using a loop. [I tend to use a lot of unicode.](https://github.com/alhassy/MyUnicodeSymbols)
 
 A finite quantification can be defined axiomatically
 by the empty-range rule and split-off term rules.
 Together these form a recursive definition which can be phrased as a loop.
 
 <div class="parallel">
-
-
-    // For -⊕- : 𝑻 → 𝑻 → 𝑻,
-    // fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x]) 
-    /*@ axiomatic Fold { 
-      @   
+    // For _⊕_ : 𝑻 → 𝑻 → 𝑻,
+    // fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x])
+    /*@ axiomatic Fold {
+      @
       @ logic 𝑻
-      @   fold{L}(𝑻 *A, integer a, integer b)
+      @   fold{L}(𝑻 *A, ℤ a, ℤ b)
       @   reads a,b,A, A[..] ;
       @
       @ axiom foldEmptyRange{L} :
-      @   \forall 𝑻 *A, integer a, b; a >= b
-      @   ==>  fold(A,a,b) == identity(⊕);
+      @   ∀ 𝑻 *A, ℤ a, b; a ≥ b
+      @   =⇒  fold(A,a,b) == identity(⊕);
       @
       @ axiom foldSplitOffTerm{L} :
-      @   \forall 𝑻 *A, integer a, b; a <= b
-      @   ==>     fold(A, a, b+1) 
+      @   ∀ 𝑻 *A, ℤ a, b; a ≤ b
+      @   =⇒      fold(A, a, b+1)
       @        == fold(A, a, b  ) ⊕ A[b];
       @ }
       @*/
@@ -257,17 +283,17 @@ Together these form a recursive definition which can be phrased as a loop.
       @ ensures \result == fold(A,0,N);
       @*/
     𝑻 fold(int N, 𝑻* A) {
-    
-        𝑻 total = identity(⊕);
-        
-        /*@ loop invariant 0 <= n <= N;
-          @ loop invariant total == fold(A,0,n);
-          @ loop assigns n, total;
-          @ loop variant N-n;
-        */
-        for(int n = 0; n != N; n++)
-            total = total ⊕ A[n];
-        return total;
+
+	𝑻 total = identity(⊕);
+
+	/*@ loop invariant 0 <= n <= N;
+	  @ loop invariant total == fold(A,0,n);
+	  @ loop assigns n, total;
+	  @ loop variant N-n;
+	*/
+	for(int n = 0; n != N; n++)
+	total = total ⊕ A[n];
+	return total;
     }
 
 </div>
@@ -276,5 +302,43 @@ This pseudo-code is reified by giving concrete values
 for `(𝑻, ⊕, identity)` such as `(int, +, 0)` or `(bool, ||, false)`.
 Any [monoid](https://en.wikipedia.org/wiki/Monoid) will do.
 
-\newpage
+`parallelNB` produces a side-by-side rendition with ‘N’o ‘B’ar:
 
+<div class="parallelNB">
+left \newline left \newline left
+
+\columnbreak
+right \newline right \newline right
+
+</div>
+
+Here is an example with four columns:
+
+<div class="parallel">
+left \newline left \newline left
+
+\columnbreak
+middle \newline middle \newline middle
+
+\columnbreak
+middle \newline middle \newline middle
+
+\columnbreak
+right \newline right \newline right
+
+</div>
+
+Here is an example with three columns and ‘n’o ‘b’ar:
+
+<div class="parallel3NB">
+left \newline left \newline left
+
+\columnbreak
+middle \newline middle \newline middle
+
+\columnbreak
+right \newline right \newline right
+
+</div>
+
+\newpage
