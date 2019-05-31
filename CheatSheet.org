@@ -52,6 +52,8 @@
 (let (this that)
   (dolist (kp '( ( "^[ ]*\\\\room" . "#+latex: \\\\room")
 		 ( "^[ ]*\\\\vspace" . "#+latex: \\\\vspace")
+		 ( "^[ ]*\\\\newpage" . "#+latex: \\\\newpage")
+		 ( "^[ ]*\\\\columnbreak" . "#+latex: \\\\columnbreak")
 		 ))
 	(setq this (car kp))
 	(setq that (cdr kp))
@@ -90,7 +92,7 @@ Which can then be regenerated on-demand with ~f11~.
 
 * CheatSheet Examples
 
-Reference sheets created from this project include,
+Reference sheets created from this project include:
 #+latex: \vspace{1em}
 
 + [[https://github.com/alhassy/ElispCheatSheet][ElispCheatSheet]] :: Quick reference to the core language of Emacs
@@ -128,7 +130,7 @@ Reference sheets created from this project include,
   /our consciousness./ ---Rene Thom
 
 * spacing newpage                                                    :ignore:
-  \newpage
+#+latex: \newpage
 * Getting Started
 :PROPERTIES:
 :CUSTOM_ID: getting-started
@@ -198,7 +200,7 @@ of what the cheatsheet serves to accomplish.
 ---Dr. Seuss
 
 * spacing newpage                                                    :ignore:
-  \newpage
+#+latex: \newpage
 * Org-mode Basics
 
 Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
@@ -294,7 +296,7 @@ postamble words here
 Having three narrow columns is useful for term-heavy or formula heavy sheets.
 
 * spacing newpage                                                    :ignore:
-  \newpage
+#+latex: \newpage
 * Parallel Environment
 
 Cheat sheets should not waste space, so the setup provides
@@ -354,7 +356,7 @@ Together these form a recursive definition which can be phrased as a loop.
   @ }
   @*/
 #+END_SRC
-\columnbreak
+#+latex: \columnbreak
 #+BEGIN_SRC c
 /*@ requires \valid(A+(0..N-1));
   @ assigns \nothing;
@@ -389,7 +391,7 @@ Any [[https://en.wikipedia.org/wiki/Monoid][monoid]] will do.
 #+begin_parallelNB org
 left \newline left \newline left
 
-\columnbreak
+#+latex: \columnbreak
 right \newline right \newline right
 #+end_parallelNB
 
@@ -399,13 +401,13 @@ Here is an example with four columns:
 #+begin_parallel org
 left \newline left \newline left
 
-\columnbreak
+#+latex: \columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
+#+latex: \columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
+#+latex: \columnbreak
 right \newline right \newline right
 #+end_parallel
 
@@ -414,19 +416,19 @@ Here is an example with three columns and ‘n’o ‘b’ar:
 #+begin_parallel3NB org
 left \newline left \newline left
 
-\columnbreak
+#+latex: \columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
+#+latex: \columnbreak
 right \newline right \newline right
 #+end_parallel3NB
 
 
 
-\newpage
+#+latex: \newpage
 
 * spacing COMMENT newpage :ignore:
-  \newpage
+#+latex: \newpage
 * COMMENT Helper Elisp ---unused homemade version control
 
 #+BEGIN_QUOTE
@@ -497,10 +499,6 @@ C-c C-c: Evaluate src block.
      This reference sheet is built around the system
      https://github.com/alhassy/CheatSheet.
 
-     ,*The listing sheet, as PDF, can be found
-     [here]({{{URL}}}/blob/master/CheatSheet.pdf)*,
-     while below is an unruly html rendition.
-
      ,#+TOC: headlines 2
      ,#+INCLUDE: CheatSheet.org
     ")
@@ -508,10 +506,9 @@ C-c C-c: Evaluate src block.
     ;; No code execution on export
     ;; ⟪ For a particular block, we use “:eval never-export” ⟫
     ;;
-    (setq org-export-use-babel nil)
-
-    (org-mode)
-    (org-md-export-to-markdown)
+    (let ((org-export-use-babel nil))
+      (org-mode)
+      (org-md-export-to-markdown))
 )
 #+END_SRC
 

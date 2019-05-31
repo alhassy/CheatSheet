@@ -9,22 +9,18 @@ Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. S
 This reference sheet is built around the system
 <https://github.com/alhassy/CheatSheet>.
 
-**The listing sheet, as PDF, can be found
-[here](<https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf>)**,
-while below is an unruly html rendition.
-
 
 # Table of Contents
 
-1.  [Hello, World!](#org810628d)
-2.  [CheatSheet Examples](#orgc296bbb)
-3.  [Why Learn & Relearn?](#org8dc463b)
+1.  [Hello, World!](#orgf829698)
+2.  [CheatSheet Examples](#org2057229)
+3.  [Why Learn & Relearn?](#orgdcd3243)
 4.  [Getting Started](#getting-started)
-5.  [What if it's not good enough?](#org3b46ef7)
-6.  [Org-mode Basics](#orgc12889e)
-7.  [Basic Equational Support](#orga4d2ba6)
-8.  [What if I want 3 columns?](#orgeebf7c2)
-9.  [Parallel Environment](#org4277d51)
+5.  [What if it's not good enough?](#orgf1aea0a)
+6.  [Org-mode Basics](#org6ebba57)
+7.  [Basic Equational Support](#org730f4f8)
+8.  [What if I want 3 columns?](#org3efa24f)
+9.  [Parallel Environment](#org81fa03b)
 
 
 
@@ -38,7 +34,7 @@ while below is an unruly html rendition.
 
 
 
-<a id="org810628d"></a>
+<a id="orgf829698"></a>
 
 # Hello, World!
 
@@ -65,11 +61,11 @@ Also, opening this file produces a `README.md` ;-)
 Which can then be regenerated on-demand with `f11`.
 
 
-<a id="orgc296bbb"></a>
+<a id="org2057229"></a>
 
 # CheatSheet Examples
 
-Reference sheets created from this project include,
+Reference sheets created from this project include:
 
 -   **[ElispCheatSheet](https://github.com/alhassy/ElispCheatSheet):** Quick reference to the core language of Emacs
     &#x2014;Editor MACroS.
@@ -94,7 +90,7 @@ Reference sheets created from this project include,
 </div>
 
 
-<a id="org8dc463b"></a>
+<a id="orgdcd3243"></a>
 
 # Why Learn & Relearn?
 
@@ -102,7 +98,6 @@ Reference sheets created from this project include,
 *we must both permanently and unceasingly recreate it in*
 *our consciousness.* &#x2014;Rene Thom
 
-\newpage
 
 
 <a id="getting-started"></a>
@@ -154,7 +149,7 @@ at the top of this org file to point to your repository and provide a descriptio
 of what the cheatsheet serves to accomplish.
 
 
-<a id="org3b46ef7"></a>
+<a id="orgf1aea0a"></a>
 
 # What if it's not good enough?
 
@@ -164,10 +159,9 @@ of what the cheatsheet serves to accomplish.
 *The more that you learn, the more places you'll go.*
 &#x2014;Dr. Seuss
 
-\newpage
 
 
-<a id="orgc12889e"></a>
+<a id="org6ebba57"></a>
 
 # Org-mode Basics
 
@@ -193,7 +187,7 @@ Read [Org-mode for beginners](https://orgmode.org/worg/org-tutorials/org4beginne
 	and `"x-"` for taking line `x` until the end of the file.
 
 
-<a id="orga4d2ba6"></a>
+<a id="org730f4f8"></a>
 
 # Basic Equational Support
 
@@ -208,7 +202,7 @@ However, if `name` involves unicode symbols, then this may cause problems.
 See the [CatsCheatSheet](https://github.com/alhassy/CatsCheatSheet) for examples of this kind.
 
 
-<a id="orgeebf7c2"></a>
+<a id="org3efa24f"></a>
 
 # What if I want 3 columns?
 
@@ -225,10 +219,9 @@ Then at the very bottom, add a section to close this multicol:
 
 Having three narrow columns is useful for term-heavy or formula heavy sheets.
 
-\newpage
 
 
-<a id="org4277d51"></a>
+<a id="org81fa03b"></a>
 
 # Parallel Environment
 
@@ -276,8 +269,6 @@ Together these form a recursive definition which can be phrased as a loop.
       @ }
       @*/
 
-\columnbreak
-
     /*@ requires \valid(A+(0..N-1));
       @ assigns \nothing;
       @ ensures \result == fold(A,0,N);
@@ -307,7 +298,6 @@ Any [monoid](https://en.wikipedia.org/wiki/Monoid) will do.
 <div class="parallelNB">
 left \newline left \newline left
 
-\columnbreak
 right \newline right \newline right
 
 </div>
@@ -317,13 +307,10 @@ Here is an example with four columns:
 <div class="parallel">
 left \newline left \newline left
 
-\columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
 right \newline right \newline right
 
 </div>
@@ -333,12 +320,8 @@ Here is an example with three columns and ‘n’o ‘b’ar:
 <div class="parallel3NB">
 left \newline left \newline left
 
-\columnbreak
 middle \newline middle \newline middle
 
-\columnbreak
 right \newline right \newline right
 
 </div>
-
-\newpage
