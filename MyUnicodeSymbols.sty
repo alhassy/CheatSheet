@@ -8,6 +8,7 @@
  \RequirePackage{stmaryrd}
 
 % arbitrary lattice
+ \newunicodechar{⊏}{\ensuremath{\sqsubset}}
  \newunicodechar{⊑}{\ensuremath{\sqsubseteq}}
  \newunicodechar{⊒}{\ensuremath{\sqsupseteq}}
 
@@ -17,6 +18,7 @@
 \newunicodechar{∣}{\ensuremath{\mid}}  % divisibily ordering
 
 % sets
+\newunicodechar{⊂}{\ensuremath{\subset}}
 \newunicodechar{⊆}{\ensuremath{\subseteq}}
 
 % logical
@@ -28,7 +30,7 @@
  \newunicodechar{⊔}{\ensuremath{\sqcup}}
  \newunicodechar{⊓}{\ensuremath{\sqcap}}
 
-% numeric 
+% numeric
  \newunicodechar{↑}{\ensuremath{\uparrow}}
  \newunicodechar{↓}{\ensuremath{\downarrow}}
 
@@ -43,6 +45,10 @@
 % sets
  \newunicodechar{∩}{\ensuremath{\cap}}
  \newunicodechar{∪}{\ensuremath{\cup}}
+
+% types
+ \newunicodechar{⊎}{\ensuremath{\cupdot}}  % Agda \u+
+ \newunicodechar{⊍}{\ensuremath{\cupdot}}  % Agda \u.
 
 % arbitrary lattice
 \newunicodechar{⊥}{\ensuremath{\bot}}
@@ -85,6 +91,12 @@
  \newunicodechar{⌈}{\ensuremath{\lceil}}
  \newunicodechar{⌉}{\ensuremath{\rceil}}
 
+ \newunicodechar{⟪}{\ensuremath{\llangle}}
+ \newunicodechar{⟫}{\ensuremath{\rrangle}}
+
+ \newunicodechar{⟨}{\ensuremath{\langle}}
+ \newunicodechar{⟩}{\ensuremath{\rangle}}
+
  \newunicodechar{⦇}{\ensuremath{(\!|}}
  \newunicodechar{⦈}{\ensuremath{|\!)}}
  %
@@ -108,23 +120,20 @@
  \newunicodechar{φ}{\ensuremath{\phi}}  % lower   case
  \newunicodechar{π}{\ensuremath{\pi}}
 
+ \newunicodechar{⊎}{\ensuremath{\cupdot}}
  \newunicodechar{⊕}{\ensuremath{\oplus}}
  \newunicodechar{⊗}{\ensuremath{\otimes}}
  \newunicodechar{⊙}{\ensuremath{\odot}}
  \newunicodechar{⨾}{\ensuremath{\mathop{\fatsemi}}}
  \newunicodechar{◁}{\ensuremath{\lhd}}
  \newunicodechar{∘}{\ensuremath{\circ}}
- \newunicodechar{⟪}{\ensuremath{\llangle}}
- \newunicodechar{⟫}{\ensuremath{\rrangle}}
- \newunicodechar{⟨}{\ensuremath{\langle}}
- \newunicodechar{⟩}{\ensuremath{\rangle}}
 
 \newunicodechar{╲}{\ensuremath{\backslash}}  % under
 \newunicodechar{╱}{\ensuremath{/}}  % over
 
  \newunicodechar{∙}{\ensuremath{\circ}} % Looks like, but is not bullet!
 
- \newunicodechar{⋆}{\ensuremath{\star}} 
+ \newunicodechar{⋆}{\ensuremath{\star}}
  \newunicodechar{×}{\ensuremath{\times}}
  \newunicodechar{•}{\ensuremath{\bullet}}
  \newunicodechar{∶}{\ensuremath{:}} % ghost colon, Agda input “\:”.
@@ -167,9 +176,9 @@
  \newunicodechar{ₘ}{\ensuremath{_m}}
  \newunicodechar{ₙ}{\ensuremath{_n}}
  \newunicodechar{ₒ}{\ensuremath{_o}}
- \newunicodechar{ₚ}{\ensuremath{_p}}  
+ \newunicodechar{ₚ}{\ensuremath{_p}}
 % I have no access to subscript q with my “current” agda input mode -- to fix!
- \newunicodechar{ᵣ}{\ensuremath{_r}}  
+ \newunicodechar{ᵣ}{\ensuremath{_r}}
  \newunicodechar{ₛ}{\ensuremath{_s}}
  \newunicodechar{ₜ}{\ensuremath{_t}}
  \newunicodechar{ᵤ}{\ensuremath{_u}}
@@ -234,8 +243,8 @@
 
 \newunicodechar{↦}{\ensuremath{\mapsto}}
 
-% In LaTeX documents, the "¿" is written as ?` (question mark, backtick) or \textquestiondown, 
-% and "¡" as !` (exclamation point, backtick) or \textexclamdown. 
+% In LaTeX documents, the "¿" is written as ?` (question mark, backtick) or \textquestiondown,
+% and "¡" as !` (exclamation point, backtick) or \textexclamdown.
  \newunicodechar{¡}{\text{!`}}
  \newunicodechar{¿}{\text{?`}}
  \DeclareUnicodeCharacter{8265}{ {\color{red}\large !? } } % ⁉
@@ -244,7 +253,7 @@
  % \DeclareUnicodeCharacter{10073}{\ensuremath{\with}} % ❙
 
  \DeclareUnicodeCharacter{120015}{\ensuremath{\mathfrak{z}}} % fancy small z
- 
+
  \DeclareUnicodeCharacter{8239}{\ensuremath{\,}} % \, %% an invisible space
 
  \newunicodechar{✗}{\ding{55}}

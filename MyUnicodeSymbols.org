@@ -45,14 +45,15 @@ Maintained at https://github.com/alhassy/MyUnicodeSymbols.
  \RequirePackage{stmaryrd}
 #+END_SRC
 
-The stmaryrd package provides two types of multiset, or bag, delimiters: 
+The stmaryrd package provides two types of multiset, or bag, delimiters:
 thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Lattices --Sets, Booleans, Quantifiers
 
 ** Orders
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 % arbitrary lattice
+ \newunicodechar{⊏}{\ensuremath{\sqsubset}}
  \newunicodechar{⊑}{\ensuremath{\sqsubseteq}}
  \newunicodechar{⊒}{\ensuremath{\sqsupseteq}}
 
@@ -62,6 +63,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 \newunicodechar{∣}{\ensuremath{\mid}}  % divisibily ordering
 
 % sets
+\newunicodechar{⊂}{\ensuremath{\subset}}
 \newunicodechar{⊆}{\ensuremath{\subseteq}}
 
 % logical
@@ -72,12 +74,12 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 ** Meets & Joins
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 % arbitrary lattice
  \newunicodechar{⊔}{\ensuremath{\sqcup}}
  \newunicodechar{⊓}{\ensuremath{\sqcap}}
 
-% numeric 
+% numeric
  \newunicodechar{↑}{\ensuremath{\uparrow}}
  \newunicodechar{↓}{\ensuremath{\downarrow}}
 
@@ -93,11 +95,14 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{∩}{\ensuremath{\cap}}
  \newunicodechar{∪}{\ensuremath{\cup}}
 
+% types
+ \newunicodechar{⊎}{\ensuremath{\cupdot}}  % Agda \u+
+ \newunicodechar{⊍}{\ensuremath{\cupdot}}  % Agda \u.
 #+END_SRC
 
 ** Extermal Elements
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 % arbitrary lattice
 \newunicodechar{⊥}{\ensuremath{\bot}}
 \newunicodechar{⊤}{\ensuremath{\top}}
@@ -112,7 +117,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 ** Pseudo-Complements
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 % arbitrary lattice
  \newunicodechar{→}{\ensuremath{\to}}
  \newunicodechar{←}{\ensuremath{\leftarrow}}
@@ -127,12 +132,12 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 % sets
 \newunicodechar{∈}{\ensuremath{\in}}
-\newunicodechar{∼}{\ensuremath{\sim}} 
+\newunicodechar{∼}{\ensuremath{\sim}}
 #+END_SRC
 
 * Equality-Like Symbols
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 \newunicodechar{≠}{\ensuremath{\neq}}
 \newunicodechar{≡}{\ensuremath{\equiv}}
 \newunicodechar{⇔}{\ensuremath{\iff}}
@@ -144,12 +149,18 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Brackets
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \newunicodechar{⌊}{\ensuremath{\lfloor}}
  \newunicodechar{⌋}{\ensuremath{\rfloor}}
 
  \newunicodechar{⌈}{\ensuremath{\lceil}}
  \newunicodechar{⌉}{\ensuremath{\rceil}}
+
+ \newunicodechar{⟪}{\ensuremath{\llangle}}
+ \newunicodechar{⟫}{\ensuremath{\rrangle}}
+
+ \newunicodechar{⟨}{\ensuremath{\langle}}
+ \newunicodechar{⟩}{\ensuremath{\rangle}}
 
  \newunicodechar{⦇}{\ensuremath{(\!|}}
  \newunicodechar{⦈}{\ensuremath{|\!)}}
@@ -166,7 +177,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Greek Letters
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \newunicodechar{λ}{\ensuremath{\lambda}}
  \newunicodechar{γ}{\ensuremath{\gamma}}
  \newunicodechar{δ}{\ensuremath{\delta}}
@@ -181,24 +192,21 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Compositional Operators
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
+ \newunicodechar{⊎}{\ensuremath{\cupdot}}
  \newunicodechar{⊕}{\ensuremath{\oplus}}
  \newunicodechar{⊗}{\ensuremath{\otimes}}
  \newunicodechar{⊙}{\ensuremath{\odot}}
  \newunicodechar{⨾}{\ensuremath{\mathop{\fatsemi}}}
  \newunicodechar{◁}{\ensuremath{\lhd}}
  \newunicodechar{∘}{\ensuremath{\circ}}
- \newunicodechar{⟪}{\ensuremath{\llangle}}
- \newunicodechar{⟫}{\ensuremath{\rrangle}}
- \newunicodechar{⟨}{\ensuremath{\langle}}
- \newunicodechar{⟩}{\ensuremath{\rangle}}
 
 \newunicodechar{╲}{\ensuremath{\backslash}}  % under
 \newunicodechar{╱}{\ensuremath{/}}  % over
 
  \newunicodechar{∙}{\ensuremath{\circ}} % Looks like, but is not bullet!
 
- \newunicodechar{⋆}{\ensuremath{\star}} 
+ \newunicodechar{⋆}{\ensuremath{\star}}
  \newunicodechar{×}{\ensuremath{\times}}
  \newunicodechar{•}{\ensuremath{\bullet}}
  \newunicodechar{∶}{\ensuremath{:}} % ghost colon, Agda input “\:”.
@@ -210,11 +218,11 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \DeclareUnicodeCharacter{9785}{\ensuremath{\frownie{}}} % ☹
  \DeclareUnicodeCharacter{9733}{ {\color{red}$\bigstar$} } % ★ should be printed red ;-)
 
-#+END_SRC 
+#+END_SRC
 
 * Types -- $ℕ, 𝔹$, etc
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \newunicodechar{𝒩}{\ensuremath{\mathcal{N}}}
  \newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
  \newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
@@ -222,9 +230,9 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{𝟙}{\ensuremath{\mathbb{1}}}
 #+END_SRC
 
-* Subscript and Superscript 
+* Subscript and Superscript
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \DeclareUnicodeCharacter{7525}{\ensuremath{_𝒱}} % subscript v
  \DeclareUnicodeCharacter{8343}{\ensuremath{_\ell}} % subscript ℓ
 
@@ -250,9 +258,9 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{ₘ}{\ensuremath{_m}}
  \newunicodechar{ₙ}{\ensuremath{_n}}
  \newunicodechar{ₒ}{\ensuremath{_o}}
- \newunicodechar{ₚ}{\ensuremath{_p}}  
+ \newunicodechar{ₚ}{\ensuremath{_p}}
 % I have no access to subscript q with my “current” agda input mode -- to fix!
- \newunicodechar{ᵣ}{\ensuremath{_r}}  
+ \newunicodechar{ᵣ}{\ensuremath{_r}}
  \newunicodechar{ₛ}{\ensuremath{_s}}
  \newunicodechar{ₜ}{\ensuremath{_t}}
  \newunicodechar{ᵤ}{\ensuremath{_u}}
@@ -264,8 +272,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 #+END_SRC
 
-* ~\mathcal~ Calligraphy 
-#+BEGIN_SRC tex  
+* ~\mathcal~ Calligraphy
+#+BEGIN_SRC tex
  \newunicodechar{𝓁}{\ensuremath{\mathcal{l}}}
  \newunicodechar{𝓇}{\ensuremath{\mathcal{r}}}
  \newunicodechar{ℳ}{\ensuremath{\mathcal{M}}}
@@ -291,7 +299,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Math Italics
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \newunicodechar{𝒶}{\ensuremath{\mathit{a}}}
  \newunicodechar{𝒷}{\ensuremath{\mathit{b}}}
  \newunicodechar{𝒸}{\ensuremath{\mathit{c}}}
@@ -314,7 +322,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Math Bold
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
  \newunicodechar{𝑰}{\ensuremath{\mathbf{I}}}
  \DeclareUnicodeCharacter{119924}{\ensuremath{\mathbf{M}}} % math bold caps 𝑴
  \DeclareUnicodeCharacter{119931}{\ensuremath{\mathbf{T}}} % math bold caps 𝑻
@@ -322,7 +330,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 * Misc
 
-#+BEGIN_SRC tex 
+#+BEGIN_SRC tex
 
  \newunicodechar{─}{\text{\textemdash}}
  \DeclareUnicodeCharacter{9472}{---} % \---
@@ -334,8 +342,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 
 \newunicodechar{↦}{\ensuremath{\mapsto}}
 
-% In LaTeX documents, the "¿" is written as ?` (question mark, backtick) or \textquestiondown, 
-% and "¡" as !` (exclamation point, backtick) or \textexclamdown. 
+% In LaTeX documents, the "¿" is written as ?` (question mark, backtick) or \textquestiondown,
+% and "¡" as !` (exclamation point, backtick) or \textexclamdown.
  \newunicodechar{¡}{\text{!`}}
  \newunicodechar{¿}{\text{?`}}
  \DeclareUnicodeCharacter{8265}{ {\color{red}\large !? } } % ⁉
@@ -344,7 +352,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  % \DeclareUnicodeCharacter{10073}{\ensuremath{\with}} % ❙
 
  \DeclareUnicodeCharacter{120015}{\ensuremath{\mathfrak{z}}} % fancy small z
- 
+
  \DeclareUnicodeCharacter{8239}{\ensuremath{\,}} % \, %% an invisible space
 
  \newunicodechar{✗}{\ding{55}}
@@ -362,8 +370,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 * COMMENT footer                                                 :DoNotAlter:
 
 (make-variable-buffer-local 'org-structure-template-alist)
-(setq TEMPLATE 
-  (concat 
+(setq TEMPLATE
+  (concat
    ;; "#+NAME: "
    "\n#+BEGIN_SRC tex \n"
    "\n#+END_SRC"))
