@@ -58,13 +58,13 @@ Why org-mode? To use org-babel tangle!
 ;; Replace newline, any number of space, then room or vspace with a #+latex: beforehand.
 (let (this that)
   (dolist (kp '( ( "^[ ]*\\\\room" . "#+latex: \\\\room")
-		 ( "^[ ]*\\\\vspace" . "#+latex: \\\\vspace")
-		 ( "^[ ]*\\\\newpage" . "#+latex: \\\\newpage")
-		 ( "^[ ]*\\\\columnbreak" . "#+latex: \\\\columnbreak")
-		 ))
-	(setq this (car kp))
-	(setq that (cdr kp))
-	(my/replace-in-buffer this that)
+         ( "^[ ]*\\\\vspace" . "#+latex: \\\\vspace")
+         ( "^[ ]*\\\\newpage" . "#+latex: \\\\newpage")
+         ( "^[ ]*\\\\columnbreak" . "#+latex: \\\\columnbreak")
+         ))
+    (setq this (car kp))
+    (setq that (cdr kp))
+    (my/replace-in-buffer this that)
    )
 )
   #+END_SRC
@@ -379,7 +379,7 @@ Together these form a recursive definition which can be phrased as a loop.
       @ loop variant N-n;
     */
     for(int n = 0; n != N; n++)
-	total = total ⊕ A[n];
+    total = total ⊕ A[n];
     return total;
 }
 #+END_SRC
@@ -484,7 +484,7 @@ C-c C-c: Evaluate src block.
 #+BEGIN_SRC emacs-lisp
 (with-temp-buffer
     (insert
-    "#+EXPORT_FILE_NAME: README.md
+    "#+EXPORT_FILE_NAME: README.org
      ,#+HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
      ,#+OPTIONS: toc:nil d:nil
      # Toc is displayed below at a strategic position.
@@ -515,17 +515,14 @@ C-c C-c: Evaluate src block.
     ;;
     (let ((org-export-use-babel nil))
       (org-mode)
-      (org-md-export-to-markdown))
+      ; (org-md-export-to-markdown)
+      (org-org-export-to-org)
+      )
 )
 #+END_SRC
 
 #+RESULTS: make-readme
-: README.md
-
-#+RESULTS:
-: README.md
-
-
+: README.org
 
 * COMMENT footer
 
