@@ -11,6 +11,13 @@
 #+OPTIONS: d:nil
 #+INCLUDE: CheatSheetSetup.org
 
+Why org-mode? To use org-babel tangle!
+#+begin_quote
+/‘Why’, said the Dodo, ‘the best way to explain it is to do it.’/
+
+---Alice's Adventures in Wonderland
+#+end_quote
+
 * LaTeX Extra, Local, Setup :ignore:
 
 # Can be obtained from: https://github.com/alhassy/MyUnicodeSymbols
