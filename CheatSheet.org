@@ -485,7 +485,7 @@ C-c C-c: Evaluate src block.
 (with-temp-buffer
     (insert
     "#+EXPORT_FILE_NAME: README.org
-     ,#+HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
+     ,# HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
      ,#+OPTIONS: toc:nil d:nil
      # Toc is displayed below at a strategic position.
 

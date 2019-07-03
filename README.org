@@ -1,11 +1,11 @@
-# Created 2019-07-03 Wed 12:36
+# Created 2019-07-03 Wed 12:43
 #+OPTIONS: toc:nil d:nil
 #+OPTIONS: d:nil
 #+OPTIONS: toc:nil
 #+TITLE: Easily Making CheatSheets with Org-mode
 #+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
 #+export_file_name: README.org
-#+html: <h1> Easily Making CheatSheets with Org-mode </h1>
+,# HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
 Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. See section [[#getting-started]] below to get started making your own cheat sheets!
 
 *The listing sheet, as PDF, can be found
