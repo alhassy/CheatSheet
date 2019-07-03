@@ -11,18 +11,19 @@
 #+OPTIONS: d:nil
 #+INCLUDE: CheatSheetSetup.org
 
+# TODO: Enumerations are not compact enough, need to fix this.
+
+:Ignore:
 Why org-mode? To use org-babel tangle!
 #+begin_quote
 /‘Why’, said the Dodo, ‘the best way to explain it is to do it.’/
 
 ---Alice's Adventures in Wonderland
 #+end_quote
-
+:End:
 * LaTeX Extra, Local, Setup :ignore:
 
-# Can be obtained from: https://github.com/alhassy/MyUnicodeSymbols
-#
-#+LATEX_HEADER: \usepackage{/Users/musa/MyUnicodeSymbols/MyUnicodeSymbols}
+#+LATEX_HEADER: \usepackage{UnicodeSymbols}
 
 # Removing the red box that appears in "minted" when using unicode.
 # Src: https://tex.stackexchange.com/questions/343494/minted-red-box-around-greek-characters
@@ -136,31 +137,15 @@ Reference sheets created from this project include:
   /we must both permanently and unceasingly recreate it in/
   /our consciousness./ ---Rene Thom
 
-* spacing newpage                                                    :ignore:
+* spacing COMMENT newpage                                                    :ignore:
 #+latex: \newpage
 * Getting Started
 :PROPERTIES:
 :CUSTOM_ID: getting-started
 :END:
 
-The steps to utilising this git project for your own cheat sheet may be:
-
-0. Go to the repo where you want to make a cheat sheet.
-
-1. Add this project as a submodule then copy its core to where you're working:
-   #+BEGIN_SRC shell :tangle no
-   git submodule add https://github.com/alhassy/CheatSheet.git
-   ; cp CheatSheet/CheatSheet.org .
-   ; cp CheatSheet/README.org .
-   #+END_SRC
-
-2. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
-   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
-
-# git submodule add https://github.com/alhassy/CheatSheet.git ; cp CheatSheet/CheatSheet.org . ; cp CheatSheet/README.org .
-
-I don't think this is difficult to automate, so I will likely get
-to doing it. Indeed, just copy-paste the following into, say the
+To use this project for your own cheatsheets,
+just copy-paste the following into, say, the
 ~*scratch*~ buffer then ~C-x C-e~ after the final closing parenthesis.
 
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -194,6 +179,28 @@ For the ~README.md~ to be generated as desired, fill in the macros ~URL~ and ~bl
 at the top of this org file to point to your repository and provide a description
 of what the cheatsheet serves to accomplish.
 
+Keep your submodule up to date by running the following command from the parent
+project ---i.e., your project.
+#+BEGIN_SRC shell :tangle no
+git submodule update
+#+END_SRC
+
+*Alternatively*:
+
+0. Go to the repo where you want to make a cheat sheet.
+
+1. Add this project as a submodule then copy its core to where you're working:
+   #+BEGIN_SRC shell :tangle no
+   git submodule add https://github.com/alhassy/CheatSheet.git
+   ; cp CheatSheet/CheatSheet.org .
+   ; cp CheatSheet/README.org .
+   #+END_SRC
+
+2. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
+   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
+
+# git submodule add https://github.com/alhassy/CheatSheet.git ; cp CheatSheet/CheatSheet.org . ; cp CheatSheet/README.org .
+
 * spacing COMMENT vfill :ignore:
   \vfill
 * What if it's not good enough?
@@ -206,7 +213,7 @@ of what the cheatsheet serves to accomplish.
 /The more that you learn, the more places you'll go./
 ---Dr. Seuss
 
-* spacing newpage                                                    :ignore:
+* spacing COMMENT newpage                                                    :ignore:
 #+latex: \newpage
 * Org-mode Basics
 
@@ -302,7 +309,7 @@ postamble words here
 
 Having three narrow columns is useful for term-heavy or formula heavy sheets.
 
-* spacing newpage                                                    :ignore:
+* spacing COMMENT newpage                                                    :ignore:
 #+latex: \newpage
 * Parallel Environment
 
@@ -474,7 +481,7 @@ below loads ~CheatSheet/CheatSheet.el~.
 ))
 #+END_SRC
 
-* COMMENT Making README.md
+* COMMENT Making README
 
 C-c C-c: Evaluate src block.
 

@@ -16,7 +16,8 @@
 #+begin_abstract org
 I tend to use ~(set-input-method "Agda")~ in many of my Emacs buffers to provide Unicode
 support so that ~\forall~ immediately produces ∀, and likewise a variety of symbols:
-/∀ x • x ≤ y ≈ z ∃ ≡ ⇒ ∧ ∨ ⌣ ⊓ ⊔ < ⊑/.
+/∀ x • x ≤ y ≈ z ∃ ≡ ⇒ ∧ ∨ ⌣ ⊓ ⊔ < ⊑/. Draw a symbol at [[http://detexify.kirelabs.org/classify.html][de-TeX-ify]] to find out what
+TeX incantations would produce it.
 
 This Org-mode file produces a LaTeX style file which can be utilised in nearly all of my
 documents which generate PDFs.
@@ -38,11 +39,17 @@ Maintained at https://github.com/alhassy/CheatSheet
 
  \RequirePackage[utf8]{inputenc}
  \RequirePackage{newunicodechar}
+
+ % To avoid “too many math alphabets” error.
+ \newcommand\hmmax{0} % default 3
+ \newcommand\bmmax{0} % default 4
+
  \RequirePackage{bbold}   % \mathbb{n} to make double stroke digit
  \RequirePackage{pifont}
  \RequirePackage{stmaryrd}
- \RequirePackage{MnSymbol}  % Incompatible with amssymb.
- \RequirePackage{amsthm}
+
+ \RequirePackage{amsmath, amssymb, amsthm, latexsym, amscd, enumerate, bbm, etex,nicefrac,mathrsfs}
+ % Incompatible with MnSymbol.
 #+END_SRC
 
 The stmaryrd package provides two types of multiset, or bag, delimiters:
@@ -96,8 +103,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{∪}{\ensuremath{\cup}}
 
 % types
- \newunicodechar{⊎}{\ensuremath{\cupdot}}  % Agda u+
- \newunicodechar{⊍}{\ensuremath{\cupdot}}  % Agda u.
+ \newunicodechar{⊎}{\ensuremath{\uplus}}  % Agda u+
+ \newunicodechar{⊍}{\ensuremath{\uplus}}  % Agda u.
 #+END_SRC
 
 ** Extermal Elements
@@ -140,7 +147,7 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 #+BEGIN_SRC tex
 \newunicodechar{≠}{\ensuremath{\neq}}
 \newunicodechar{≡}{\ensuremath{\equiv}}
-\newunicodechar{≢}{\ensuremath{\nequiv}}
+\newunicodechar{≢}{\ensuremath{\not\equiv}}
 \newunicodechar{⇔}{\ensuremath{\iff}}
 \newunicodechar{≈}{\ensuremath{\approx}}
 \newunicodechar{≅}{\ensuremath{\cong}}
@@ -157,8 +164,8 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
  \newunicodechar{⌈}{\ensuremath{\lceil}}
  \newunicodechar{⌉}{\ensuremath{\rceil}}
 
- \newunicodechar{⟪}{\ensuremath{\llangle}}
- \newunicodechar{⟫}{\ensuremath{\rrangle}}
+ \newunicodechar{⟪}{\ensuremath{\langle\!\langle}}
+ \newunicodechar{⟫}{\ensuremath{\rangle\!\rangle}}
 
  \newunicodechar{⟨}{\ensuremath{\langle}}
  \newunicodechar{⟩}{\ensuremath{\rangle}}
@@ -201,7 +208,6 @@ thick: ~\lbag~ and ~\rbag~; and skinny: ~\Lbag~ and ~\Rbag~.
 * Compositional Operators
 
 #+BEGIN_SRC tex
- \newunicodechar{⊎}{\ensuremath{\cupdot}}
  \newunicodechar{⊕}{\ensuremath{\oplus}}
  \newunicodechar{⊗}{\ensuremath{\otimes}}
  \newunicodechar{⊙}{\ensuremath{\odot}}

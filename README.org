@@ -1,4 +1,4 @@
-# Created 2019-07-03 Wed 12:43
+# Created 2019-07-03 Wed 13:59
 #+OPTIONS: toc:nil d:nil
 #+OPTIONS: d:nil
 #+OPTIONS: toc:nil
@@ -25,13 +25,13 @@ https://github.com/alhassy/CheatSheet.
 
 #+latex_header: \usepackage{titling}
 
-#+latex_header: \def\maketitle#1{}
-
-#+latex: \fontsize{9}{10}\selectfont
-
 #+latex_header: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
 #+latex_header: \usepackage{eufrak} % for mathfrak fonts
 #+latex_header: \usepackage{multicol}
+
+#+latex_header: \def\maketitle{}
+
+#+latex: \fontsize{9}{10}\selectfont
 
 #+latex_header: \usepackage[dvipsnames]{xcolor} % named colours
 #+latex: \definecolor{grey}{rgb}{0.5,0.5,0.5}
@@ -44,11 +44,6 @@ https://github.com/alhassy/CheatSheet.
 #+latex_header: \setlength{\parindent}{0pt}
 
 
-#+name: globally set itemsep length
-
-#+latex_header: \usepackage{enumitem}
-#+latex: \setitemize{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
-#+latex: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
 
 
 
@@ -56,7 +51,7 @@ https://github.com/alhassy/CheatSheet.
 #+latex_header: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 
 
-#+latex_header: \usepackage{/Users/musa/MyUnicodeSymbols/MyUnicodeSymbols}
+#+latex_header: \usepackage{UnicodeSymbols}
 
 #+latex_header: \makeatletter
 #+latex_header: \AtBeginEnvironment{minted}{\dontdofcolorbox}
@@ -130,24 +125,9 @@ Reference sheets created from this project include:
 /we must both permanently and unceasingly recreate it in/
 /our consciousness./ ---Rene Thom
 
-#+latex: \newpage
 * Getting Started
-The steps to utilising this git project for your own cheat sheet may be:
-
-1. Go to the repo where you want to make a cheat sheet.
-
-2. Add this project as a submodule then copy its core to where you're working:
-   #+begin_src shell :tangle no
-      git submodule add https://github.com/alhassy/CheatSheet.git
-      ; cp CheatSheet/CheatSheet.org .
-      ; cp CheatSheet/README.org .
-   #+end_src
-
-3. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
-   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
-
-I don't think this is difficult to automate, so I will likely get
-to doing it. Indeed, just copy-paste the following into, say the
+To use this project for your own cheatsheets,
+just copy-paste the following into, say, the
 ~*scratch*~ buffer then ~C-x C-e~ after the final closing parenthesis.
 
 #+begin_src emacs-lisp :tangle no
@@ -179,6 +159,26 @@ For the ~README.md~ to be generated as desired, fill in the macros ~URL~ and ~bl
 at the top of this org file to point to your repository and provide a description
 of what the cheatsheet serves to accomplish.
 
+Keep your submodule up to date by running the following command from the parent
+project ---i.e., your project.
+#+begin_src shell :tangle no
+git submodule update
+#+end_src
+
+*Alternatively*:
+
+1. Go to the repo where you want to make a cheat sheet.
+
+2. Add this project as a submodule then copy its core to where you're working:
+   #+begin_src shell :tangle no
+      git submodule add https://github.com/alhassy/CheatSheet.git
+      ; cp CheatSheet/CheatSheet.org .
+      ; cp CheatSheet/README.org .
+   #+end_src
+
+3. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
+   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
+
 * What if it's not good enough?
 
 /“The person who thinks of doing something, is usually passed by the person doing it.”/
@@ -189,7 +189,6 @@ of what the cheatsheet serves to accomplish.
 /The more that you learn, the more places you'll go./
 ---Dr. Seuss
 
-#+latex: \newpage
 * Org-mode Basics
 
 Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
@@ -246,7 +245,6 @@ Then at the very bottom, add a section to close this multicol:
 
 Having three narrow columns is useful for term-heavy or formula heavy sheets.
 
-#+latex: \newpage
 * Parallel Environment
 
 Cheat sheets should not waste space, so the setup provides

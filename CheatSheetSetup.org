@@ -10,33 +10,36 @@
 
 #+OPTIONS: toc:nil
 
-* Title header                                                       :ignore:
-
+* \usepackages{}                                               :ignore:
 # The titling package provides various user-friendly ways to modify title pages.
 # It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
 #+LATEX_HEADER: \usepackage{titling}
 
+#+LATEX_HEADER: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage{eufrak} % for mathfrak fonts
+#+LATEX_HEADER: \usepackage{multicol}
+
+* Title header                                                       :ignore:
+
 # The \maketitle command, in article, clears the values of \title, \author, \date, etc; so we make it do nothing.
-#+LATEX_HEADER: \def\maketitle#1{}
+#+LATEX_HEADER: \def\maketitle{}
 
 #+LaTeX: \fontsize{9}{10}\selectfont
 
 # Actually render the title headers
 #+BEGIN_EXPORT latex
 \theauthor \hfill \thedate
-\hline
+
+\vspace{-0.5em}
+{\color{white}.\!\!}\hrulefill
+
+\vspace{-0.5em}
 {\center \large\bf \thetitle \\ }
 #+END_EXPORT
 
 #
 # This works since the Org settings, `#+` lines are parsed before the TeX ones.
 #
-
-* Other \usepackages{}                                               :ignore:
-
-#+LATEX_HEADER: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
-#+LATEX_HEADER: \usepackage{eufrak} % for mathfrak fonts
-#+LATEX_HEADER: \usepackage{multicol}
 
 * Colour and links                                                   :ignore:
 
@@ -52,59 +55,59 @@
 
 # Text after an enumeration should not be indented, otherwise it looks like it ought to belong
 # to the previous enumerated item.
-#+LATEX_HEADER: \setlength{\parindent}{0pt}  
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
 
 * Redefining subsection for purposes of theorem list headings        :ignore:
 #+BEGIN_EXPORT latex
 %
-% Note the * makes the numbering dissapear; 
+% Note the * makes the numbering dissapear;
 % See §7.2 of the manual: http://mirror.its.dal.ca/ctan/macros/latex/base/classes.pdf
-% 
+%
 \makeatletter
 \renewcommand\section[1]{
   \@startsection {section}{1}{0ex}%
                  {-3.5ex \@plus -1ex \@minus -.2ex}%
                  {-1em}%
-		 { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{1ex}\newline }}
-		 
+         { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{1ex}\newline }}
+
 \makeatother
 
 % The black-colour is to ensure no accidental spill-over when using other colour; e.g. \invisibleHI
 #+END_EXPORT
 
-* Enumerations settings                                              :ignore:
+* TODO Enumerations settings                                         :ignore:
 
-#+NAME: globally set itemsep length
+# https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html
 
-#+NAME: symbols for itemisation environment
+# symbols for itemisation environment
 #+BEGIN_EXPORT latex
 \def\labelitemi{$\diamond$}
 \def\labelitemii{$\circ$}
 \def\labelitemiii{$\star$}
 
 % Level 0                 Level 0
-% + Level 1               ⋄ Level 1 
-%   - Level 2       --->      ∘ Level 2 
+% + Level 1               ⋄ Level 1
+%   - Level 2       --->      ∘ Level 2
 %     * Level 3                   ⋆ Level 3
-% 
+%
 #+END_EXPORT
 
-#+LATEX_HEADER: \usepackage{enumitem}
-#+LaTeX: \setitemize{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
-#+LaTeX: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
+# LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+# LaTeX: \setlist{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+# LaTeX: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
 #
 # https://stackoverflow.com/questions/4968557/latex-very-compact-itemize/4974583#4974583
 
 * Parallel environment                                               :ignore:
 
-#+BEGIN_EXPORT latex 
+#+BEGIN_EXPORT latex
 \renewenvironment{parallel}[1][2] % one argument, whose default value is literal `2`.
  {
   \setlength{\columnseprule}{2pt}
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{#1}  % default is `2`
  }
- { 
+ {
   \end{multicols}
   \end{minipage}
  }
@@ -116,7 +119,7 @@
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{3}
  }
- { 
+ {
   \end{multicols}
   \end{minipage}
  }
@@ -130,7 +133,7 @@
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{#1}  % default is `2`
  }
- { 
+ {
   \end{multicols}
   \end{minipage}
  }
@@ -141,7 +144,7 @@
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{3}
  }
- { 
+ {
   \end{multicols}
   \end{minipage}
  }
@@ -149,7 +152,7 @@
 
 * Basic Equational Support                                           :ignore:
 
-#+BEGIN_EXPORT latex 
+#+BEGIN_EXPORT latex
 \def\providedS{ \qquad\Leftarrow\qquad }
 
 \def\impliesS{ \qquad\Rightarrow\qquad }

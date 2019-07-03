@@ -3,11 +3,17 @@
 
  \RequirePackage[utf8]{inputenc}
  \RequirePackage{newunicodechar}
+
+ % To avoid “too many math alphabets” error.
+ \newcommand\hmmax{0} % default 3
+ \newcommand\bmmax{0} % default 4
+
  \RequirePackage{bbold}   % \mathbb{n} to make double stroke digit
  \RequirePackage{pifont}
  \RequirePackage{stmaryrd}
- \RequirePackage{MnSymbol}  % Incompatible with amssymb.
- \RequirePackage{amsthm}
+
+ \RequirePackage{amsmath, amssymb, amsthm, latexsym, amscd, enumerate, bbm, etex,nicefrac,mathrsfs}
+ % Incompatible with MnSymbol.
 
 % arbitrary lattice
  \newunicodechar{⊏}{\ensuremath{\sqsubset}}
@@ -49,8 +55,8 @@
  \newunicodechar{∪}{\ensuremath{\cup}}
 
 % types
- \newunicodechar{⊎}{\ensuremath{\cupdot}}  % Agda u+
- \newunicodechar{⊍}{\ensuremath{\cupdot}}  % Agda u.
+ \newunicodechar{⊎}{\ensuremath{\uplus}}  % Agda u+
+ \newunicodechar{⊍}{\ensuremath{\uplus}}  % Agda u.
 
 % arbitrary lattice
 \newunicodechar{⊥}{\ensuremath{\bot}}
@@ -81,7 +87,7 @@
 
 \newunicodechar{≠}{\ensuremath{\neq}}
 \newunicodechar{≡}{\ensuremath{\equiv}}
-\newunicodechar{≢}{\ensuremath{\nequiv}}
+\newunicodechar{≢}{\ensuremath{\not\equiv}}
 \newunicodechar{⇔}{\ensuremath{\iff}}
 \newunicodechar{≈}{\ensuremath{\approx}}
 \newunicodechar{≅}{\ensuremath{\cong}}
@@ -94,8 +100,8 @@
  \newunicodechar{⌈}{\ensuremath{\lceil}}
  \newunicodechar{⌉}{\ensuremath{\rceil}}
 
- \newunicodechar{⟪}{\ensuremath{\llangle}}
- \newunicodechar{⟫}{\ensuremath{\rrangle}}
+ \newunicodechar{⟪}{\ensuremath{\langle\!\langle}}
+ \newunicodechar{⟫}{\ensuremath{\rangle\!\rangle}}
 
  \newunicodechar{⟨}{\ensuremath{\langle}}
  \newunicodechar{⟩}{\ensuremath{\rangle}}
@@ -130,7 +136,6 @@
  \newunicodechar{Γ}{\ensuremath{\Gamma}}
  \newunicodechar{Π}{\ensuremath{\Pi}}
 
- \newunicodechar{⊎}{\ensuremath{\cupdot}}
  \newunicodechar{⊕}{\ensuremath{\oplus}}
  \newunicodechar{⊗}{\ensuremath{\otimes}}
  \newunicodechar{⊙}{\ensuremath{\odot}}
