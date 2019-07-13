@@ -8,16 +8,42 @@
 # The above are comments, otherwise they would contribute to the main CheatSheet.org file.
 #
 
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:nil d:nil
 
-* \usepackages{}                                               :ignore:
+* \usepackages{} & landscape conditional                             :ignore:
 # The titling package provides various user-friendly ways to modify title pages.
 # It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
-#+LATEX_HEADER: \usepackage{titling}
-
-#+LATEX_HEADER: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage{titling,parskip}
 #+LATEX_HEADER: \usepackage{eufrak} % for mathfrak fonts
-#+LATEX_HEADER: \usepackage{multicol}
+#+LATEX_HEADER: \usepackage{multicol,xparse,newunicodechar}
+
+# parskip gives nice default spacing between paragraphs.
+
+# Obtain “AfterEndPreamble” hook;
+# cannot use the “AtBeginDocument” hook since the color package uses that
+# and together they would crash.
+#+LATEX_HEADER: \usepackage{etoolbox}
+
+#+LATEX_HEADER: \newif\iflandscape
+#+LATEX_HEADER: \landscapetrue
+
+# “latex_header_extra” means put this command at the very end of the header, right before \begin{document}.
+# This way the user may invoke “landscapefalse” which will thus compile to occuring before the following and so disable the landscape setting.
+#+LATEX_HEADER_EXTRA: \iflandscape \usepackage[landscape, margin=0.5in]{geometry} \else \usepackage[margin=0.5in]{geometry} \fi
+
+* Number of columns                                                  :ignore:
+#+LATEX_HEADER: \def\cheatsheetcols{2}
+#+LATEX_HEADER: \AfterEndPreamble{\begin{multicols}{\cheatsheetcols}}
+#+LATEX_HEADER: \AtEndDocument{ \end{multicols} }
+
+#+LATEX_HEADER: \let\multicolmulticols\multicols
+#+LATEX_HEADER: \let\endmulticolmulticols\endmulticols
+#+LATEX_HEADER: \RenewDocumentEnvironment{multicols}{mO{}}{\ifnum#1=1 #2 \def\columnbreak{} \else \multicolmulticols{#1}[#2] \fi}{\ifnum#1=1 \else \endmulticolmulticols\fi}
+#
+# This incantation was obtained from here:
+# https://tex.stackexchange.com/questions/233866/one-column-multicol-environment
+
+# Note that we define a column break to do nothing in the single column case.
 
 * Title header                                                       :ignore:
 
@@ -26,17 +52,26 @@
 
 #+LaTeX: \fontsize{9}{10}\selectfont
 
+# Src: https://tex.stackexchange.com/a/55476/69371
+#+LATEX_HEADER_EXTRA: \newcommand\textbox[1]{\parbox{.333\textwidth/\cheatsheetcols}{#1}}
+
+# User redefines this item.
+#+LATEX_HEADER: \def\yoururl{}
+
 # Actually render the title headers
 #+BEGIN_EXPORT latex
-\theauthor \hfill \thedate
+% \theauthor \hfill \thedate
+% \noindent
+\textbox{\theauthor\hfill}\textbox{\hfil {\tiny \url{\yoururl}} \hfill}\textbox{\hfill \thedate\hspace{0.2em}{\color{white}.}}
+\hrule
 
-\vspace{-0.5em}
-{\color{white}.\!\!}\hrulefill
+% \vspace{-1em}
+% {\color{white}.\!\!}\hrulefill
+%
 
-\vspace{-0.5em}
+\vspace{1em}
 {\center \large\bf \thetitle \\ }
 #+END_EXPORT
-
 #
 # This works since the Org settings, `#+` lines are parsed before the TeX ones.
 #
@@ -57,27 +92,31 @@
 # to the previous enumerated item.
 #+LATEX_HEADER: \setlength{\parindent}{0pt}
 
-* Redefining subsection for purposes of theorem list headings        :ignore:
+* Redefining \(sub)section for boxed headings                        :ignore:
 #+BEGIN_EXPORT latex
 %
 % Note the * makes the numbering dissapear;
 % See §7.2 of the manual: http://mirror.its.dal.ca/ctan/macros/latex/base/classes.pdf
 %
+% See here for terse docs on \@startsection: https://tex.stackexchange.com/a/31795/69371
+%
 \makeatletter
 \renewcommand\section[1]{
-  \@startsection {section}{1}{0ex}%
-                 {-3.5ex \@plus -1ex \@minus -.2ex}%
-                 {-1em}%
-         { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{1ex}\newline }}
-
+  \@startsection {section}{1}{0ex}% Level is 1, and indentation is 0
+                 {1em}%{-3.5ex \@plus -1ex \@minus -.2ex}% space before heading
+                 {-1em}% space after heading
+                 % style:
+         { \color{black}\normalfont\bfseries}* {\fbox{#1} \vspace{2ex}\newline }}
 \makeatother
 
 % The black-colour is to ensure no accidental spill-over when using other colour; e.g. \invisibleHI
+
+\makeatletter
+\renewcommand\subsection[1]{ \room \hrule \vspace{-0.3em} }
+\makeatother
 #+END_EXPORT
 
-* TODO Enumerations settings                                         :ignore:
-
-# https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html
+* Enumerations settings                                              :ignore:
 
 # symbols for itemisation environment
 #+BEGIN_EXPORT latex
@@ -92,11 +131,33 @@
 %
 #+END_EXPORT
 
+#+LATEX_HEADER: \def\cheatsheetitemsep{-0.5em}
+#+LATEX_HEADER: \let\olditem\item
+#+LATEX_HEADER_EXTRA: \def\item{\vspace{\cheatsheetitemsep}\olditem}
+
+:Just_does_not_work:
+# LATEX_HEADER: \AtBeginEnvironment{description}{\setlength\itemsep{10em}}
+# Does not work as desired.
+
+# https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html
+
 # LATEX_HEADER: \usepackage[shortlabels]{enumitem}
 # LaTeX: \setlist{itemsep=2pt,topsep=0pt,parsep=0pt,partopsep=0pt}
 # LaTeX: \setdescription{itemsep=0.3em,topsep=0pt,parsep=0pt,partopsep=0pt}
 #
 # https://stackoverflow.com/questions/4968557/latex-very-compact-itemize/4974583#4974583
+:End:
+
+* Unicode support                                                    :ignore:
+  #+LATEX_HEADER: \usepackage{UnicodeSymbols}
+
+  # Removing the red box that appears in "minted" when using unicode.
+  # Src: https://tex.stackexchange.com/questions/343494/minted-red-box-around-greek-characters
+  #
+  #+LATEX_HEADER: \makeatletter
+  #+LATEX_HEADER: \AtBeginEnvironment{minted}{\dontdofcolorbox}
+  #+LATEX_HEADER: \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+  #+LATEX_HEADER: \makeatother
 
 * Parallel environment                                               :ignore:
 

@@ -35,7 +35,7 @@ Maintained at https://github.com/alhassy/CheatSheet
 
 #+BEGIN_SRC tex
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{MyUnicodeSymbols}[2019/01/30 Unicode Symbol Translations]
+\ProvidesPackage{UnicodeSymbols}[2019/01/30 Unicode Symbol Translations]
 
  \RequirePackage[utf8]{inputenc}
  \RequirePackage{newunicodechar}

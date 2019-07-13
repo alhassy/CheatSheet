@@ -1,15 +1,15 @@
-# Created 2019-07-03 Wed 13:59
+# Created 2019-07-12 Fri 20:01
 #+OPTIONS: toc:nil d:nil
-#+OPTIONS: d:nil
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:nil d:nil
 #+TITLE: Easily Making CheatSheets with Org-mode
 #+AUTHOR: [[http://www.cas.mcmaster.ca/~alhassm/][Musa Al-hassy]]
 #+export_file_name: README.org
-,# HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
+
 Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. See section [[#getting-started]] below to get started making your own cheat sheets!
 
 *The listing sheet, as PDF, can be found
- [here](https://github.com/alhassy/CheatSheet/blob/master/CheatSheet.pdf)*,
+ [here](CheatSheet.pdf)*,
+ or as a [single column portrait](CheatSheet_Portrait.pdf),
  while below is an unruly html rendition.
 
 This reference sheet is built around the system
@@ -17,21 +17,34 @@ https://github.com/alhassy/CheatSheet.
 
 #+toc: headlines 2
 #+subtitle: ---Reference Sheet for “What I'm Currently Learning”---
-
-#+macro: URL https://github.com/alhassy/CheatSheet
 #+macro: blurb Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. See section [[#getting-started]] below to get started making your own cheat sheets!
-#+macro: ShowURL @@latex:{\tiny\hspace{6em}\url{ {{{URL}}} } }@@
-#+todo: Todo | spacing begin end LaTeX
 
-#+latex_header: \usepackage{titling}
-
-#+latex_header: \usepackage[landscape,twocolumn, margin=0.5in]{geometry}
+#+latex_header: \usepackage{titling,parskip}
 #+latex_header: \usepackage{eufrak} % for mathfrak fonts
-#+latex_header: \usepackage{multicol}
+#+latex_header: \usepackage{multicol,xparse,newunicodechar}
+
+#+latex_header: \usepackage{etoolbox}
+
+#+latex_header: \newif\iflandscape
+#+latex_header: \landscapetrue
+
+#+latex_header_extra: \iflandscape \usepackage[landscape, margin=0.5in]{geometry} \else \usepackage[margin=0.5in]{geometry} \fi
+
+#+latex_header: \def\cheatsheetcols{2}
+#+latex_header: \AfterEndPreamble{\begin{multicols}{\cheatsheetcols}}
+#+latex_header: \AtEndDocument{ \end{multicols} }
+
+#+latex_header: \let\multicolmulticols\multicols
+#+latex_header: \let\endmulticolmulticols\endmulticols
+#+latex_header: \RenewDocumentEnvironment{multicols}{mO{}}{\ifnum#1=1 #2 \def\columnbreak{} \else \multicolmulticols{#1}[#2] \fi}{\ifnum#1=1 \else \endmulticolmulticols\fi}
 
 #+latex_header: \def\maketitle{}
 
 #+latex: \fontsize{9}{10}\selectfont
+
+#+latex_header_extra: \newcommand\textbox[1]{\parbox{.333\textwidth/\cheatsheetcols}{#1}}
+
+#+latex_header: \def\yoururl{}
 
 #+latex_header: \usepackage[dvipsnames]{xcolor} % named colours
 #+latex: \definecolor{grey}{rgb}{0.5,0.5,0.5}
@@ -44,12 +57,9 @@ https://github.com/alhassy/CheatSheet.
 #+latex_header: \setlength{\parindent}{0pt}
 
 
-
-
-
-#+latex_header: \RequirePackage{fancyvrb}
-#+latex_header: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
-
+#+latex_header: \def\cheatsheetitemsep{-0.5em}
+#+latex_header: \let\olditem\item
+#+latex_header_extra: \def\item{\vspace{\cheatsheetitemsep}\olditem}
 
 #+latex_header: \usepackage{UnicodeSymbols}
 
@@ -58,41 +68,44 @@ https://github.com/alhassy/CheatSheet.
 #+latex_header: \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
 #+latex_header: \makeatother
 
-#+latex_header: \usepackage{newunicodechar}
+
+
+#+latex_header: \RequirePackage{fancyvrb}
+#+latex_header: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+
+
+#+latex_header: \def\yoururl{https://github.com/alhassy/CheatSheet}
+
+#+latex_header: \def\cheatsheetcols{2}
+#+latex_header: \landscapetrue
+#+latex_header: \def\cheatsheetitemsep{-0.5em}
+
 #+latex_header: \newunicodechar{𝑻}{\ensuremath{T}}
 #+latex_header: \newunicodechar{⊕}{\ensuremath{\oplus}}
 #+latex_header: \newunicodechar{≈}{\ensuremath{\approx}}
 
-* Hello, World!
+* Project Goal
 
-- Pretty PDF :: Enter ~M-x compile~ to produce a nice looking PDF of your reference sheet.
-  - I've bound this command to ~C-c C-m~ in [[https://github.com/alhassy/emacs.d][my Emacs setup]] ;-)
+#+latex: \hspace{-12pt}
+/Use the elegant & intuitive Org-mode syntax to produce exquisite reference sheets./
 
-    My Emacs configuration also documents how I utilise ‘minted’
-    to obtain colourful source code blocks.
+- For example, the boxed section headers here are produced from usual Org headers,
+  as in ~* my section~; and one may use [[https://github.com/jkitchin/org-ref][org-ref]] for citations, as in nameref:name
 
-- Section Headers :: A usual Org header, say ~* my section~, results in the boxed headers
-     used in this cheat sheet.
+#+latex: \vspace{-1em}
+Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
+- For more see [[https://orgmode.org/orgguide.pdf][The Compact Org-mode Guide]].
 
-- Parallel Environments :: The LaTeX matter here supports an org-enviornment
-     named ~parallel~ for producing text side-by-side.
+Execute ~C-c C-e l o~ or ~M-x compile~ to produce a nice looking PDF of your reference sheet.
 
-     The column break is automatic, but as
-     this is sugar for a ~minipage~ containing a ~multicolum~ we can force a column
-     separation with ~\columnbreak~: This command, in Org, necessities newlines between
-     the items being separated.
-
-#+latex: \vspace{1em}
-To learn more, manipulating this source is the way to go!
-
-#+latex: \vspace{1em}
-Also, opening this file produces a ~README.md~ ;-)
-Which can then be regenerated on-demand with ~f11~.
+#+latex: \vspace{-0em}
+#+begin_center
+/To learn more, manipulating this source is the way to go!/
+#+end_center
 
 * CheatSheet Examples
 
 Reference sheets created from this project include:
-#+latex: \vspace{1em}
 
 - [[https://github.com/alhassy/ElispCheatSheet][ElispCheatSheet]] :: Quick reference to the core language of Emacs
      ---Editor MACroS.
@@ -115,15 +128,31 @@ Reference sheets created from this project include:
 - [[https://github.com/alhassy/GojuRyuCheatSheet][GojuRyuCheatSheet]] :: A quick cheat sheet for common terms in Goju Ryu Karate
      ---the hard-soft style of karate.
 
+#+latex: \vspace{0.5em}
 #+begin_center
 /If you use this org-setup to produce a neat cheat sheet, please let me know!/
 #+end_center
 
+
+#+latex: \vspace{-0.5em}
 * Why Learn & Relearn?
 
 /The world of ideas is not revealed to us in one stroke;/
 /we must both permanently and unceasingly recreate it in/
 /our consciousness./ ---Rene Thom
+
+I think org-mode is ideal for computing cheat sheets especially since it allows us
+to use org-babel tangle to have small minimal working examples that go along with
+the ideas.
+
+#+begin_quote
+/‘Why’, said the Dodo, ‘the best way to explain it is to do it.’/
+\newline ---Alice's Adventures in Wonderland
+#+end_quote
+
+/A good stock of examples, as large as possible, is indispensable/
+/for a thorough understanding of any concept, and when I want to/
+/learn something new, I make it my first job to build one./ ---Paul Halmos
 
 * Getting Started
 To use this project for your own cheatsheets,
@@ -177,97 +206,107 @@ git submodule update
    #+end_src
 
 3. Open ~CheatSheet.org~ and locate ~#+INCLUDE: CheatSheetSetup.org~
-   then rewrite ~CheatSheetSetup.org → CheatSheet/CheatSheetSetup.org~.
+   then rewrite ~CheatSheetSetup.org~ to ~CheatSheet/CheatSheetSetup.org~.
 
 * What if it's not good enough?
 
 /“The person who thinks of doing something, is usually passed by the person doing it.”/
 
-#+latex: \vspace{1em}
-
 /The more that you read, the more things you will know./
 /The more that you learn, the more places you'll go./
 ---Dr. Seuss
 
-* Org-mode Basics
+* What if I want ~N~ columns? Or non-landscape? Or multiple formats?
 
-Read [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode for beginners]] for a refresher!
-- For more see [[https://orgmode.org/orgguide.pdf][The Compact Org-mode Guide]].
+At the top, say after the ~#+INCLUDE: CheatSheet/CheatSheetSetup.org~ line, add
+the following.
 
-#+latex: \vspace{1em}
+#+begin_example org :tangle no
+,#+LATEX_HEADER: \def\cheatsheetcols{N}
+,#+LATEX_HEADER: \landscapefalse
+#+end_example
 
-- Reloading :: To reload a file with updated org settings, press
-     ~C-c C-c~ on a settings line --i.e., one beginning with a ~#+~, to reset the
-      temporary file cache.
+For example, having three narrow columns is useful for term-heavy or formula heavy sheets.
+In contrast, dense sheets may appear less daunting when rendered as single-column in portrait.
+Sometimes a double-column portrait is more appropriate.
 
-- Inclusion :: During export, you can include the content of another file.
-  - Syntax: ~#+INCLUDE: "⟨fileName⟩" [⟨markup⟩ [⟨language⟩]]~
-    - ~markup ::= src | example~
-    - ~language ::= C | haskell | emacs-lisp | ⋯~
-    - If the markup is not given, the text will be assumed to be in
-      Org mode format and will be processed normally; c.f., [[https://orgmode.org/manual/In_002dbuffer-settings.html][Setup files]].
+Press ~C-c C-c~ on the following incantation to produce a single column portrait of the cheat sheet.
+#+name: make-portrait
+#+begin_src emacs-lisp :results none
+(with-temp-buffer
+    (insert
+    "#+EXPORT_FILE_NAME: CheatSheet_Portrait.pdf
+     ,#+LATEX_HEADER_EXTRA: \\landscapefalse \\def\\cheatsheetcols{1}
+     ,#+INCLUDE: CheatSheet.org
+    ")
 
-  - To visit the file, ~C-c '~ while the cursor is on the line with the file name.
+    (let ((org-export-use-babel nil))
+      (org-mode)
+      (org-latex-export-to-pdf)
+      )
+)
+#+end_src
 
-  - Include only portions of a file by appending with ~:lines "x-y"~ where ~x~ is the first
-    line and ~y~ is the second-to-last line. Also ~"-y"~ for upto but not including line ~y~,
-    and ~"x-"~ for taking line ~x~ until the end of the file.
+* Colourful Source Blocks
 
+Invoke the following with ~C-c C-c~, or better yet place it in your [[https://alhassy.github.io/init/][Emacs configuration]],
+to ensure references are picked up and source code highlighting is turned on
+using the Minted package ---which in turn requires the pygmentize system tool.
+
+#+begin_src emacs-lisp
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted"))
+      org-latex-pdf-process
+      '("pdflatex -shell-escape -output-directory %o %f"
+        "biber %b"
+        "pdflatex -shell-escape -output-directory %o %f"
+        "pdflatex -shell-escape -output-directory %o %f"))
+#+end_src
+
+For faster pdf generation, consider invoking:
+
+#+begin_src emacs-lisp
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"))
+#+end_src
+
+By default, Org exports LaTeX using the ~nonstopmode~ option,
+which tries its best to produce a PDF
+---which ignores typesetting errors altogether,
+and therefore is not necessarily ideal when using LaTeX.
+
+#+latex: \columnbreak
 * Basic Equational Support
 
-Basic name-formula equational support. ~\eqn{name}{formula}~
+~\eqn{name}{formula}~
 yields a displayed equation with ~formula~ left aligned and ~name~ right aligned:
 
+#+latex: \vspace{-0.7em}
 \eqn{name}{formula}
-#+latex: \room
-Moreover, we can refer to such a formula by invoking ~\ref{name}~ --e.g., \ref{Functoriality} and \ref{name}.
+Moreover, we can refer to such a formula by invoking ~\ref{name}~ ---e.g., \ref{Functoriality} and \ref{name}.
 However, if ~name~ involves unicode symbols, then this may cause problems.
 
-#+latex: \room
 See the [[https://github.com/alhassy/CatsCheatSheet][CatsCheatSheet]] for examples of this kind.
 
-* What if I want 3 columns?
+We may also use [[https://github.com/jkitchin/org-ref][org-ref]] style references, as in ~eqref:name~. However, org-ref may warn that
+no context for the reference is found ---that's okay.
 
-At the top, say after the ~#+INCLUDE: CheatSheet/CheatSheetSetup.org~ line, add a new
-section:
+- eqref   :: Parenthesised reference: eqref:name
+- autoref :: Prefix reference with type: autoref:name
+- nameref :: The name of the section that contains this reference: nameref:name
 
-#+begin_example org :tangle no
-,* begin multicols  :ignore:
-,#+latex: \begin{multicols}{3}
+#+latex: \vspace{-3em}
+* Unicode
+
+I tend to use a lot of unicode and so this project comes with a unicode
+style file. We may add additional support for unicode characters as follows.
+#+begin_example org
+,#+LATEX_HEADER: \newunicodechar{⊕}{\ensuremath{\oplus}}
 #+end_example
 
-Then at the very bottom, add a section to close this multicol:
-
-#+begin_example org :tangle no
-,* end multicols   :ignore:
-,#+latex: \end{multicols}
-#+end_example
-
-Having three narrow columns is useful for term-heavy or formula heavy sheets.
-
-* Parallel Environment
-
-Cheat sheets should not waste space, so the setup provides
-a ~parallel~ LaTeX enviornment that takes an optional parameter
-indicating how many columns are desired ---two by default.
-Importantly, we use this environment as if it were any normal org-block:
-
-#+begin_parallel
-#+begin_example org :tangle no
-,#
-,#+begin_parallel org
-???content here???
-,#+end_parallel
-#+end_example
-
-The initial new line is important, otherwise the parallel environment
-occurs in-line, which may not be the intended behaviour.
-#+end_parallel
-
-#+latex: \hrule \room
 Below we demonstrate that [[https://frama-c.com/][loops implement finite quantifications]]
 by showing how the specification of a loop is implemented, unsurprisingly,
-using a loop. [[https://github.com/alhassy/MyUnicodeSymbols][I tend to use a lot of unicode.]]
+using a loop.
 
 A finite quantification can be defined axiomatically
 by the empty-range rule and split-off term rules.
@@ -276,7 +315,7 @@ Together these form a recursive definition which can be phrased as a loop.
 #+begin_parallel
 #+begin_src c
 // For _⊕_ : 𝑻 → 𝑻 → 𝑻,
-// fold(A,a,b) ≈ (⊕ x : a..b-1 • A[x])
+// fold(A,a,b) ≈ (⊕ x:a..b-1 • A[x])
 /*@ axiomatic Fold {
   @
   @ logic 𝑻
@@ -285,12 +324,12 @@ Together these form a recursive definition which can be phrased as a loop.
   @
   @ axiom foldEmptyRange{L} :
   @   ∀ 𝑻 *A, ℤ a, b; a ≥ b
-  @   =⇒  fold(A,a,b) == identity(⊕);
+  @   ⇒  fold(A,a,b) ≡ identity(⊕);
   @
   @ axiom foldSplitOffTerm{L} :
   @   ∀ 𝑻 *A, ℤ a, b; a ≤ b
-  @   =⇒      fold(A, a, b+1)
-  @        == fold(A, a, b  ) ⊕ A[b];
+  @   ⇒     fold(A, a, b+1)
+  @        ≡ fold(A, a, b  ) ⊕ A[b];
   @ }
   @*/
 #+end_src
@@ -298,19 +337,20 @@ Together these form a recursive definition which can be phrased as a loop.
 #+begin_src c
 /*@ requires \valid(A+(0..N-1));
   @ assigns \nothing;
-  @ ensures \result == fold(A,0,N);
+  @ ensures \result ≡ fold(A,0,N);
   @*/
 𝑻 fold(int N, 𝑻* A) {
 
     𝑻 total = identity(⊕);
 
-    /*@ loop invariant 0 <= n <= N;
-      @ loop invariant total == fold(A,0,n);
+    /*@ loop invariant
+             0 ≤ n ≤ N
+          ∧  total ≡ fold(A,0,n);
       @ loop assigns n, total;
-      @ loop variant N-n;
+      @ loop variant N - n;
     ,*/
     for(int n = 0; n != N; n++)
-    total = total ⊕ A[n];
+      total = total ⊕ A[n];
     return total;
 }
 #+end_src
@@ -322,7 +362,30 @@ This pseudo-code is reified by giving concrete values
 for ~(𝑻, ⊕, identity)~ such as ~(int, +, 0)~ or ~(bool, ||, false)~.
 Any [[https://en.wikipedia.org/wiki/Monoid][monoid]] will do.
 
-#+latex: \room \hrule \room
+#+latex: \ifnum\cheatsheetcols=1 \newpage \else \fi
+
+* Parallel Environment
+
+Cheat sheets should not waste space, so the setup provides
+a ~parallel~ LaTeX enviornment that takes an optional parameter
+indicating how many columns are desired ---two by default.
+Importantly, we use this environment as if it were any normal org-block:
+
+#+begin_parallel
+#+begin_example org :tangle no
+,#⸲
+,#+begin_parallel org
+???content here???
+,#+end_parallel
+#+end_example
+
+The initial new line is important, otherwise the parallel environment
+occurs in-line, which may not be the intended behaviour.
+#+end_parallel
+
+The column break is automatic, but as
+this is sugar for a ~minipage~ containing a ~multicolum~ we can force a column
+separation with ~\columnbreak~.
 
 ~parallelNB~ produces a side-by-side rendition with ‘N’o ‘B’ar:
 
@@ -360,6 +423,69 @@ middle \newline middle \newline middle
 right \newline right \newline right
 #+end_parallel3NB
 
+#+latex: \vfill {\color{white}.}
+
+#+latex: \ifnum\cheatsheetcols=1 \newpage \else \columnbreak \fi
+
+* Subsection Support
+Ideally a cheat sheet is not too hierarchical and so a subsection, as in ~** child~,
+is turned into a rule as follows.
+
+** A new child tree
+
+Here is the first child's content.
 
 
-#+latex: \newpage
+** Another child tree
+
+Here is the sibling's content.
+
+* Making ~README~
+
+Evaluate the following source block with ~C-c C-c~
+to produce a ~README~ file.
+
+#+name: make-readme
+#+begin_src emacs-lisp
+(with-temp-buffer
+    (insert
+    "#+EXPORT_FILE_NAME: README.org
+     # HTML: <h1> Easily Making CheatSheets with Org-mode </h1>
+     ,#+OPTIONS: toc:nil d:nil
+     # Toc is displayed below at a strategic position.
+
+     {{{blurb}}}
+
+     :Hide:
+     This project is to contain a listing of common results in X Theory.
+
+     ,*The repo contains other articles I've written on X Theory;*
+     ,*which may be read in a blog-format at:*
+     https://alhassy.github.io/blog/categories/#Xtheory
+     :End:
+
+    ,*The listing sheet, as PDF, can be found
+     [here](CheatSheet.pdf)*,
+     or as a [single column portrait](CheatSheet_Portrait.pdf),
+     while below is an unruly html rendition.
+
+     This reference sheet is built around the system
+     https://github.com/alhassy/CheatSheet.
+
+     ,#+TOC: headlines 2
+     ,#+INCLUDE: CheatSheet.org
+    ")
+
+    ;; No code execution on export
+    ;; ⟪ For a particular block, we use “:eval never-export” ⟫
+    ;;
+    (let ((org-export-use-babel nil))
+      (org-mode)
+      ; (org-md-export-to-markdown)
+      (org-org-export-to-org)
+      )
+)
+#+end_src
+
+Note that the ~blurb~ macro is defined by the user, to provide a terse description of the project.
+- Think the one-line statement at the top of a github repo page.

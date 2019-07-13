@@ -5,3 +5,10 @@
 /UnicodeSymbols.bbl
 /UnicodeSymbols.tex
 _minted-UnicodeSymbols/
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.tex
+/_minted-*
