@@ -1,4 +1,4 @@
-# Created 2019-07-12 Fri 20:01
+# Created 2019-07-12 Fri 21:25
 #+OPTIONS: toc:nil d:nil
 #+OPTIONS: toc:nil d:nil
 #+TITLE: Easily Making CheatSheets with Org-mode
@@ -8,12 +8,13 @@
 Pretty cheat sheets, or “reference cards”, obtainable from Org-mode files. See section [[#getting-started]] below to get started making your own cheat sheets!
 
 *The listing sheet, as PDF, can be found
- [here](CheatSheet.pdf)*,
- or as a [single column portrait](CheatSheet_Portrait.pdf),
+ [[file:CheatSheet.pdf][here]]*,
+ or as a [[file:CheatSheet_Portrait.pdf][single column portrait]],
  while below is an unruly html rendition.
 
-This reference sheet is built around the system
-https://github.com/alhassy/CheatSheet.
+This reference sheet is built from a
+[[https://github.com/alhassy/CheatSheet][CheatSheets with Org-mode]]
+system.
 
 #+toc: headlines 2
 #+subtitle: ---Reference Sheet for “What I'm Currently Learning”---
@@ -83,6 +84,27 @@ https://github.com/alhassy/CheatSheet.
 #+latex_header: \newunicodechar{𝑻}{\ensuremath{T}}
 #+latex_header: \newunicodechar{⊕}{\ensuremath{\oplus}}
 #+latex_header: \newunicodechar{≈}{\ensuremath{\approx}}
+
+
+#+begin_quote
+- [[#extra-local-setup][Extra, Local, Setup]]
+- [[#project-goal][Project Goal]]
+- [[#cheatsheet-examples][CheatSheet Examples]]
+- [[#why-learn--relearn][Why Learn & Relearn?]]
+- [[#getting-started][Getting Started]]
+- [[#what-if-its-not-good-enough][What if it's not good enough?]]
+- [[#what-if-i-want-n-columns-or-non-landscape-or-multiple-formats][What if I want ~N~ columns? Or non-landscape? Or multiple formats?]]
+- [[#colourful-source-blocks][Colourful Source Blocks]]
+- [[#break][break]]
+- [[#basic-equational-support][Basic Equational Support]]
+- [[#unicode][Unicode]]
+- [[#parallel-environment][Parallel Environment]]
+- [[#break-1][break]]
+- [[#subsection-support][Subsection Support]]
+  - [[#a-new-child-tree][A new child tree]]
+  - [[#another-child-tree][Another child tree]]
+- [[#making-readmeorg][Making ~README.org~]]
+#+end_quote
 
 * Project Goal
 
@@ -440,7 +462,7 @@ Here is the first child's content.
 
 Here is the sibling's content.
 
-* Making ~README~
+* Making ~README.org~
 
 Evaluate the following source block with ~C-c C-c~
 to produce a ~README~ file.
@@ -465,12 +487,15 @@ to produce a ~README~ file.
      :End:
 
     ,*The listing sheet, as PDF, can be found
-     [here](CheatSheet.pdf)*,
-     or as a [single column portrait](CheatSheet_Portrait.pdf),
+     [[file:CheatSheet.pdf][here]]*,
+     or as a [[file:CheatSheet_Portrait.pdf][single column portrait]],
      while below is an unruly html rendition.
 
-     This reference sheet is built around the system
-     https://github.com/alhassy/CheatSheet.
+     # Markdown links: [title](target)
+
+     This reference sheet is built from a
+     [[https://github.com/alhassy/CheatSheet][CheatSheets with Org-mode]]
+     system.
 
      ,#+TOC: headlines 2
      ,#+INCLUDE: CheatSheet.org
@@ -482,7 +507,13 @@ to produce a ~README~ file.
     (let ((org-export-use-babel nil))
       (org-mode)
       ; (org-md-export-to-markdown)
+      ; (package-install 'toc-org)
+      (toc-org-mode)
+      (toc-org-insert-toc)
+      ; (delete "TOC" org-export-exclude-tags)
+      (pop org-export-exclude-tags)
       (org-org-export-to-org)
+      (add-to-list 'org-export-exclude-tags "TOC")
       )
 )
 #+end_src

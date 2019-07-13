@@ -22,6 +22,28 @@
 #+LATEX_HEADER: \newunicodechar{⊕}{\ensuremath{\oplus}}
 #+LATEX_HEADER: \newunicodechar{≈}{\ensuremath{\approx}}
 
+
+* Contents :TOC:QUOTE:ignore:
+#+BEGIN_QUOTE
+- [[#extra-local-setup][Extra, Local, Setup]]
+- [[#project-goal][Project Goal]]
+- [[#cheatsheet-examples][CheatSheet Examples]]
+- [[#why-learn--relearn][Why Learn & Relearn?]]
+- [[#getting-started][Getting Started]]
+- [[#what-if-its-not-good-enough][What if it's not good enough?]]
+- [[#what-if-i-want-n-columns-or-non-landscape-or-multiple-formats][What if I want ~N~ columns? Or non-landscape? Or multiple formats?]]
+- [[#colourful-source-blocks][Colourful Source Blocks]]
+- [[#break][break]]
+- [[#basic-equational-support][Basic Equational Support]]
+- [[#unicode][Unicode]]
+- [[#parallel-environment][Parallel Environment]]
+- [[#break-1][break]]
+- [[#subsection-support][Subsection Support]]
+  - [[#a-new-child-tree][A new child tree]]
+  - [[#another-child-tree][Another child tree]]
+- [[#making-readmeorg][Making ~README.org~]]
+#+END_QUOTE
+
 * COMMENT ~LaTeX~ commands ↦ ~#+latex: \LaTeX~
 
   Execute the following block, with ~C-c C-c~ anywhere inside it,
@@ -506,7 +528,7 @@ right \newline right \newline right
 
   Here is the sibling's content.
 
-* Making ~README~
+* Making ~README.org~
 
   Evaluate the following source block with ~C-c C-c~
   to produce a ~README~ file.
@@ -533,12 +555,15 @@ right \newline right \newline right
      :End:
 
     ,*The listing sheet, as PDF, can be found
-     [here](CheatSheet.pdf)*,
-     or as a [single column portrait](CheatSheet_Portrait.pdf),
+     [[file:CheatSheet.pdf][here]]*,
+     or as a [[file:CheatSheet_Portrait.pdf][single column portrait]],
      while below is an unruly html rendition.
 
-     This reference sheet is built around the system
-     https://github.com/alhassy/CheatSheet.
+     # Markdown links: [title](target)
+
+     This reference sheet is built from a
+     [[https://github.com/alhassy/CheatSheet][CheatSheets with Org-mode]]
+     system.
 
      ,#+TOC: headlines 2
      ,#+INCLUDE: CheatSheet.org
@@ -550,7 +575,13 @@ right \newline right \newline right
     (let ((org-export-use-babel nil))
       (org-mode)
       ; (org-md-export-to-markdown)
+      ; (package-install 'toc-org)
+      (toc-org-mode)
+      (toc-org-insert-toc)
+      ; (delete "TOC" org-export-exclude-tags)
+      (pop org-export-exclude-tags)
       (org-org-export-to-org)
+      (add-to-list 'org-export-exclude-tags "TOC")
       )
 )
 #+END_SRC
@@ -609,10 +640,22 @@ below loads ~CheatSheet/CheatSheet.el~.
 
 2. Likewise, the third eval is for making a portrait form of the cheatsheet ---~f12~.
 
+3. :TOC: should not be exported in this file.
+
+   See https://github.com/snosov1/toc-org for more on toc-org.
+
+   (add-to-list 'org-export-exclude-tags "TOC")
+   (delete "TOC" org-export-exclude-tags)
+
+    And every time you'll be saving an org file, the first headline with a :TOC:
+    tag will be updated with the current table of contents.
+    (toc-org-enable)
+
 # Local Variables:
 # eval: (progn (visual-line-mode t) (require 'ox-extra) (ox-extras-activate '(ignore-headlines)))
 # eval: (local-set-key (kbd "<f11>") '(lambda () (interactive) (org-babel-goto-named-src-block "make-readme") (org-babel-execute-src-block) (outline-hide-sublevels 1)))
 # eval: (local-set-key (kbd "<f12>") '(lambda () (interactive) (org-babel-goto-named-src-block "make-portrait") (org-babel-execute-src-block) (outline-hide-sublevels 1)))
+# eval:    (add-to-list 'org-export-exclude-tags "TOC")
 # eval: (progn (visual-line-mode t) (require 'ox-extra) (ox-extras-activate '(ignore-headlines)))
 # compile-command: (org-latex-export-to-pdf)
 # End:
