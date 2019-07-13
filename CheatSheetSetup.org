@@ -10,6 +10,13 @@
 
 #+OPTIONS: toc:nil d:nil
 
+* COMMENT User Facing Options :Summary:
+  All options are prefixed with ‘cheatsheet’.
+
+  + cols :: How many columns are there.
+  + url :: Any URL associated with the repo; empty by default.
+  + itemsep :: Distance between items.
+
 * \usepackages{} & landscape conditional                             :ignore:
 # The titling package provides various user-friendly ways to modify title pages.
 # It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
@@ -49,25 +56,15 @@
 
 # The \maketitle command, in article, clears the values of \title, \author, \date, etc; so we make it do nothing.
 #+LATEX_HEADER: \def\maketitle{}
-
 #+LaTeX: \fontsize{9}{10}\selectfont
 
-# Src: https://tex.stackexchange.com/a/55476/69371
-#+LATEX_HEADER_EXTRA: \newcommand\textbox[1]{\parbox{.333\textwidth/\cheatsheetcols}{#1}}
-
 # User redefines this item.
-#+LATEX_HEADER: \def\yoururl{}
+#+LATEX_HEADER: \def\cheatsheeturl{}
 
 # Actually render the title headers
 #+BEGIN_EXPORT latex
-% \theauthor \hfill \thedate
-% \noindent
-\textbox{\theauthor\hfill}\textbox{\hfil {\tiny \url{\yoururl}} \hfill}\textbox{\hfill \thedate\hspace{0.2em}{\color{white}.}}
+\theauthor \hfill {\tiny \mbox{\url{\cheatsheeturl}}} \hfill \thedate
 \hrule
-
-% \vspace{-1em}
-% {\color{white}.\!\!}\hrulefill
-%
 
 \vspace{1em}
 {\center \large\bf \thetitle \\ }
@@ -149,7 +146,7 @@
 :End:
 
 * Unicode support                                                    :ignore:
-  #+LATEX_HEADER: \usepackage{UnicodeSymbols}
+  #+LATEX_HEADER: \usepackage{CheatSheet/UnicodeSymbols}
 
   # Removing the red box that appears in "minted" when using unicode.
   # Src: https://tex.stackexchange.com/questions/343494/minted-red-box-around-greek-characters

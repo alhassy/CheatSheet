@@ -10,7 +10,7 @@
 * LaTeX Extra, Local, Setup  :ignore:
 
 # Empty by default.
-#+LATEX_HEADER: \def\yoururl{https://github.com/alhassy/CheatSheet}
+#+LATEX_HEADER: \def\cheatsheeturl{https://github.com/alhassy/CheatSheet}
 
 # The following are the defaults & may be omitted.
 #+LATEX_HEADER: \def\cheatsheetcols{2}
@@ -21,7 +21,6 @@
 #+LATEX_HEADER: \newunicodechar{𝑻}{\ensuremath{T}}
 #+LATEX_HEADER: \newunicodechar{⊕}{\ensuremath{\oplus}}
 #+LATEX_HEADER: \newunicodechar{≈}{\ensuremath{\approx}}
-
 
 * Contents :TOC:QUOTE:ignore:
 #+BEGIN_QUOTE
@@ -578,6 +577,7 @@ right \newline right \newline right
       ; (package-install 'toc-org)
       (toc-org-mode)
       (toc-org-insert-toc)
+      ; (setq org-toc-noexport-regexp ".*:ignore:.*") MA: Doesn't work.
       ; (delete "TOC" org-export-exclude-tags)
       (pop org-export-exclude-tags)
       (org-org-export-to-org)
