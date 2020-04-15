@@ -161,7 +161,7 @@
 #+BEGIN_EXPORT latex
 \renewenvironment{parallel}[1][2] % one argument, whose default value is literal `2`.
  {
-  \setlength{\columnseprule}{2pt}
+  \setlength{\columnseprule}{0.5pt}
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{#1}  % default is `2`
  }
