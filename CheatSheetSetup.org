@@ -161,7 +161,7 @@
 #+BEGIN_EXPORT latex
 \renewenvironment{parallel}[1][2] % one argument, whose default value is literal `2`.
  {
-  \setlength{\columnseprule}{0.5pt}
+  \setlength{\columnseprule}{2pt}
   \begin{minipage}[t]{\linewidth} % width of minipage is 100% times of \linewidth
   \begin{multicols}{#1}  % default is `2`
  }
@@ -264,5 +264,5 @@
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
 # eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
 # End:
-* test                                                               :ignore:
+* test :ignore:
 # this is here to enable the inclusion of latex_headers before the beginning of the file.
