@@ -255,6 +255,7 @@
 
 * COMMENT footer
 
+
 # Local Variables:
 # eval: (setq org-highlight-latex-and-related '(latex))
 # eval: (visual-line-mode t)
@@ -263,3 +264,5 @@
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
 # eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
 # End:
+* test :ignore:
+# this is here to enable the inclusion of latex_headers before the beginning of the file.
