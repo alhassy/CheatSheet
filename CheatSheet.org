@@ -7,6 +7,15 @@
 #+PROPERTY: header-args :results none
 #+TODO: Todo | spacing LaTeX
 
+:Dependencies:
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :ensure org-plus-contrib
+  :config (require 'ox-extra)
+          (ox-extras-activate '(ignore-headlines)))
+#+END_SRC
+:End:
+
 * LaTeX Extra, Local, Setup  :ignore:
 
 # Empty by default.
