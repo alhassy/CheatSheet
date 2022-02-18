@@ -139,7 +139,7 @@ Reference sheets created from this project include:
 - [[https://github.com/alhassy/CatsCheatSheet][CatsCheatSheet]] ::
      Listing of common theorems in elementary category theory.
 
-- [[https://github.com/alhassy/LatticesCheatSheet][LatticesCheatSheet]] ::
+- [[https://github.com/alhassy/CatsCheatSheet/blob/master/LatticesCheatSheet.pdf][LatticesCheatSheet]] ::
      Reference sheet for definitions and results in Lattice Theory.
 
 - [[https://github.com/alhassy/OCamlCheatSheet][OCamlCheatSheet]] :: Basics of OCaml, “the best imperative language”.
